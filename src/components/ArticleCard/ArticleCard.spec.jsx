@@ -14,9 +14,12 @@ function loadCss(container, filePath) {
 
 function getByTestId(testId) {
   // -- render component
-  const { container, getByTestId } = render(<ArticleCard content={'a'} date={'b'} title={'c'} link={'d'} />, {
-    container: document.body,
-  });
+  const { container, getByTestId } = render(
+    <ArticleCard content={'a'} date={'b'} title={'c'} link={'d'} />,
+    {
+      container: document.body,
+    }
+  );
 
   // -- load css
   loadCss(container, './src/index.css');
@@ -120,7 +123,8 @@ describe('ArticleCard has correct style', () => {
   test('time tag has correct style', () => {
     // Arrange
     const articleCardDate = getByTestId('articleCardDate');
-    const { fontSize, textTransform, color, borderLeft, paddingLeft } = window.getComputedStyle(articleCardDate);
+    const { fontSize, textTransform, color, borderLeft, paddingLeft } =
+      window.getComputedStyle(articleCardDate);
     expect(fontSize).toBe('14px');
     expect(textTransform).toBe('uppercase');
     expect(color).toBe('rgb(161, 161, 170)');
@@ -131,7 +135,8 @@ describe('ArticleCard has correct style', () => {
   test('h2 tag has correct style', () => {
     // Arrange
     const articleCardTitle = getByTestId('articleCardTitle');
-    const { fontSize, textTransform, margin, fontWeight } = window.getComputedStyle(articleCardTitle);
+    const { fontSize, textTransform, margin, fontWeight } =
+      window.getComputedStyle(articleCardTitle);
     expect(fontSize).toBe('24px');
     expect(textTransform).toBe('capitalize');
     expect(margin).toBe('16px 0px');

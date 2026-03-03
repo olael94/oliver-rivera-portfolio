@@ -1,30 +1,27 @@
 'use client';
 
-import './SocialLinks.css';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
 
 const SocialLinks = ({ socialLinks }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.body.classList.contains('dark'));
-  }, []);
-
-  if (!socialLinks || socialLinks.length === 0) {
-    return <div>No social links available</div>;
-  }
+  if (!socialLinks || socialLinks.length === 0) return <div>No social links available</div>;
 
   return (
-    <div data-testid="socialLinks-testid" className="socialLinks">
-      <ul>
-          {socialLinks.map((socialLink, index) => (
-              <li key={index}>
-                  <a data-testid={`socialLinks${index}`} href={socialLink.link} target="_blank" rel="noreferrer">
-                      <img src={socialLink.imageSrc} alt="link" /> Follow me on {socialLink.name}
-                  </a>
-              </li>
-          ))}
+    <div data-testid="socialLinks-testid">
+      <ul className="list-none p-0">
+        {socialLinks.map((socialLink, index) => (
+          <li key={index} className="py-2.5">
+            <a
+              data-testid={`socialLinks${index}`}
+              href={socialLink.link}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center text-base text-zinc-600 no-underline pb-1 border-b border-transparent hover:text-teal-500 hover:border-b-2 hover:border-teal-500 hover:rounded-sm dark:text-custom-grey dark:hover:text-teal-500"
+            >
+              <img src={socialLink.imageSrc} alt="link" className="w-5 h-5 mr-2" />
+              Follow me on {socialLink.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -39,9 +36,4 @@ SocialLinks.propTypes = {
     })
   ),
 };
-
-SocialLinks.defaultProps = {
-  link: '#',
-};
-
 export default SocialLinks;

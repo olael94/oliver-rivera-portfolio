@@ -1,32 +1,27 @@
-import React from "react";
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-// import styles
-import styles from "./Button.module.css";
-
-// import dependencies
-import {clsx} from "clsx";
-import Link from "next/link";
-
-export const Button = (
-  {
-    href,
-    color,
-    disabled,
-    handleClick,
-    children,
-    customClasses,
-    ...props
-  }) => {
+export const Button = ({
+  href,
+  color = 'black',
+  disabled,
+  handleClick,
+  children,
+  customClasses,
+  ...props
+}) => {
   const classes = clsx(
-    styles.button,
+    'font-semibold uppercase outline-none px-4 py-2',
     {
-      // colors
-      [styles.buttonBlack]: color === "black",
-      [styles.buttonWhite]: color === "white",
-      // disabled
-      [styles.buttonDisabled]: disabled,
+      // black
+      'text-zinc-50 bg-zinc-950 ring-zinc-950 hover:bg-zinc-800 active:text-zinc-300 focus-visible:ring-2 ring-offset-2 ring-offset-zinc-50':
+        color === 'black',
+      'bg-zinc-500 text-zinc-600 cursor-default': color === 'black' && disabled,
+      // white
+      'text-zinc-950 bg-zinc-50 ring-zinc-50 hover:bg-zinc-200 active:text-zinc-700 focus-visible:ring-2 ring-offset-2 ring-offset-zinc-950':
+        color === 'white',
+      'bg-zinc-300 text-zinc-400 cursor-default': color === 'white' && disabled,
     },
-    // custom classes
     customClasses
   );
 
@@ -45,12 +40,4 @@ export const Button = (
   );
 };
 
-Button.defaultProps = {
-  color: "black",
-  size: "lg",
-  href: undefined,
-  disabled: undefined,
-  customClasses: undefined,
-  handleClick: undefined,
-  children: undefined,
-};
+export default Button;

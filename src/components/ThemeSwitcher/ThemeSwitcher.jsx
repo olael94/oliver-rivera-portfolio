@@ -1,55 +1,36 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import './ThemeSwitcher.css';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const ThemeSwitcher = ({ darkClassName }) => {
-  // State to hold the selected theme
+const ThemeSwitcher = ({ darkClassName = 'dark' }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Check user preference only on client-side
-    if (typeof window !== 'undefined') {
-      const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDarkMode);
-    }
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
   }, []);
 
-  // Toggle between dark and light mode
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  // Apply the selected theme by adding/removing a class to the body element
-  const applyTheme = () => {
-    if (isDarkMode) {
-      document.body.classList.add(darkClassName);
-    } else {
-      document.body.classList.remove(darkClassName);
-    }
-  };
-
   useEffect(() => {
-    // Apply theme after state update
-    applyTheme();
-  }, [isDarkMode]); // Run on change of isDarkMode
+    document.body.classList.toggle(darkClassName, isDarkMode);
+  }, [isDarkMode, darkClassName]);
 
   return (
-      <div className={isDarkMode ? 'dark' : ''}>
-        <button data-testid="themeSwitcherButton" className={'btn'} onClick={toggleTheme}>
-          <img src={isDarkMode ? "Moon.png" : "sunIcon.png"} alt="Sun Icon"/>
-        </button>
-      </div>
+    <div className={isDarkMode ? 'dark' : ''}>
+      <button
+        data-testid="themeSwitcherButton"
+        onClick={() => setIsDarkMode((prev) => !prev)}
+        className="fixed top-[16px] right-[70px] h-8 w-8 rounded-full p-0 cursor-pointer bg-white border border-zinc-300 shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:bg-zinc-200 dark:shadow-[0_0_10px_rgba(20,184,166,1)] md:top-[16px] md:right-[52px]"
+      >
+        <img
+          src={isDarkMode ? 'Moon.png' : 'sunIcon.png'}
+          alt="Toggle theme"
+          className={isDarkMode ? 'w-5 h-5 ml-1.5' : 'w-[25px] h-[25px] ml-[3px]'}
+        />
+      </button>
+    </div>
   );
 };
 
-ThemeSwitcher.propTypes = {
-  darkClassName: PropTypes.string,
-};
-
-ThemeSwitcher.defaultProps = {
-  darkClassName: 'dark',
-};
-
+ThemeSwitcher.propTypes = { darkClassName: PropTypes.string };
 export default ThemeSwitcher;

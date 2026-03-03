@@ -1,34 +1,28 @@
 'use client';
 
-import './MenuLink.css';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
 
 const MenuLink = ({ email, imageSrc, link }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    setIsDarkMode(document.body.classList.contains('dark'));
-  }, []);
-
-
   return (
-    <div data-testid="menu-link" className="menu-link">
-      <a data-testid={'menuLink'} href={link} target="_blank" rel="noreferrer">
-        <img src={imageSrc} alt="link"/> {email}
+    <div data-testid="menu-link" className="flex flex-col pt-2 pb-8 gap-2">
+      <a
+        data-testid="menuLink"
+        href={link}
+        target="_blank"
+        rel="noreferrer"
+        className="flex py-2 justify-start items-center gap-1 text-base text-zinc-600 no-underline hover:text-teal-500 hover:border-b-2 hover:border-teal-500 hover:rounded-sm dark:text-custom-grey"
+      >
+        <img src={imageSrc} alt="link" className="w-5 h-5 mr-2" />
+        {email}
       </a>
     </div>
   );
 };
 
 MenuLink.propTypes = {
-    email: PropTypes.string.isRequired,
-    imageSrc: PropTypes.string.isRequired,
-    link: PropTypes.string,
+  email: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  link: PropTypes.string,
 };
-
-MenuLink.defaultProps = {
-  link: '#',
-};
-
+MenuLink.defaultProps = { link: '#' };
 export default MenuLink;

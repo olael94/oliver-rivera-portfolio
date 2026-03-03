@@ -1,67 +1,74 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import './IntroCard.css';
 import PropTypes from 'prop-types';
 
 const IntroCard = ({ logo, name, content, links }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [logoSrc, setLogoSrc] = useState(logo);
-
-  // Listen for theme changes
-  useEffect(() => {
-    const checkTheme = () => {
-      const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-      setIsDarkMode(theme === 'dark');
-    };
-
-    window.addEventListener('DOMContentLoaded', checkTheme);
-    window.addEventListener('classChange', checkTheme);
-
-    return () => {
-      window.removeEventListener('DOMContentLoaded', checkTheme);
-      window.removeEventListener('classChange', checkTheme);
-    };
-  }, []);
-
-  // Update logo source when theme changes
-  useEffect(() => {
-    setLogoSrc(isDarkMode ? `${logo}Dark` : logo);
-  }, [isDarkMode, logo]);
-
   return (
-      <div data-testid="introCard" className="intro-card">
-        <div>
-          <img data-testid="introCardLogo" src={logo} alt="Company name Logo" className="intro-card-logo" />
-          <h1 data-testid="introCardName">{name}</h1>
-        </div>
-        <div className={'links'}>
-          <p data-testid="introCardContent">{content}</p>
+    <div
+      data-testid="introCard"
+      className="flex flex-col py-6 rounded-md w-full max-w-[850px] gap-3"
+    >
+      <div>
+        <img
+          data-testid="introCardLogo"
+          src={logo}
+          alt="Profile"
+          className="w-[100px] h-[100px] rounded-full p-1 border-2 border-zinc-200 shadow-[0_0_60px_rgba(20,184,166,1)] dark:shadow-[0_0_30px_rgba(20,184,166,0.4)]"
+        />
+        <h1
+          data-testid="introCardName"
+          className="mt-2 text-[50px] font-bold text-zinc-700 dark:text-white"
+        >
+          {name}
+        </h1>
+      </div>
+      <div className="flex flex-col gap-3">
+        {Array.isArray(content) ? (
+          content.map((para, i) => (
+            <p
+              key={i}
+              data-testid="introCardContent"
+              className="text-base text-zinc-500 leading-7 mb-5 dark:text-custom-grey"
+            >
+              {para}
+            </p>
+          ))
+        ) : (
+          <p
+            data-testid="introCardContent"
+            className="text-base text-zinc-500 leading-7 mb-5 dark:text-custom-grey"
+          >
+            {content}
+          </p>
+        )}
+        <div className="flex flex-row gap-3">
           {links.map((link, index) => (
-              <a key={index} href={link.url} target="_blank" rel="noreferrer">
-                <img src={link.icon} alt={link.title} />
-              </a>
+            <a
+              key={index}
+              href={link.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center text-base text-zinc-600 no-underline pb-1 border-b border-transparent hover:text-black"
+            >
+              <img src={link.icon} alt={link.title} className="w-5 h-5 mr-5" />
+            </a>
           ))}
         </div>
       </div>
+    </div>
   );
 };
 
 IntroCard.propTypes = {
   logo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]).isRequired,
   links: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        url: PropTypes.string.isRequired,
-        icon: PropTypes.string.isRequired,
-      })
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
+    })
   ).isRequired,
 };
-
-IntroCard.defaultProps = {
-  link: '#',
-};
-
 export default IntroCard;
