@@ -1,7 +1,4 @@
-// get env variable
-import dotenv from 'dotenv';
-
-dotenv.config();
+// Next.js automatically loads .env files — dotenv is not needed here.
 
 const env = process.env.NODE_ENV || 'development';
 
