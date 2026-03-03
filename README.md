@@ -8,13 +8,13 @@ The website is built using Next.js. The website is responsive and works well on 
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Start the server on http://localhost:3000:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ## GitHub Actions
