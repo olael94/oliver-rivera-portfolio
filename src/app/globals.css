@@ -1,167 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Overall css for Home, About, Projects, and Uses  in Dark Mode*/
-body.dark header{
-  @apply text-white;
+@theme {
+  --color-custom-grey: #a1a1aa;
+  --color-custom-dark: #17171a;
 }
 
-body.dark .navbar-container{
-  background-color: rgba(51, 51, 51, 0.975);
-}
+@variant dark (&:where(.dark, .dark *));
 
-body.dark .nav-link-container {
-  color: #fff;
-}
-
-body.dark .menu-toggle-container {
-  color: #fff;
-}
-
-body.dark {
-  @apply bg-custom-dark text-custom-grey;
-}
-
-body.dark Footer {
-  @apply text-white;
-  background-color: rgba(51, 51, 51, 0.975);
-}
-
-body.dark .footer a{
-  @apply text-white;
-}
-
-body.dark .footer p{
-  @apply text-white;
-}
-
-/* HOME CSS in Dark mode */
-
-body.dark .intro-card-logo {
-  box-shadow: 0 0 30px 0 rgba(20, 184, 166, 0.4);
-  border: 2px solid #e0e0e0;
-}
-
-body.dark .intro-card h1 {
-  @apply text-white;
-}
-
-body.dark .intro-card .links p {
-  @apply text-custom-grey;
-}
-
-body.dark .article-card .article-card-header time {
-  @apply text-custom-grey;
-}
-
-body.dark .article-card p {
-  @apply text-custom-grey;
-}
-
-body.dark .signup-widget {
-  border-color: #3F3F46;
-  box-shadow: 0 0 10px 0 rgba(20, 184, 166, 0.4);
-}
-
-body.dark .work-widget {
-  border-color: #3F3F46;
-  box-shadow: 0 0 10px 0 rgba(20, 184, 166, 0.4);
-}
-
-body.dark .skills-widget {
-  border-color: #3F3F46;
-  box-shadow: 0 0 10px 0 rgba(20, 184, 166, 0.4);
-}
-
-body.dark .signup-widget h2 {
-  @apply text-white;
-}
-
-body.dark .work-widget h2 {
-  @apply text-white;
-}
-
-body.dark .skills-widget h2 {
-  @apply text-white;
-}
-
-body.dark .signup-widget p {
-  @apply text-custom-grey;
-}
-
-body.dark .work-widget p {
-  @apply text-custom-grey;
-}
-
-body.dark .work-widget .work-item-content h3 {
-  @apply text-white;
-}
-
-body.dark .skills-widget p {
-  @apply text-custom-grey;
-
-}
-
-body.dark .skills-widget .skills-item-content h3 {
-  @apply text-white;
-}
-
-/* ABOUT ME CSS DarkMode*/
-body.dark .about-me  h1{
-  @apply text-white;
-}
-
-body.dark .about-me .content p {
-  @apply text-custom-grey;
-}
-
-body.dark .socialLinks a {
-  @apply text-custom-grey;
-}
-
-body.dark .socialLinks a:hover{
-  color: #14B8A6;
-}
-
-/* PROJECTS CSS DarkMode */
-body.dark .project-card {
-  @apply text-custom-grey;
-  box-shadow: 0 0 10px 0 rgba(20, 184, 166, 0.4);
-}
-
-body.dark .project-card .links p {
-  @apply text-custom-grey;
-}
-
-body.dark .project-card h2 {
-  @apply text-white;
-}
-
-body.dark .project-card p, body.dark .project-card a {
-  @apply text-custom-grey;
-}
-
-/* USES CSS DarkMode */
-body.dark .uses-card h1 {
-  @apply text-white;
-}
-
-body.dark .uses-card .content p {
-  @apply text-custom-grey;
-}
-
-body.dark .tool-text-container {
-  @apply text-white;
-}
-
-/* Overall CSS for Home, About, Projects, and Uses */
 body {
   min-width: 390px;
-}
-
-body {
-  @apply bg-white text-black;
+  @apply bg-white text-black dark:bg-custom-dark dark:text-custom-grey;
 }
 
 .body {
@@ -173,222 +21,31 @@ body {
 header {
   position: fixed;
   top: 0;
-  //background: white;
   width: 100%;
-  height: 48px;
-  gap: 0px;
-  justify: space-between;
+  height: 64px;
 }
 
-/* Header ThemeSwitcher Button CSS */
-
+@media (max-width: 768px) {
+  header {
+    height: 56px;
+  }
+}
 
 main {
   box-sizing: border-box;
-  padding: 104px 144px 64px 144px;
+  padding: 104px 180px 64px 180px;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 104px 34px 64px 34px;
+  }
 }
 
 footer {
   margin-top: auto;
-}
-
-/* HOME page.jsx CSS */
-
-.articles-widgets-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.widgets-container{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  row-gap: 24px; /* This will create a gap of 24px between each widget */
-  width: 100%; /* This will make the widgets container take up the full width of its parent */
-  min-width: 420px; /* This will prevent the widgets container from becoming smaller than 420px */
-}
-
-/* ABOUT page.jsx CSS */
-.left-right-container{
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
-.image-container {
-  width: 464px;
-  height: 452px;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* This will ensure that the image is scaled while maintaining its aspect ratio */
-}
-
-.right-container {
-  display: flex;
-  width: 464px;
-  max-width: 672px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-}
-
-.right-container img {
-  width: 100%;
-  height: 452px;
-}
-
-/* PROJECTS page.jsx CSS */
-.project-card-container{
-  display: flex;
-  padding-left: 25px;
-  flex-wrap: wrap; /* This will allow the implementation of 3 or 2 ProjectCards per row */
-}
-
-.project-card-container .project-card {
-//flex: 0 0 calc(33.3333% - 16px); /* 33.3333% for 3 items per row, 16px is half of the gap you want between items */
-  flex: 0 0 380px; /* This will set the flex-basis (initial size) of the card to 380px */
-  max-width: 380px; /* This will ensure that the card width never exceeds 380px */
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-/* Mobile CSS 1000px for Projects Page */
-@media (max-width: 1100px) {
-  .project-card-container .project-card {
-    flex: 0 0 calc(50% - 16px); /* 50% for 2 items per row, 16px is half of the gap you want between items */
-  }
-}
-
-/* USES page.jsx CSS */
-.uses-container {
-  display: flex;
-  flex-direction: column;
-  row-gap: 64px;  /* This will create a gap of 64px between each .uses-container */
-}
-
-.tool-container{
-  display: flex;
-  flex-direction: row;
-  border-left: 4px solid #3F3F46;
-  border-radius: 4px;
-  padding-left: 24px;
-}
-
-.tool-container .tool-text-container{
-  flex-basis: 200px; /* Allows the .items-container to start at the same place not mattering how long or short .tool-text-container is */
-  margin-right: 34px;
-  order:1;
-}
-
-.tool-container .items-container{
-  display: flex;
-  gap: 24px;  /* This will create a gap of 24px between each item */
-  flex-direction: column;
-  order:2;
-}
-
-/* Mobile CSS 768px for Home, About, Projects, and Uses */
-@media (max-width: 768px) {
-
-  /* Overall Mobile CSS */
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Keeps text left-aligned */
-    flex-direction: column;
-    text-align: left; /* Keeps text left-aligned */
-    padding: 104px 10px 64px 10px;
-  }
-
-
-  /* HOME page.jsx Mobile CSS */
-  .intro{
-    display: flex;
-    flex-direction: column;
-    order:1;
-  }
-
-  .articles-widgets-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .articles-container{
-    order: 2;
-  }
-
-  .widgets-container{
-    order: 3;
-    padding-left: 14px;
-    align-items: flex-start;
-  }
-
-  /* ABOUT page.jsx Mobile CSS */
-
-  .left-right-container{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .left-container{
-    order: 2;
-  }
-
-  .right-image-container{
-    order: 1;
-  }
-
-  .right-socials-container{
-    padding-left: 24px;
-    order: 3;
-  }
-
-  .image-container {
-    padding-left: 24px;
-    width: 392px;
-    height: 452px;
-  }
-
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* This will ensure that the image is scaled while maintaining its aspect ratio */
-  }
-
-  /* PROJECTS page.jsx Mobile CSS */
-  .project-card-container{
-    padding-left: 34px;
-    flex-direction: column;
-  }
-
-  .project-card-container .project-card {
-    min-width: 330px;
-    margin-right: unset;
-    margin-left: unset;
-  }
-
-  /* USES page jsx Mobile CSS */
-  .tool-container{
-    flex-direction: column;
-    padding-left: 24px;
-    border-left: none;
-  }
-
-  .tool-container .tool-text-container{
-    flex-basis: auto;
-    padding-bottom: 24px; /* This will create a gap of 24px between the .tool-text-container and the .items-container */
-    order:1;
-  }
-
-  .tool-container .items-container{
-    flex-direction: column;
-    order: 2;
-  }
-
 }
