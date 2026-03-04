@@ -4,13 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
-
-const NAV_LINKS = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/uses', label: 'Uses' },
-];
+import { navLinks as NAV_LINKS } from '@/data/nav';
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);

@@ -12,7 +12,13 @@ const Dropdown = ({ options }) => {
         className="inline-flex items-center text-black text-sm font-medium cursor-pointer h-8 dark:text-white"
       >
         Menu
-        <img src="dropdownIcon.png" alt=" " width="10" height="5" className="ml-2.5 align-middle" />
+        <img
+          src="/icons/dropdownIcon.png"
+          alt=" "
+          width="10"
+          height="5"
+          className="ml-2.5 align-middle"
+        />
       </button>
 
       {isOpen && (

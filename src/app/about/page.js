@@ -1,22 +1,7 @@
-import AboutMe from '@/components/AboutMe/AboutMe';
-import SocialLinks from '@/components/SocialLinks/SocialLinks';
-import MenuLink from '@/components/MenuLink/MenuLink';
-
-const socialLinks = [
-  {
-    name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/oliver-rivera-software-engineer/',
-    imageSrc: 'linkedIn.png',
-  },
-  { name: 'GitHub', link: 'https://github.com/olael94', imageSrc: 'github.png' },
-  { name: 'X', link: 'https://x.com/theoliverrivera', imageSrc: 'x.png' },
-];
-
-const menuLinkData = {
-  email: 'orivera94@gmail.com',
-  imageSrc: 'email.png',
-  link: 'mailto:orivera94@gmail.com',
-};
+import AboutMe from '@/components/AboutMe';
+import SocialLinks from '@/components/SocialLinks';
+import MenuLink from '@/components/MenuLink';
+import { socialLinks, emailLink } from '@/data/links';
 
 export default function About() {
   return (
@@ -35,19 +20,19 @@ export default function About() {
           {/* Offset amber accent block */}
           <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl bg-amber-400/20 dark:bg-amber-400/10" />
           <img
-            src="Me.jpg"
+            src="/images/Me.jpg"
             alt="My picture"
             className="relative w-[464px] h-auto object-cover rounded-2xl shadow-md max-md:w-full"
           />
         </div>
         <div className="max-md:hidden">
           <SocialLinks socialLinks={socialLinks} />
-          <MenuLink {...menuLinkData} />
+          <MenuLink {...emailLink} />
         </div>
       </div>
       <div className="hidden max-md:block max-md:order-3 max-md:w-full">
         <SocialLinks socialLinks={socialLinks} />
-        <MenuLink {...menuLinkData} />
+        <MenuLink {...emailLink} />
       </div>
     </div>
   );

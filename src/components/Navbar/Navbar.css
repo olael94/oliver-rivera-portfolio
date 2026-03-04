@@ -79,7 +79,7 @@
 /* ── Mobile ── */
 .mobile-menu-btn {
   position: absolute;
-  right: 64px;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: none;

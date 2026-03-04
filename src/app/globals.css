@@ -12,6 +12,13 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Fallback declarations so the IDE and Tailwind can resolve these at build time.
+   Next.js overrides these at runtime via class names injected on <body>. */
+:root {
+  --font-manrope: system-ui, sans-serif;
+  --font-syne: system-ui, sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -20,7 +27,10 @@
 
 body {
   min-width: 390px;
-  font-family: var(--font-manrope, system-ui), sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-manrope), system-ui, sans-serif;
   @apply bg-surface text-[#0f0f18] dark:bg-dark-bg dark:text-dark-text;
 }
 
@@ -30,7 +40,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-syne, system-ui), sans-serif;
+  font-family: var(--font-syne), system-ui, sans-serif;
 }
 
 /* Subtle grid background for light mode */
@@ -62,12 +72,6 @@ body.dark::before {
     auto,
     28px 28px;
   pointer-events: none;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 header {

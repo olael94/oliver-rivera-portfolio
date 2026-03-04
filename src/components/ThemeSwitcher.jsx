@@ -20,10 +20,10 @@ const ThemeSwitcher = ({ darkClassName = 'dark' }) => {
       <button
         data-testid="themeSwitcherButton"
         onClick={() => setIsDarkMode((prev) => !prev)}
-        className="fixed top-[14px] right-[20px] h-9 w-9 rounded-xl p-0 cursor-pointer flex items-center justify-center bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-700/60 hover:border-amber-400 dark:hover:border-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.15)] dark:shadow-[0_0_12px_rgba(245,158,11,0.25)] hover:shadow-[0_0_14px_rgba(245,158,11,0.3)] transition-all duration-200 md:top-[16px] md:right-[52px]"
+        className="fixed top-[14px] right-[64px] h-9 w-9 rounded-xl p-0 cursor-pointer flex items-center justify-center bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-700/60 hover:border-amber-400 dark:hover:border-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.15)] dark:shadow-[0_0_12px_rgba(245,158,11,0.25)] hover:shadow-[0_0_14px_rgba(245,158,11,0.3)] transition-all duration-200 md:top-[16px] md:right-[52px]"
       >
         <img
-          src={isDarkMode ? 'sunIcon.png' : 'Moon.png'}
+          src={isDarkMode ? '/icons/sunIcon.png' : '/icons/moonIcon.png'}
           alt="Toggle theme"
           className="w-4 h-4 object-contain"
           style={{
