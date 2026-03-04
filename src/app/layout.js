@@ -1,13 +1,20 @@
-import { Roboto } from 'next/font/google';
+import { Syne, Manrope } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 
-const roboto = Roboto({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
+const syne = Syne({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const manrope = Manrope({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-manrope',
   display: 'swap',
 });
 
@@ -33,7 +40,7 @@ const footerLinks = [
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={`${syne.variable} ${manrope.variable}`}>
         <div className="flex flex-col min-h-screen">
           <header>
             <Navbar options={navOptions} />
