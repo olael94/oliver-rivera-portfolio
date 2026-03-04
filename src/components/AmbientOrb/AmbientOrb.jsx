@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // All the wireframe paths in drawing order
 const PATHS = [
@@ -112,6 +112,17 @@ const AmbientOrb = () => {
   const pathRefs = useRef([]);
   const pathLengths = useRef([]);
   const pencilPositions = useRef([]);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  if (isMobile) return null;
 
   useEffect(() => {
     if (!svgRef.current) return;
