@@ -13,7 +13,7 @@ const introLinks = [
     icon: 'linkedIn.png',
   },
   { title: 'GitHub', url: 'https://github.com/olael94', icon: 'github.png' },
-  { title: 'X', url: 'https://x.com/oliverrivera94', icon: 'x.png' },
+  { title: 'X', url: 'https://x.com/theoliverrivera', icon: 'x.png' },
 ];
 
 const experiences = [

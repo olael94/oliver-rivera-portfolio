@@ -169,8 +169,13 @@ const AmbientOrb = () => {
         if (segProgress > 0 && segProgress < 1) {
           try {
             const pt = el.getPointAtLength ? el.getPointAtLength(len * segProgress) : null;
-            if (pt) { lastX = pt.x; lastY = pt.y; }
-          } catch { /* skip */ }
+            if (pt) {
+              lastX = pt.x;
+              lastY = pt.y;
+            }
+          } catch {
+            /* skip */
+          }
         } else if (segProgress >= 1 && pencilPositions.current[i]) {
           lastX = pencilPositions.current[i].x;
           lastY = pencilPositions.current[i].y;

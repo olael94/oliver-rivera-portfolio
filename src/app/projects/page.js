@@ -22,16 +22,16 @@ export default function Projects() {
           link="https://dev.stedi.me/"
         />
         <ProjectCard
-          logo="microsoft.png"
-          name="MS"
-          content="Creating technology to empower civilians to explore space on their own terms"
-          link="https://ensign.edu"
+          logo="https://img.icons8.com/color/96/bank-building.png"
+          name="Banking REST API"
+          content="A Spring Boot REST API simulating core banking operations — account management, deposits, withdrawals, and transfers. Built with Java, Spring Data JPA, and H2, following clean RESTful design principles."
+          link="https://github.com/olael94/spring-boot-banking-rest-api"
         />
         <ProjectCard
-          logo="slack.png"
-          name="Slack"
-          content="Creating technology to empower civilians to explore space on their own terms"
-          link="https://www.ensign.edu/"
+          logo="https://img.icons8.com/color/96/shopping-cart.png"
+          name="Shopping Website"
+          content="A full-stack e-commerce web app built with Quarkus and React. Features a product catalog with a Java REST backend (RESTEasy JAX-RS), a Vite-powered frontend, and deployed via AWS Amplify."
+          link="https://github.com/olael94/cs320-project-or"
         />
         <ProjectCard
           logo="microsoft.png"

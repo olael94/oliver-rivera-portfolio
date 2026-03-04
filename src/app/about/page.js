@@ -9,7 +9,7 @@ const socialLinks = [
     imageSrc: 'linkedIn.png',
   },
   { name: 'GitHub', link: 'https://github.com/olael94', imageSrc: 'github.png' },
-  { name: 'X', link: 'https://x.com/oliverrivera94', imageSrc: 'x.png' },
+  { name: 'X', link: 'https://x.com/theoliverrivera', imageSrc: 'x.png' },
 ];
 
 const menuLinkData = {

@@ -195,8 +195,13 @@ const SystemDesign = () => {
         if (seg > 0 && seg < 1) {
           try {
             const pt = el.getPointAtLength ? el.getPointAtLength(len * seg) : null;
-            if (pt) { lastX = pt.x; lastY = pt.y; }
-          } catch { /* skip */ }
+            if (pt) {
+              lastX = pt.x;
+              lastY = pt.y;
+            }
+          } catch {
+            /* skip */
+          }
         } else if (seg >= 1 && pencilPositions.current[i]) {
           lastX = pencilPositions.current[i].x;
           lastY = pencilPositions.current[i].y;
