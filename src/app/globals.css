@@ -34,16 +34,24 @@ h6 {
 }
 
 /* Subtle grid background for light mode */
-body:not(.dark) {
+body:not(.dark)::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-image:
     linear-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(245, 158, 11, 0.12) 1px, transparent 1px);
   background-size: 40px 40px;
-  background-attachment: fixed;
+  pointer-events: none;
 }
 
 /* Dark mode: dot grid + warm amber glow in the corner */
-body.dark {
+body.dark::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-color: #0c0a07;
   background-image:
     radial-gradient(ellipse 80% 60% at 10% 0%, rgba(245, 158, 11, 0.07) 0%, transparent 60%),
@@ -53,7 +61,7 @@ body.dark {
     auto,
     auto,
     28px 28px;
-  background-attachment: fixed;
+  pointer-events: none;
 }
 
 .body {
