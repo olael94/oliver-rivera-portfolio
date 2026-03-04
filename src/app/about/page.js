@@ -30,12 +30,16 @@ export default function About() {
           content4="Thank you for the time you spent navigating my website. I invite you to stay tuned for updates on my ongoing work and growth in the field."
         />
       </section>
-      <div className="flex flex-col gap-4 max-md:order-1 max-md:w-full">
-        <img
-          src="Me.jpg"
-          alt="My picture"
-          className="w-[464px] h-auto object-cover max-md:w-full"
-        />
+      <div className="flex flex-col gap-6 max-md:order-1 max-md:w-full">
+        <div className="relative w-fit max-md:w-full">
+          {/* Offset amber accent block */}
+          <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl bg-amber-400/20 dark:bg-amber-400/10" />
+          <img
+            src="Me.jpg"
+            alt="My picture"
+            className="relative w-[464px] h-auto object-cover rounded-2xl shadow-md max-md:w-full"
+          />
+        </div>
         <div className="max-md:hidden">
           <SocialLinks socialLinks={socialLinks} />
           <MenuLink {...menuLinkData} />
