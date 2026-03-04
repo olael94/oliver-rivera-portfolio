@@ -8,7 +8,7 @@ export default function Projects() {
         name="Projects & Contributions"
         content="A selection of things I've built, from side projects to production applications. Full-stack, AI-powered, and everything in between. Clean code, real problems, practical solutions."
       />
-      <section className="flex flex-wrap pl-6 max-md:flex-col max-md:pl-0 max-md:items-center max-md:justify-center">
+      <section className="flex flex-wrap gap-4 pl-6 max-md:flex-col max-md:pl-0 max-md:items-center max-md:justify-center">
         <ProjectCard
           logo="DocReliefLogo.png"
           name="DocRelief Ai"
