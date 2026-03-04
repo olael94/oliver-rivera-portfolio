@@ -150,7 +150,7 @@ const AmbientOrb = () => {
       }
       return { x: 0, y: 0 };
     });
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const handleScroll = () => {
