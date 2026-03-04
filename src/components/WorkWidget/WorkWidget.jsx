@@ -4,46 +4,53 @@ const WorkWidget = ({ title, content, experiences }) => {
   return (
     <section
       data-testid="workWidget"
-      className="flex flex-col p-6 border border-zinc-100 rounded-2xl w-full max-w-[380px] gap-3 shadow-[0_0_10px_rgba(0,0,0,0.1)] dark:border-zinc-700 dark:shadow-[0_0_10px_rgba(20,184,166,0.4)]"
+      className="card-modern flex flex-col p-6 w-full max-w-[380px] gap-5"
     >
-      <h2
-        data-testid="workWidgetTitle"
-        className="m-0 text-2xl font-bold text-zinc-700 dark:text-white"
-      >
-        {title}
-      </h2>
-      <p data-testid="workWidgetContent" className="text-base text-zinc-500 dark:text-custom-grey">
-        {content}
-      </p>
-      <ul className="flex flex-col gap-6 list-none p-0">
+      <div>
+        <h2
+          data-testid="workWidgetTitle"
+          className="m-0 text-lg font-bold text-zinc-800 dark:text-white tracking-tight"
+        >
+          {title}
+        </h2>
+        <p
+          data-testid="workWidgetContent"
+          className="text-[14px] text-zinc-400 dark:text-zinc-500 mt-1"
+        >
+          {content}
+        </p>
+      </div>
+      <ul className="flex flex-col gap-4 list-none p-0">
         {experiences.map((experience, index) => (
           <li key={index} data-testid={`workWidgetItem${index}`}>
-            <div className="flex flex-row gap-2 items-center">
-              <img
-                data-testid={`workWidgetItemLogo${index}`}
-                src={experience.logo}
-                alt={`${experience.organization} Logo`}
-                className="w-10 h-10 rounded-full"
-              />
-              <div className="flex-1 flex flex-col gap-1">
+            <div className="flex flex-row gap-3 items-center">
+              <div className="w-9 h-9 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0 ring-1 ring-zinc-200 dark:ring-zinc-700">
+                <img
+                  data-testid={`workWidgetItemLogo${index}`}
+                  src={experience.logo}
+                  alt={`${experience.organization} Logo`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1 flex flex-col gap-0.5">
                 <h3
                   data-testid={`workWidgetItemTitle${index}`}
-                  className="m-0 text-base font-bold text-zinc-700 dark:text-white"
+                  className="m-0 text-[15px] font-semibold text-zinc-800 dark:text-zinc-100"
                 >
                   {experience.organization}
                 </h3>
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-row justify-between items-center">
                   <p
                     data-testid={`workWidgetItemContent${index}`}
-                    className="m-0 text-xs text-zinc-400 uppercase"
+                    className="m-0 text-[13px] text-zinc-400 dark:text-zinc-500"
                   >
                     {experience.jobTitle}
                   </p>
                   <span
                     data-testid={`workWidgetItemDates${index}`}
-                    className="text-sm text-zinc-400"
+                    className="text-[13px] text-zinc-400 dark:text-zinc-600 font-mono tabular-nums"
                   >
-                    {`${experience.startYear} - ${experience.endYear || 'Present'}`}
+                    {`${experience.startYear}–${experience.endYear || 'Now'}`}
                   </span>
                 </div>
               </div>
