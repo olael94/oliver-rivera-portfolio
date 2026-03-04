@@ -1,15 +1,59 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-custom-grey: #a1a1aa;
-  --color-custom-dark: #17171a;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
+  --color-accent-muted: #fbbf24;
+  --color-surface: #fafaf8;
+  --color-dark-bg: #0c0a07;
+  --color-dark-surface: #141209;
+  --color-dark-text: #d4c9b0;
 }
 
 @variant dark (&:where(.dark, .dark *));
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   min-width: 390px;
-  @apply bg-white text-black dark:bg-custom-dark dark:text-custom-grey;
+  font-family: var(--font-manrope, system-ui), sans-serif;
+  @apply bg-surface text-[#0f0f18] dark:bg-dark-bg dark:text-dark-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-syne, system-ui), sans-serif;
+}
+
+/* Subtle grid background for light mode */
+body:not(.dark) {
+  background-image:
+    linear-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+/* Dark mode: dot grid + warm amber glow in the corner */
+body.dark {
+  background-color: #0c0a07;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(245, 158, 11, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(251, 146, 60, 0.05) 0%, transparent 55%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    28px 28px;
+  background-attachment: fixed;
 }
 
 .body {
@@ -22,19 +66,23 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 64px;
+  height: 72px;
+  z-index: 50;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
   header {
-    height: 56px;
+    height: 60px;
   }
 }
 
 main {
   box-sizing: border-box;
-  padding: 104px 180px 64px 180px;
+  padding: 108px 180px 80px 180px;
   gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -42,10 +90,53 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 104px 34px 64px 34px;
+    padding: 88px 24px 64px 24px;
   }
 }
 
 footer {
   margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Shared card style */
+.card-modern {
+  border-radius: 16px;
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(245, 158, 11, 0.06);
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dark .card-modern {
+  background: rgba(20, 18, 9, 0.7);
+  border-color: rgba(251, 191, 36, 0.1);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 8px 32px rgba(245, 158, 11, 0.08);
+}
+
+.card-modern:hover {
+  border-color: rgba(245, 158, 11, 0.25);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(245, 158, 11, 0.12);
+}
+
+.dark .card-modern:hover {
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b 0%, #fb923c 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
