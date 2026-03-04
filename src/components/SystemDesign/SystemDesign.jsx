@@ -151,10 +151,8 @@ const SystemDesign = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  if (isMobile) return null;
-
   useEffect(() => {
-    if (!svgRef.current) return;
+    if (isMobile || !svgRef.current) return;
     const els = svgRef.current.querySelectorAll('path, rect, ellipse, line');
     els.forEach((el, i) => {
       try {
@@ -215,7 +213,9 @@ const SystemDesign = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <div

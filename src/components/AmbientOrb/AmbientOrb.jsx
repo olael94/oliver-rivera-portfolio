@@ -122,10 +122,8 @@ const AmbientOrb = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  if (isMobile) return null;
-
   useEffect(() => {
-    if (!svgRef.current) return;
+    if (isMobile || !svgRef.current) return;
 
     const pathEls = svgRef.current.querySelectorAll('path, rect, circle, line');
     pathEls.forEach((el, i) => {
@@ -189,7 +187,9 @@ const AmbientOrb = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <div
