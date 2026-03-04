@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const AboutMe = ({ name, content1, content2, content3, content4 }) => {
   return (
     <div data-testid="aboutme" className="flex flex-col pb-6 rounded-md w-full max-w-[850px] gap-3">
-      <h1 data-testid="aboutMeName" className="text-[50px] font-bold text-zinc-700 dark:text-white">
+      <h1 data-testid="aboutMeName" className="text-[50px] font-bold text-zinc-800 dark:text-white">
         {name}
       </h1>
       <div className="flex flex-col">
@@ -11,7 +11,7 @@ const AboutMe = ({ name, content1, content2, content3, content4 }) => {
           <p
             key={i}
             data-testid="aboutMeContent"
-            className="text-base text-zinc-500 leading-7 mb-5 dark:text-custom-grey"
+            className="text-[17px] text-zinc-500 leading-[1.8] mb-5 dark:text-zinc-400"
           >
             {para}
           </p>

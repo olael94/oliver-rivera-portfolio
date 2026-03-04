@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 const Usescard = ({ name, content1, content2, content3, content4 }) => {
   return (
     <div data-testid="Usescard" className="rounded-md w-full max-w-[850px]">
-      <h1 data-testid="UsescardName" className="text-base font-bold text-zinc-700 dark:text-white">
+      <h1
+        data-testid="UsescardName"
+        className="text-[17px] font-bold text-zinc-800 dark:text-zinc-100 mb-1"
+      >
         {name}
       </h1>
       <div>
@@ -11,7 +14,7 @@ const Usescard = ({ name, content1, content2, content3, content4 }) => {
           <p
             key={i}
             data-testid="UsescardContent"
-            className="text-sm text-zinc-500 leading-7 mb-0.5 dark:text-custom-grey"
+            className="text-[17px] text-zinc-500 leading-[1.8] mb-0.5 dark:text-zinc-400"
           >
             {para}
           </p>

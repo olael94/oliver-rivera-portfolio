@@ -10,7 +10,7 @@ const MenuLink = ({ email, imageSrc, link }) => {
         href={link}
         target="_blank"
         rel="noreferrer"
-        className="flex py-2 justify-start items-center gap-1 text-base text-zinc-600 no-underline hover:text-teal-500 hover:border-b-2 hover:border-teal-500 hover:rounded-sm dark:text-custom-grey"
+        className="flex py-2 justify-start items-center gap-1 text-[16px] text-zinc-600 no-underline hover:text-amber-500 dark:text-zinc-400 dark:hover:text-amber-400 transition-colors"
       >
         <img src={imageSrc} alt="link" className="w-5 h-5 mr-2" />
         {email}

@@ -8,14 +8,14 @@ const ProjectPageIntro = ({ name, content }) => {
     >
       <h1
         data-testid="projectPageIntroName"
-        className="mt-2 text-[50px] font-bold text-zinc-700 dark:text-white"
+        className="mt-2 text-[50px] font-bold text-zinc-800 dark:text-white"
       >
         {name}
       </h1>
       <div>
         <p
           data-testid="projectPageIntroContent"
-          className="text-base text-zinc-500 leading-7 mb-5 dark:text-custom-grey"
+          className="text-[17px] text-zinc-500 leading-[1.8] mb-5 dark:text-zinc-400"
         >
           {content}
         </p>
