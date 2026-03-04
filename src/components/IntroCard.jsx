@@ -8,13 +8,12 @@ const IntroCard = ({ logo, name, content, links }) => {
       data-testid="introCard"
       className="flex flex-col py-8 rounded-md w-full max-w-[850px] gap-5"
     >
-      {/* Avatar with ring */}
-      {/* Avatar — editorial offset block style */}
+      {/* Avatar — technical drawing placement style */}
       <div className="relative w-[88px] h-[88px] mb-2">
-        {/* Offset accent block behind */}
-        <div className="absolute -bottom-2 -right-2 w-[88px] h-[88px] rounded-2xl bg-amber-400/20 dark:bg-amber-400/10" />
+        {/* Amber glow */}
+        <div className="absolute inset-0 rounded-sm shadow-[0_0_18px_4px_rgba(245,158,11,0.18)] dark:shadow-[0_0_22px_6px_rgba(245,158,11,0.22)]" />
         {/* Photo */}
-        <div className="relative w-[88px] h-[88px] rounded-2xl overflow-hidden shadow-md">
+        <div className="relative w-[88px] h-[88px] rounded-sm overflow-hidden border border-amber-400/40 dark:border-amber-400/30">
           <img
             data-testid="introCardLogo"
             src={logo}
@@ -22,6 +21,14 @@ const IntroCard = ({ logo, name, content, links }) => {
             className="w-full h-full object-cover"
           />
         </div>
+        {/* Corner registration marks — top-left */}
+        <span className="absolute -top-[5px] -left-[5px] w-[10px] h-[10px] border-t-2 border-l-2 border-amber-400/70" />
+        {/* top-right */}
+        <span className="absolute -top-[5px] -right-[5px] w-[10px] h-[10px] border-t-2 border-r-2 border-amber-400/70" />
+        {/* bottom-left */}
+        <span className="absolute -bottom-[5px] -left-[5px] w-[10px] h-[10px] border-b-2 border-l-2 border-amber-400/70" />
+        {/* bottom-right */}
+        <span className="absolute -bottom-[5px] -right-[5px] w-[10px] h-[10px] border-b-2 border-r-2 border-amber-400/70" />
       </div>
 
       {/* Name */}

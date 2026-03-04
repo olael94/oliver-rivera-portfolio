@@ -13,4 +13,11 @@ export const articles = [
       'DHH, the creator of Ruby on Rails, reversed his entire stance on AI coding in a matter of months. So did thousands of other engineers. What changed? And when AI writes 90% of the code, what does that mean for your career as a developer?',
     link: 'https://newsletter.pragmaticengineer.com/p/when-ai-writes-almost-all-code-what',
   },
+  {
+    date: 'Dec 2025',
+    title: 'AI vs Gen Z: How AI Has Changed the Career Pathway for Junior Developers',
+    content:
+      'Stack Overflow explores how AI is reshaping the entry-level software engineering market. Employment for developers aged 22-25 has declined while demand for experienced engineers grows. A candid look at what this shift means for anyone starting out in tech today.',
+    link: 'https://stackoverflow.blog/2025/12/26/ai-vs-gen-z/',
+  },
 ];

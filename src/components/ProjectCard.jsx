@@ -6,7 +6,8 @@ const ProjectCard = ({ logo, name, content, link }) => {
   return (
     <div
       data-testid="projectCard"
-      className="card-modern flex flex-col p-6 rounded-3xl w-full max-w-[380px] min-w-[380px] gap-4 max-md:min-w-[330px] max-md:mx-0"
+      className="card-modern group flex flex-col p-6 rounded-3xl w-full max-w-[380px] min-w-[380px] gap-4 max-md:min-w-[330px] max-md:mx-0 cursor-pointer hover:border-amber-400/40 transition-all duration-200"
+      onClick={() => link && window.open(link, '_blank')}
     >
       {/* Logo */}
       <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center ring-1 ring-amber-200/60 dark:ring-amber-700/30">
@@ -22,7 +23,7 @@ const ProjectCard = ({ logo, name, content, link }) => {
       <div className="flex flex-col gap-2 flex-1">
         <h2
           data-testid="projectCardName"
-          className="text-lg font-bold text-zinc-800 dark:text-zinc-100 tracking-tight"
+          className="text-lg font-bold text-zinc-800 dark:text-zinc-100 tracking-tight group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-200"
         >
           {name}
         </h2>
@@ -40,6 +41,7 @@ const ProjectCard = ({ logo, name, content, link }) => {
         href={link}
         target="_blank"
         rel="noreferrer"
+        onClick={(e) => e.stopPropagation()}
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-500 hover:text-amber-600 dark:hover:text-amber-300 transition-colors mt-auto"
       >
         View Project

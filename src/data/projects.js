@@ -14,6 +14,13 @@ export const projects = [
     link: 'https://dev.stedi.me/',
   },
   {
+    logo: 'https://img.icons8.com/color/96/portfolio.png',
+    name: 'Developer Portfolio',
+    content:
+      'My personal portfolio built with Next.js 16, Tailwind CSS v4, and deployed on Vercel. Features a scroll-driven wireframe animation, dark mode, and a fully responsive layout.',
+    link: 'https://github.com/olael94/oliver-rivera-portfolio',
+  },
+  {
     logo: 'https://img.icons8.com/color/96/bank-building.png',
     name: 'Banking REST API',
     content:
@@ -26,17 +33,5 @@ export const projects = [
     content:
       'A full-stack e-commerce web app built with Quarkus and React. Features a product catalog with a Java REST backend (RESTEasy JAX-RS), a Vite-powered frontend, and deployed via AWS Amplify.',
     link: 'https://github.com/olael94/cs320-project-or',
-  },
-  {
-    logo: '/logos/microsoftLogo.png',
-    name: 'LinkedIn',
-    content: 'Creating technology to empower civilians to explore space on their own terms',
-    link: 'https://ensign.edu',
-  },
-  {
-    logo: '/logos/spotifyLogo.png',
-    name: 'Spotify',
-    content: 'Creating technology to empower civilians to explore space on their own terms',
-    link: 'https://www.ensign.edu/',
   },
 ];
