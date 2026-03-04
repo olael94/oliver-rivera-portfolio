@@ -3,6 +3,8 @@ import SkillsWidget from '@/components/SkillsWidget/SkillsWidget';
 import SignupWidget from '@/components/SignupWidget/SignupWidget';
 import ArticleCard from '@/components/ArticleCard/ArticleCard';
 import IntroCard from '@/components/IntroCard/IntroCard';
+import AmbientOrb from '@/components/AmbientOrb/AmbientOrb';
+import SystemDesign from '@/components/SystemDesign/SystemDesign';
 
 const introLinks = [
   {
@@ -57,7 +59,9 @@ const articles = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="relative flex flex-col gap-6">
+      <AmbientOrb />
+      <SystemDesign />
       <IntroCard
         name="Software Engineer, Father, and Believer"
         logo="Me.jpg"
