@@ -146,17 +146,25 @@ const SystemDesign = () => {
     if (!svgRef.current) return;
     const els = svgRef.current.querySelectorAll('path, rect, ellipse, line');
     els.forEach((el, i) => {
-      const len = el.getTotalLength ? el.getTotalLength() : 40;
-      pathLengths.current[i] = len;
-      el.style.strokeDasharray = len;
-      el.style.strokeDashoffset = len;
+      try {
+        const len = el.getTotalLength ? el.getTotalLength() : 40;
+        pathLengths.current[i] = len;
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+      } catch {
+        pathLengths.current[i] = 40;
+      }
     });
     pathRefs.current = Array.from(els);
     pencilPositions.current = pathRefs.current.map((el) => {
-      if (el.getTotalLength) {
-        const len = el.getTotalLength();
-        const pt = el.getPointAtLength(len);
-        return { x: pt.x, y: pt.y };
+      try {
+        if (el.getTotalLength) {
+          const len = el.getTotalLength();
+          const pt = el.getPointAtLength(len);
+          return { x: pt.x, y: pt.y };
+        }
+      } catch {
+        // fall through
       }
       return { x: 0, y: 0 };
     });
@@ -179,11 +187,10 @@ const SystemDesign = () => {
         el.style.strokeDashoffset = len * (1 - seg);
 
         if (seg > 0 && seg < 1) {
-          const pt = el.getPointAtLength ? el.getPointAtLength(len * seg) : null;
-          if (pt) {
-            lastX = pt.x;
-            lastY = pt.y;
-          }
+          try {
+            const pt = el.getPointAtLength ? el.getPointAtLength(len * seg) : null;
+            if (pt) { lastX = pt.x; lastY = pt.y; }
+          } catch { /* skip */ }
         } else if (seg >= 1 && pencilPositions.current[i]) {
           lastX = pencilPositions.current[i].x;
           lastY = pencilPositions.current[i].y;

@@ -116,22 +116,28 @@ const AmbientOrb = () => {
   useEffect(() => {
     if (!svgRef.current) return;
 
-    // Measure all path lengths
     const pathEls = svgRef.current.querySelectorAll('path, rect, circle, line');
     pathEls.forEach((el, i) => {
-      const len = el.getTotalLength ? el.getTotalLength() : 50;
-      pathLengths.current[i] = len;
-      el.style.strokeDasharray = len;
-      el.style.strokeDashoffset = len;
+      try {
+        const len = el.getTotalLength ? el.getTotalLength() : 50;
+        pathLengths.current[i] = len;
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+      } catch {
+        pathLengths.current[i] = 50;
+      }
     });
 
-    // Precompute pencil positions (end point of each path)
     pathRefs.current = Array.from(pathEls);
     pencilPositions.current = pathRefs.current.map((el) => {
-      if (el.getTotalLength) {
-        const len = el.getTotalLength();
-        const pt = el.getPointAtLength(len);
-        return { x: pt.x, y: pt.y };
+      try {
+        if (el.getTotalLength) {
+          const len = el.getTotalLength();
+          const pt = el.getPointAtLength(len);
+          return { x: pt.x, y: pt.y };
+        }
+      } catch {
+        // fall through
       }
       return { x: 0, y: 0 };
     });
@@ -155,11 +161,10 @@ const AmbientOrb = () => {
         el.style.strokeDashoffset = len * (1 - segProgress);
 
         if (segProgress > 0 && segProgress < 1) {
-          const pt = el.getPointAtLength ? el.getPointAtLength(len * segProgress) : null;
-          if (pt) {
-            lastX = pt.x;
-            lastY = pt.y;
-          }
+          try {
+            const pt = el.getPointAtLength ? el.getPointAtLength(len * segProgress) : null;
+            if (pt) { lastX = pt.x; lastY = pt.y; }
+          } catch { /* skip */ }
         } else if (segProgress >= 1 && pencilPositions.current[i]) {
           lastX = pencilPositions.current[i].x;
           lastY = pencilPositions.current[i].y;
