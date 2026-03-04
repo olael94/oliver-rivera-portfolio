@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
-import { useMediaQuery } from 'react-responsive';
 
 const NAV_LINKS = [
   { path: '/', label: 'Home' },
@@ -15,18 +14,24 @@ const NAV_LINKS = [
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const [pillStyle, setPillStyle] = useState({});
   const pathname = usePathname();
   const navRef = useRef(null);
   const linkRefs = useRef({});
 
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mq.matches);
+    setMounted(true);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   const isActuallyMobile = mounted && isMobile;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
   useEffect(() => {
     setShowLinks(false);
   }, [isActuallyMobile]);
