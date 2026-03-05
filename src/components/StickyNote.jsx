@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 const StickyNote = () => {
   return (
     <div
@@ -9,16 +7,13 @@ const StickyNote = () => {
       className="relative w-full max-w-[280px] select-none"
       style={{ transform: 'rotate(-1.5deg)' }}
     >
-      <Image
+      <img
         src="/images/stickynote.png"
         alt="sticky note"
-        width={380}
-        height={320}
         className="w-full h-auto"
         style={{ filter: 'sepia(1) saturate(2.2) hue-rotate(-15deg) brightness(1.1)' }}
       />
 
-      {/* content overlaid on the image */}
       <div className="absolute inset-0 flex flex-col justify-center gap-3 px-8 pt-4 pb-10">
         <div className="flex items-center gap-2 mt-8">
           <span className="relative flex h-2.5 w-2.5">
