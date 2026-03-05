@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { expect, test, vi, beforeAll } from 'vitest';
 import Navbar from '../../../components/Navbar/Navbar.jsx';
 
@@ -16,7 +16,11 @@ vi.mock('next/navigation', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ href, children, ...props }) => <a href={href} {...props}>{children}</a>,
+  default: ({ href, children, ...props }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  ),
 }));
 
 test('renders the navbar', () => {

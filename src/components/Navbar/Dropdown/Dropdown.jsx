@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const Dropdown = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div data-testid="dropdown" className="relative">
+    <div data-testid="dropdown" ref={dropdownRef} className="relative">
       <button
         data-testid="menuButton"
         onClick={() => setIsOpen(!isOpen)}

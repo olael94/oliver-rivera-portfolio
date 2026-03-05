@@ -39,6 +39,20 @@ test('hides options after clicking the menu button twice', () => {
   expect(screen.queryByText('About')).toBeNull();
 });
 
+test('closes when clicking outside', () => {
+  render(
+    <div>
+      <Dropdown options={mockOptions} />
+      <div data-testid="outside">outside</div>
+    </div>
+  );
+
+  fireEvent.click(screen.getByTestId('menuButton'));
+  expect(screen.getByText('Home')).toBeTruthy();
+
+  fireEvent.mouseDown(screen.getByTestId('outside'));
+  expect(screen.queryByText('Home')).toBeNull();
+});
 test('renders correct href for each option', () => {
   render(<Dropdown options={mockOptions} />);
 

@@ -18,13 +18,17 @@ test('renders the project name correctly', () => {
 test('renders the project description correctly', () => {
   render(<ProjectCard {...defaultProps} />);
 
-  expect(screen.getByTestId('projectCardContent').textContent).toBe('AI-powered medical documentation.');
+  expect(screen.getByTestId('projectCardContent').textContent).toBe(
+    'AI-powered medical documentation.'
+  );
 });
 
 test('renders the logo image', () => {
   render(<ProjectCard {...defaultProps} />);
 
-  expect(screen.getByTestId('projectCardLogo').getAttribute('src')).toBe('/images/project-logo.png');
+  expect(screen.getByTestId('projectCardLogo').getAttribute('src')).toBe(
+    '/images/project-logo.png'
+  );
 });
 
 test('renders the link with correct href', () => {

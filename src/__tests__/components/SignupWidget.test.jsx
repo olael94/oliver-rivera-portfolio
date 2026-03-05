@@ -12,7 +12,9 @@ test('renders the title and content correctly', () => {
   render(<SignupWidget {...defaultProps} />);
 
   expect(screen.getByTestId('signupWidgetTitle').textContent).toBe('Stay in the loop');
-  expect(screen.getByTestId('signupWidgetContent').textContent).toBe('Get updates on my latest work.');
+  expect(screen.getByTestId('signupWidgetContent').textContent).toBe(
+    'Get updates on my latest work.'
+  );
 });
 
 test('renders the email input and join button', () => {
@@ -46,7 +48,9 @@ test('clears the error when the user starts typing again', async () => {
 test('shows success message after valid email submission', async () => {
   render(<SignupWidget {...defaultProps} />);
 
-  fireEvent.change(screen.getByTestId('signupWidgetInput'), { target: { value: 'oliver@test.com' } });
+  fireEvent.change(screen.getByTestId('signupWidgetInput'), {
+    target: { value: 'oliver@test.com' },
+  });
   fireEvent.click(screen.getByTestId('signupWidgetButton'));
 
   await waitFor(() => {
@@ -57,7 +61,9 @@ test('shows success message after valid email submission', async () => {
 test('hides the input and button after successful submission', async () => {
   render(<SignupWidget {...defaultProps} />);
 
-  fireEvent.change(screen.getByTestId('signupWidgetInput'), { target: { value: 'oliver@test.com' } });
+  fireEvent.change(screen.getByTestId('signupWidgetInput'), {
+    target: { value: 'oliver@test.com' },
+  });
   fireEvent.click(screen.getByTestId('signupWidgetButton'));
 
   await waitFor(() => {

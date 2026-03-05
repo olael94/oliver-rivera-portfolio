@@ -13,7 +13,18 @@ const Navbar = () => {
   const [pillStyle, setPillStyle] = useState({});
   const pathname = usePathname();
   const navRef = useRef(null);
+  const pillRef = useRef(null);
   const linkRefs = useRef({});
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setShowLinks(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 768px)');
@@ -33,8 +44,8 @@ const Navbar = () => {
   // Update sliding pill position whenever pathname changes
   useEffect(() => {
     const activeEl = linkRefs.current[pathname];
-    if (!activeEl || !navRef.current) return;
-    const navRect = navRef.current.getBoundingClientRect();
+    if (!activeEl || !pillRef.current) return;
+    const navRect = pillRef.current.getBoundingClientRect();
     const elRect = activeEl.getBoundingClientRect();
     setPillStyle({
       width: elRect.width,
@@ -44,11 +55,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`flex items-center justify-center w-full h-full px-5 transition-colors duration-200 ${isActuallyMobile && showLinks ? 'bg-[#0c0a07]' : ''}`}
+      ref={navRef}
+      className={`flex items-center justify-center w-full h-full px-5 transition-colors duration-200 ${isActuallyMobile && showLinks ? 'bg-white dark:bg-[#0c0a07]' : ''}`}
     >
       {/* Desktop: floating pill */}
       {!isActuallyMobile && (
-        <div className="nav-pill" ref={navRef}>
+        <div className="nav-pill" ref={pillRef}>
           {/* Sliding background pill */}
           <div className="nav-pill-slider" style={pillStyle} />
           {NAV_LINKS.map(({ path, label }) => (

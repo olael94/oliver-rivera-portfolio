@@ -20,34 +20,44 @@ const mockExperiences = [
 ];
 
 test('renders the title and content', () => {
-  render(<WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />);
+  render(
+    <WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />
+  );
 
   expect(screen.getByTestId('workWidgetTitle').textContent).toBe('Experience');
   expect(screen.getByTestId('workWidgetContent').textContent).toBe('Where I have worked.');
 });
 
 test('renders all experience items', () => {
-  render(<WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />);
+  render(
+    <WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />
+  );
 
   expect(screen.getByTestId('workWidgetItem0')).toBeTruthy();
   expect(screen.getByTestId('workWidgetItem1')).toBeTruthy();
 });
 
 test('renders organization name and job title correctly', () => {
-  render(<WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />);
+  render(
+    <WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />
+  );
 
   expect(screen.getByTestId('workWidgetItemTitle0').textContent).toBe('Anthropic');
   expect(screen.getByTestId('workWidgetItemContent0').textContent).toBe('Software Engineer');
 });
 
 test('shows Now when endYear is null', () => {
-  render(<WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />);
+  render(
+    <WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />
+  );
 
   expect(screen.getByTestId('workWidgetItemDates0').textContent).toContain('Now');
 });
 
 test('shows endYear when provided', () => {
-  render(<WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />);
+  render(
+    <WorkWidget title="Experience" content="Where I have worked." experiences={mockExperiences} />
+  );
 
   expect(screen.getByTestId('workWidgetItemDates1').textContent).toContain('2023');
 });

@@ -6,9 +6,7 @@ const defaultProps = {
   logo: '/images/profile.jpg',
   name: 'Oliver Rivera, Developer',
   content: 'I build things for the web.',
-  links: [
-    { title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' },
-  ],
+  links: [{ title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' }],
 };
 
 test('renders the profile image', () => {

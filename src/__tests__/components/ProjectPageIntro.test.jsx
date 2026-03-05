@@ -11,5 +11,7 @@ test('renders the name correctly', () => {
 test('renders the content correctly', () => {
   render(<ProjectPageIntro name="My Projects" content="A collection of my work." />);
 
-  expect(screen.getByTestId('projectPageIntroContent').textContent).toBe('A collection of my work.');
+  expect(screen.getByTestId('projectPageIntroContent').textContent).toBe(
+    'A collection of my work.'
+  );
 });

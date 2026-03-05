@@ -145,6 +145,69 @@ footer {
   border-color: rgba(251, 191, 36, 0.25);
 }
 
+/* Sticky note content positioning */
+.stickynote-content {
+  padding: 25% 30% 25% 28%;
+}
+
+.stickynote-label {
+  font-size: clamp(0.65rem, 1.8cqi, 0.85rem);
+}
+.stickynote-body {
+  font-size: clamp(1.2rem, 5cqi, 1.7rem);
+}
+.stickynote-sig {
+  font-size: clamp(1rem, 4cqi, 1.4rem);
+}
+
+/* Sticky note — mid-range desktop fix (1024px–1240px) */
+@media (min-width: 1024px) and (max-width: 1240px) {
+  .stickynote-content {
+    padding: 30% 32% 30% 30%;
+  }
+  .stickynote-body {
+    font-size: clamp(0.85rem, 3cqi, 1.1rem);
+  }
+  .stickynote-sig {
+    font-size: clamp(0.75rem, 2.5cqi, 1rem);
+  }
+  .stickynote-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Sticky note — iPad portrait fix */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .stickynote-content {
+    padding: 36% 27% 34% 26%;
+  }
+  .stickynote-body {
+    font-size: clamp(0.8rem, 2.5cqi, 1rem);
+  }
+  .stickynote-sig {
+    font-size: clamp(0.85rem, 3cqi, 1.1rem);
+  }
+  .stickynote-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Sticky note — landscape phones fix */
+@media (max-height: 500px) and (orientation: landscape) {
+  .stickynote-content {
+    padding: 25% 27% 20% 26%;
+  }
+  .stickynote-body {
+    font-size: clamp(0.8rem, 2.5cqi, 1rem);
+  }
+  .stickynote-sig {
+    font-size: clamp(0.7rem, 2cqi, 0.9rem);
+  }
+  .stickynote-label {
+    font-size: 0.55rem;
+  }
+}
+
 /* Gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, #f59e0b 0%, #fb923c 50%, #fbbf24 100%);

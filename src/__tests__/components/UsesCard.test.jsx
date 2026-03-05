@@ -9,7 +9,9 @@ test('renders the name correctly', () => {
 });
 
 test('renders provided content paragraphs', () => {
-  render(<UsesCard name="Hardware" content1="MacBook Pro" content2="LG Monitor" content3="Keychron" />);
+  render(
+    <UsesCard name="Hardware" content1="MacBook Pro" content2="LG Monitor" content3="Keychron" />
+  );
 
   const paragraphs = screen.getAllByTestId('UsescardContent');
   expect(paragraphs).toHaveLength(3);
