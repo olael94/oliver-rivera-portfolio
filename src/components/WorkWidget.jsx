@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const WorkWidget = ({ title, content, experiences }) => {
+const WorkWidget = ({ title, content, experiences = [] }) => {
   return (
     <section
       data-testid="workWidget"
@@ -75,5 +75,4 @@ WorkWidget.propTypes = {
     })
   ),
 };
-WorkWidget.defaultProps = { experiences: [] };
 export default WorkWidget;

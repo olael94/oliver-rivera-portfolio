@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 
-const MenuLink = ({ email, imageSrc, link }) => {
+const MenuLink = ({ email, imageSrc, link = '#' }) => {
   return (
     <div data-testid="menu-link" className="flex flex-col pt-2 pb-8 gap-2">
       <a
@@ -24,5 +24,4 @@ MenuLink.propTypes = {
   imageSrc: PropTypes.string.isRequired,
   link: PropTypes.string,
 };
-MenuLink.defaultProps = { link: '#' };
 export default MenuLink;

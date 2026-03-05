@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 
-const ArticleCard = ({ date, title, content, link }) => {
+const ArticleCard = ({ date, title, content, link = '#' }) => {
   return (
     <article
       data-testid="articleCard"
@@ -62,5 +62,4 @@ ArticleCard.propTypes = {
   content: PropTypes.string.isRequired,
   link: PropTypes.string,
 };
-ArticleCard.defaultProps = { link: '#' };
 export default ArticleCard;

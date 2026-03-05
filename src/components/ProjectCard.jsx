@@ -2,7 +2,7 @@
 
 import PropTypes from 'prop-types';
 
-const ProjectCard = ({ logo, name, content, link }) => {
+const ProjectCard = ({ logo, name, content, link = '#' }) => {
   return (
     <div
       data-testid="projectCard"
@@ -65,5 +65,4 @@ ProjectCard.propTypes = {
   content: PropTypes.string.isRequired,
   link: PropTypes.string,
 };
-ProjectCard.defaultProps = { link: '#' };
 export default ProjectCard;

@@ -17,7 +17,7 @@ const levelLabel = (p) => {
   };
 };
 
-function SkillsWidget({ title, content, skills }) {
+function SkillsWidget({ title, content, skills = [] }) {
   return (
     <section
       data-testid="skillsWidget"
@@ -87,5 +87,4 @@ SkillsWidget.propTypes = {
     })
   ),
 };
-SkillsWidget.defaultProps = { skills: [] };
 export default SkillsWidget;
