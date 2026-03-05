@@ -1,6 +1,6 @@
 import WorkWidget from '@/components/WorkWidget';
 import SkillsWidget from '@/components/SkillsWidget';
-import SignupWidget from '@/components/SignupWidget';
+import StickyNote from '@/components/StickyNote';
 import ArticleCard from '@/components/ArticleCard';
 import IntroCard from '@/components/IntroCard';
 import AmbientOrb from '@/components/AmbientOrb';
@@ -37,11 +37,7 @@ export default function Home() {
           ))}
         </section>
         <section className="flex flex-col items-end gap-6 w-full max-md:order-3 max-md:items-start">
-          <SignupWidget
-            title="Stay up to date"
-            content="Get notified when I publish something new, and unsubscribe at any time."
-            simulateNetworkRequestTime={2000}
-          />
+          <StickyNote />
           <WorkWidget title="Work" content="My work experience." experiences={experiences} />
           <SkillsWidget title="My Skills" content="Here are my skills:" skills={skills} />
         </section>
