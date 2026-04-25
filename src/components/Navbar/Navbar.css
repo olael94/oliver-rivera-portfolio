@@ -78,10 +78,6 @@
 
 /* ── Mobile ── */
 .mobile-menu-btn {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
@@ -97,7 +93,6 @@
 }
 
 .hamburger-icon {
-  display: block;
   transition: transform 0.25s ease;
 }
 

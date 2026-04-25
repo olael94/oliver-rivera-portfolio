@@ -81,37 +81,39 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Mobile: hamburger + slide-down menu */}
+      {/* Mobile: slide-down menu */}
       {isActuallyMobile && (
-        <>
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setShowLinks(!showLinks)}
-            aria-label="Toggle menu"
-          >
-            <span className={`hamburger-icon ${showLinks ? 'open' : ''}`}>
-              {showLinks ? '✕' : '☰'}
-            </span>
-          </button>
-          <div className={`mobile-menu ${showLinks ? 'open' : ''}`}>
-            {NAV_LINKS.map(({ path, label }) => (
-              <Link
-                key={path}
-                href={path}
-                className={`mobile-menu-link ${pathname === path ? 'active' : ''}`}
-                onClick={() => setShowLinks(false)}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-        </>
+        <div className={`mobile-menu ${showLinks ? 'open' : ''}`}>
+          {NAV_LINKS.map(({ path, label }) => (
+            <Link
+              key={path}
+              href={path}
+              className={`mobile-menu-link ${pathname === path ? 'active' : ''}`}
+              onClick={() => setShowLinks(false)}
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
       )}
 
       {/* Theme switcher always on the right */}
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 ml-auto flex items-center">
         <ThemeSwitcher inline />
       </div>
+
+      {/* Mobile: hamburger button — rightmost */}
+      {isActuallyMobile && (
+        <button
+          className="mobile-menu-btn flex items-center justify-center h-9 ml-3"
+          onClick={() => setShowLinks(!showLinks)}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger-icon flex items-center justify-center ${showLinks ? 'open' : ''}`}>
+            {showLinks ? '✕' : '☰'}
+          </span>
+        </button>
+      )}
     </nav>
   );
 };

@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       <body className={`${syne.variable} ${manrope.variable} ${caveat.variable}`}>
         <div className="flex flex-col min-h-screen">
           <header className="w-full">
-            <div className="w-full h-full max-w-screen-2xl mx-auto px-6">
+            <div className="w-full h-full max-w-screen-2xl mx-auto">
               <Navbar options={navLinks} />
             </div>
           </header>
