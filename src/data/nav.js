@@ -1,13 +1,13 @@
 export const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/uses', label: 'Uses' },
+  { id: 'hero',     label: 'Home'     },
+  { id: 'about',    label: 'About'    },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
 ];
 
 export const footerLinks = [
-  { title: 'Home', url: '/' },
-  { title: 'About', url: '/about' },
-  { title: 'Projects', url: '/projects' },
-  { title: 'Uses', url: '/uses' },
+  { title: 'About',    url: '#about'    },
+  { title: 'Experience', url: '#experience' },
+  { title: 'Projects', url: '#projects' },
+  { title: 'Uses',     url: '/uses'     },
 ];

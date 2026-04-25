@@ -8,7 +8,7 @@ const Footer = ({ links = [] }) => {
       data-testid="footer"
       className="w-full border-t border-zinc-100 dark:border-zinc-800/60 bg-surface/80 dark:bg-dark-bg/80 backdrop-blur-sm"
     >
-      <div className="flex flex-row items-center justify-between px-[180px] py-5 max-md:flex-col max-md:gap-4 max-md:px-6 max-md:py-6">
+      <div className="flex flex-row items-center justify-between max-w-screen-2xl mx-auto px-6 py-5 w-full max-md:flex-col max-md:gap-4 max-md:py-6">
         <ul className="flex flex-row gap-6 list-none p-0 m-0">
           {links.map((link, index) => (
             <li key={index} data-testid={`footerLink${index}`}>
