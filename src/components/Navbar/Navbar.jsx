@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './Navbar.css';
 import { navLinks as NAV_LINKS } from '@/data/nav';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -56,25 +57,27 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className={`flex items-center justify-center w-full h-full px-5 transition-colors duration-200 ${isActuallyMobile && showLinks ? 'bg-white dark:bg-[#0c0a07]' : ''}`}
+      className={`flex items-center justify-between w-full h-full px-5 transition-colors duration-200 ${isActuallyMobile && showLinks ? 'bg-white dark:bg-[#0c0a07]' : ''}`}
     >
-      {/* Desktop: floating pill */}
+      {/* Desktop: floating pill (centered) */}
       {!isActuallyMobile && (
-        <div className="nav-pill" ref={pillRef}>
-          {/* Sliding background pill */}
-          <div className="nav-pill-slider" style={pillStyle} />
-          {NAV_LINKS.map(({ path, label }) => (
-            <Link
-              key={path}
-              href={path}
-              ref={(el) => {
-                linkRefs.current[path] = el;
-              }}
-              className={`nav-pill-link ${pathname === path ? 'active' : ''}`}
-            >
-              {label}
-            </Link>
-          ))}
+        <div className="flex-1 flex justify-center">
+          <div className="nav-pill" ref={pillRef}>
+            {/* Sliding background pill */}
+            <div className="nav-pill-slider" style={pillStyle} />
+            {NAV_LINKS.map(({ path, label }) => (
+              <Link
+                key={path}
+                href={path}
+                ref={(el) => {
+                  linkRefs.current[path] = el;
+                }}
+                className={`nav-pill-link ${pathname === path ? 'active' : ''}`}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 
@@ -104,6 +107,11 @@ const Navbar = () => {
           </div>
         </>
       )}
+
+      {/* Theme switcher always on the right */}
+      <div className="flex-shrink-0">
+        <ThemeSwitcher inline />
+      </div>
     </nav>
   );
 };

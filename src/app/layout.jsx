@@ -2,7 +2,6 @@ import { Syne, Manrope, Caveat } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { navLinks, footerLinks } from '@/data/nav';
 
 const syne = Syne({
@@ -36,11 +35,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${syne.variable} ${manrope.variable} ${caveat.variable}`}>
         <div className="flex flex-col min-h-screen">
-          <header>
-            <Navbar options={navLinks} />
-            <ThemeSwitcher />
+          <header className="w-full">
+            <div className="w-full h-full max-w-screen-2xl mx-auto px-6">
+              <Navbar options={navLinks} />
+            </div>
           </header>
-          <main>{children}</main>
+          <main className="w-full max-w-screen-2xl mx-auto px-6">{children}</main>
           <footer>
             <Footer links={footerLinks} />
           </footer>

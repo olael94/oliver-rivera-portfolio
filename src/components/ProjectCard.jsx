@@ -6,7 +6,7 @@ const ProjectCard = ({ logo, name, content, link = '#' }) => {
   return (
     <div
       data-testid="projectCard"
-      className="card-modern group flex flex-col p-6 rounded-3xl w-full max-w-[380px] min-w-[380px] gap-4 max-md:min-w-[330px] max-md:mx-0 cursor-pointer hover:border-amber-400/40 transition-all duration-200"
+      className="card-modern group flex flex-col p-6 rounded-3xl w-[380px] min-w-[380px] max-w-[380px] gap-4 max-md:w-full max-md:min-w-0 max-md:max-w-[400px] cursor-pointer hover:border-amber-400/40 transition-all duration-200"
       onClick={() => link && window.open(link, '_blank')}
     >
       {/* Logo */}
