@@ -208,6 +208,15 @@ footer {
   }
 }
 
+/* Scroll behavior — smooth native scroll with navbar clearance */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 /* Gradient text utility */
 .gradient-text {
   background: linear-gradient(135deg, #f59e0b 0%, #fb923c 50%, #fbbf24 100%);
