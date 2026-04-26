@@ -17,6 +17,7 @@ export default function Projects() {
             name={project.name}
             content={project.content}
             link={project.link}
+            github={project.github}
           />
         ))}
       </section>

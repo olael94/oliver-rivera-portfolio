@@ -7,6 +7,7 @@ const defaultProps = {
   name: 'DocRelief AI',
   content: 'AI-powered medical documentation.',
   link: 'https://docrelief.ai',
+  github: 'https://github.com/olael94/docrelief-ai',
 };
 
 test('renders the project name correctly', () => {
@@ -31,20 +32,40 @@ test('renders the logo image', () => {
   );
 });
 
-test('renders the link with correct href', () => {
+test('renders the live site link with correct href', () => {
   render(<ProjectCard {...defaultProps} />);
 
   expect(screen.getByTestId('projectCardLink').getAttribute('href')).toBe('https://docrelief.ai');
 });
 
-test('link defaults to # when not provided', () => {
-  render(<ProjectCard {...defaultProps} link={undefined} />);
+test('renders the github link with correct href', () => {
+  render(<ProjectCard {...defaultProps} />);
 
-  expect(screen.getByTestId('projectCardLink').getAttribute('href')).toBe('#');
+  expect(screen.getByTestId('projectCardGithubLink').getAttribute('href')).toBe(
+    'https://github.com/olael94/docrelief-ai'
+  );
 });
 
-test('link opens in a new tab', () => {
+test('live site button is not rendered when link is not provided', () => {
+  render(<ProjectCard {...defaultProps} link={undefined} />);
+
+  expect(screen.queryByTestId('projectCardLink')).toBeNull();
+});
+
+test('source code button is not rendered when github is not provided', () => {
+  render(<ProjectCard {...defaultProps} github={undefined} />);
+
+  expect(screen.queryByTestId('projectCardGithubLink')).toBeNull();
+});
+
+test('live site link opens in a new tab', () => {
   render(<ProjectCard {...defaultProps} />);
 
   expect(screen.getByTestId('projectCardLink').getAttribute('target')).toBe('_blank');
+});
+
+test('source code link opens in a new tab', () => {
+  render(<ProjectCard {...defaultProps} />);
+
+  expect(screen.getByTestId('projectCardGithubLink').getAttribute('target')).toBe('_blank');
 });

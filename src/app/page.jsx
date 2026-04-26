@@ -193,6 +193,7 @@ export default function Home() {
               name={project.name}
               content={project.content}
               link={project.link}
+              github={project.github}
             />
           ))}
         </section>
