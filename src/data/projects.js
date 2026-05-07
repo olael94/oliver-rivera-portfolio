@@ -1,6 +1,6 @@
 export const projects = [
     {
-        logo: '/logos/logos/ptg-logo.png',
+        logo: '/logos/ptg-logo.png',
         name: 'Path to Glory',
         content:
             '2026 FIFA World Cup simulator that lets fans drag-and-drop group predictions, manipulate match scores, and calculate the full bracket using AI-powered team intelligence. Share your prediction with a single link.',
