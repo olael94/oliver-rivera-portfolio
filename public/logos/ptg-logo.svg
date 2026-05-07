@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="400" height="460">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09141d"/>
+      <stop offset="100%" stop-color="#142231"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#71e5b7"/>
+      <stop offset="50%" stop-color="#ffb140"/>
+      <stop offset="100%" stop-color="#ff4074"/>
+    </linearGradient>
+    <linearGradient id="trophySheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#71e5b7"/>
+      <stop offset="100%" stop-color="#2ea87a"/>
+    </linearGradient>
+    <linearGradient id="shieldEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#71e5b7" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ffb140" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ff4074" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="48%" r="38%">
+      <stop offset="0%" stop-color="#71e5b7" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#71e5b7" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="shieldClip">
+      <path d="M 54 42 L 346 42 L 346 268 Q 346 370 200 420 Q 54 370 54 268 Z"/>
+    </clipPath>
+    <filter id="starGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="trophyGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Shield border stroke (gradient) -->
+  <path d="M 50 38 L 350 38 L 350 270 Q 350 376 200 428 Q 50 376 50 270 Z"
+        fill="none" stroke="url(#shieldEdge)" stroke-width="2"/>
+
+  <!-- Shield fill -->
+  <path d="M 54 42 L 346 42 L 346 268 Q 346 370 200 420 Q 54 370 54 268 Z"
+        fill="url(#bg)"/>
+
+  <!-- Center radial glow -->
+  <path d="M 54 42 L 346 42 L 346 268 Q 346 370 200 420 Q 54 370 54 268 Z"
+        fill="url(#centerGlow)"/>
+
+  <!-- Subtle globe grid lines -->
+  <g clip-path="url(#shieldClip)" opacity="0.055" stroke="#71e5b7" stroke-width="1" fill="none">
+    <ellipse cx="200" cy="230" rx="148" ry="44"/>
+    <ellipse cx="200" cy="230" rx="148" ry="88"/>
+    <ellipse cx="200" cy="230" rx="148" ry="132"/>
+    <ellipse cx="200" cy="230" rx="52" ry="172"/>
+    <ellipse cx="200" cy="230" rx="104" ry="172"/>
+    <line x1="200" y1="58" x2="200" y2="402"/>
+  </g>
+
+  <!-- Top accent bar -->
+  <rect x="108" y="58" width="184" height="2.5" rx="1.25" fill="url(#accent)" opacity="0.75"/>
+
+  <!-- Three stars -->
+  <g filter="url(#starGlow)">
+    <!-- Left star -->
+    <path transform="translate(152, 96) scale(0.72)"
+          d="M0-15 3.5-4.8 14.3-4.8 5.8 1.8 8.8 12.4 0 6.2-8.8 12.4-5.8 1.8-14.3-4.8-3.5-4.8Z"
+          fill="#ffb140" opacity="0.75"/>
+    <!-- Center star (larger) -->
+    <path transform="translate(200, 90)"
+          d="M0-17 4-5.5 16.2-5.5 6.6 2.1 10 14.1 0 7.1-10 14.1-6.6 2.1-16.2-5.5-4-5.5Z"
+          fill="#ffb140"/>
+    <!-- Right star -->
+    <path transform="translate(248, 96) scale(0.72)"
+          d="M0-15 3.5-4.8 14.3-4.8 5.8 1.8 8.8 12.4 0 6.2-8.8 12.4-5.8 1.8-14.3-4.8-3.5-4.8Z"
+          fill="#ffb140" opacity="0.75"/>
+  </g>
+
+  <!-- Trophy -->
+  <g filter="url(#trophyGlow)">
+    <!-- Cup body -->
+    <path d="M 155 122 Q 200 112 245 122 L 232 212 Q 200 222 168 212 Z"
+          fill="url(#trophySheen)"/>
+
+    <!-- Left handle -->
+    <path d="M 158 136 Q 114 136 114 174 Q 114 208 158 216"
+          fill="none" stroke="url(#trophySheen)" stroke-width="8.5"
+          stroke-linecap="round"/>
+
+    <!-- Right handle -->
+    <path d="M 242 136 Q 286 136 286 174 Q 286 208 242 216"
+          fill="none" stroke="url(#trophySheen)" stroke-width="8.5"
+          stroke-linecap="round"/>
+
+    <!-- Waist ring -->
+    <rect x="174" y="208" width="52" height="7" rx="3.5" fill="#71e5b7" opacity="0.85"/>
+
+    <!-- Stem -->
+    <rect x="193" y="214" width="14" height="34" rx="3" fill="#3dbf91"/>
+
+    <!-- Base tier 1 -->
+    <rect x="168" y="246" width="64" height="9" rx="3" fill="#3dbf91"/>
+
+    <!-- Base tier 2 -->
+    <rect x="156" y="253" width="88" height="9" rx="3" fill="#2ea87a"/>
+  </g>
+
+  <!-- Thin horizontal rule -->
+  <rect x="86" y="296" width="228" height="1" rx="0.5" fill="url(#accent)" opacity="0.28"/>
+
+  <!-- "PATH TO GLORY" -->
+  <text x="200" y="330"
+        text-anchor="middle"
+        font-family="'Arial Narrow', 'Helvetica Neue', Arial, sans-serif"
+        font-size="29"
+        font-weight="900"
+        letter-spacing="7"
+        fill="white"
+        opacity="0.93">PATH TO GLORY</text>
+
+  <!-- "WORLD CUP · 2026" -->
+  <text x="200" y="356"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="10.5"
+        font-weight="600"
+        letter-spacing="4.5"
+        fill="rgba(255,255,255,0.38)">WORLD CUP · 2026</text>
+
+  <!-- Bottom gradient line -->
+  <rect x="120" y="376" width="160" height="1.5" rx="0.75" fill="url(#accent)" opacity="0.55"/>
+</svg>
