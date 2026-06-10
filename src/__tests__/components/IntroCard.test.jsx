@@ -9,7 +9,11 @@ const defaultProps = {
   tag: 'Product Owner @ DocRelief AI',
   content: 'I build things for the web.',
   links: [{ title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' }],
-  emailLink: { email: 'me@example.com', imageSrc: '/icons/email.png', link: 'mailto:me@example.com' },
+  emailLink: {
+    email: 'me@example.com',
+    imageSrc: '/icons/email.png',
+    link: 'mailto:me@example.com',
+  },
 };
 
 test('renders the name', () => {

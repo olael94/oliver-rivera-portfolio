@@ -25,15 +25,16 @@ const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLi
       </div>
 
       {/* Tag */}
-      <div
-        className="inline-flex items-center gap-2 w-fit border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300"
-      >
+      <div className="inline-flex items-center gap-2 w-fit border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300">
         <span className="text-lime-500 font-bold">{'>_'}</span>
         {tag}
       </div>
 
       {/* Body text */}
-      <p data-testid="introCardContent" className="text-[17px] text-zinc-500 leading-[1.8] dark:text-zinc-400 max-w-[680px]">
+      <p
+        data-testid="introCardContent"
+        className="text-[17px] text-zinc-500 leading-[1.8] dark:text-zinc-400 max-w-[680px]"
+      >
         {content}
       </p>
 

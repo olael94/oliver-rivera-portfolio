@@ -10,7 +10,6 @@ import { introLinks, emailLink } from '@/data/links';
 export default function Home() {
   return (
     <div className="flex flex-col">
-
       {/* ── HERO ──────────────────────────────────────────────────────────────
           Full viewport section. IntroCard handles the photo, name, bio and
           social icons. CTA buttons anchor-scroll to Projects and About.
@@ -21,7 +20,6 @@ export default function Home() {
       >
         {/* Foreground content — two columns on desktop: IntroCard left, StickyNote right */}
         <div className="relative z-10 flex flex-row items-start gap-12 max-md:flex-col">
-
           {/* Left: IntroCard + CTAs — flex-1 so it takes remaining space */}
           <div className="flex-1 min-w-0 flex flex-col">
             <IntroCard
@@ -42,7 +40,9 @@ export default function Home() {
                 style={{ fontFamily: 'var(--font-syne)' }}
               >
                 View Projects
-                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">
+                  →
+                </span>
               </a>
               <a
                 href={emailLink.link}
@@ -89,7 +89,6 @@ export default function Home() {
           Skills grouped by category: Frontend, Backend, Tools & DevOps.
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="experience" className="py-24 max-md:py-16">
-
         {/* Section label */}
         <div className="flex items-center gap-4 mb-14">
           <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
@@ -100,8 +99,10 @@ export default function Home() {
             style={{ fontFamily: 'var(--font-syne)' }}
           >
             Skills{' '}
-            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>&</span>
-            {' '}Tools
+            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+              &
+            </span>{' '}
+            Tools
           </span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
         </div>
@@ -109,7 +110,8 @@ export default function Home() {
         {/* Skills intro */}
         <div className="mb-10">
           <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
-            The languages, frameworks, and tools I reach for most, grouped by where they fit in the stack.
+            The languages, frameworks, and tools I reach for most, grouped by where they fit in the
+            stack.
           </p>
         </div>
 
@@ -130,7 +132,6 @@ export default function Home() {
           Project showcase. Same fixed-size card grid as before.
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="projects" className="py-24 max-md:py-16 pb-32 max-md:pb-20">
-
         {/* Section label */}
         <div className="flex items-center gap-4 mb-14">
           <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
@@ -141,8 +142,10 @@ export default function Home() {
             style={{ fontFamily: 'var(--font-syne)' }}
           >
             Projects{' '}
-            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>&</span>
-            {' '}Contributions
+            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+              &
+            </span>{' '}
+            Contributions
           </span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
         </div>
@@ -151,7 +154,8 @@ export default function Home() {
         <div className="mb-10">
           <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
             A selection of things I've built, from side projects to production applications.
-            Full-stack, AI-powered, and everything in between. Clean code, real problems, practical solutions.
+            Full-stack, AI-powered, and everything in between. Clean code, real problems, practical
+            solutions.
           </p>
         </div>
 
@@ -170,7 +174,6 @@ export default function Home() {
           ))}
         </section>
       </section>
-
     </div>
   );
 }

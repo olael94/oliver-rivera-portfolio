@@ -157,7 +157,9 @@ footer {
   box-shadow:
     -8px -4px 16px #ffffff,
     8px 4px 20px #bdbdbd;
-  transition: box-shadow 0.2s ease, color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .dark .neu-button {

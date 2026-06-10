@@ -15,9 +15,7 @@ const ThemeSwitcher = ({ darkClassName = 'dark', inline = false }) => {
     document.body.classList.toggle(darkClassName, isDarkMode);
   }, [isDarkMode, darkClassName]);
 
-  const positionClass = inline
-    ? ''
-    : 'fixed top-[14px] right-[64px] md:top-[16px] md:right-[52px]';
+  const positionClass = inline ? '' : 'fixed top-[14px] right-[64px] md:top-[16px] md:right-[52px]';
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>

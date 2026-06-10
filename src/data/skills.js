@@ -8,14 +8,24 @@ export const skills = [
     icon: 'https://cdn.simpleicons.org/springboot/6DB33F',
     category: 'backend',
   },
-  { name: 'React', proficiency: 75, icon: 'https://cdn.simpleicons.org/react/61DAFB', category: 'frontend' },
+  {
+    name: 'React',
+    proficiency: 75,
+    icon: 'https://cdn.simpleicons.org/react/61DAFB',
+    category: 'frontend',
+  },
   {
     name: 'FastAPI',
     proficiency: 45,
     icon: 'https://cdn.simpleicons.org/fastapi/009688',
     category: 'backend',
   },
-  { name: 'Docker', proficiency: 75, icon: 'https://cdn.simpleicons.org/docker/2496ED', category: 'tools' },
+  {
+    name: 'Docker',
+    proficiency: 75,
+    icon: 'https://cdn.simpleicons.org/docker/2496ED',
+    category: 'tools',
+  },
   {
     name: 'AWS',
     proficiency: 70,
@@ -28,7 +38,12 @@ export const skills = [
     icon: 'https://cdn.simpleicons.org/postgresql/4169E1',
     category: 'backend',
   },
-  { name: 'Expo', proficiency: 80, icon: 'https://cdn.simpleicons.org/expo/000000/ffffff', category: 'frontend' },
+  {
+    name: 'Expo',
+    proficiency: 80,
+    icon: 'https://cdn.simpleicons.org/expo/000000/ffffff',
+    category: 'frontend',
+  },
   {
     name: 'LangChain',
     proficiency: 45,

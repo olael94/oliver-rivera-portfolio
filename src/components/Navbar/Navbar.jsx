@@ -120,7 +120,9 @@ const Navbar = () => {
               <a
                 key={id}
                 href={`#${id}`}
-                ref={(el) => { linkRefs.current[id] = el; }}
+                ref={(el) => {
+                  linkRefs.current[id] = el;
+                }}
                 className={`nav-pill-link ${activeSection === id ? 'active' : ''}`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -166,7 +168,9 @@ const Navbar = () => {
           onClick={() => setShowLinks(!showLinks)}
           aria-label="Toggle menu"
         >
-          <span className={`hamburger-icon flex items-center justify-center ${showLinks ? 'open' : ''}`}>
+          <span
+            className={`hamburger-icon flex items-center justify-center ${showLinks ? 'open' : ''}`}
+          >
             {showLinks ? '✕' : '☰'}
           </span>
         </button>

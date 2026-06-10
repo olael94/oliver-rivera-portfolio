@@ -2,10 +2,7 @@ import PropTypes from 'prop-types';
 
 const WorkWidget = ({ title, content, experiences = [] }) => {
   return (
-    <section
-      data-testid="workWidget"
-      className="card-modern flex flex-col p-6 w-full gap-5"
-    >
+    <section data-testid="workWidget" className="card-modern flex flex-col p-6 w-full gap-5">
       <div>
         <h2
           data-testid="workWidgetTitle"
