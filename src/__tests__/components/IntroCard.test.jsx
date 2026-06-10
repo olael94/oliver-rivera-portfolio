@@ -3,37 +3,33 @@ import { expect, test } from 'vitest';
 import IntroCard from '../../components/IntroCard.jsx';
 
 const defaultProps = {
-  logo: '/images/profile.jpg',
-  name: 'Oliver Rivera, Developer',
+  name: 'Oliver',
+  roleOutline: 'SOFTWARE',
+  roleAccent: 'ENGINEER.',
+  tag: 'Product Owner @ DocRelief AI',
   content: 'I build things for the web.',
   links: [{ title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' }],
+  emailLink: { email: 'me@example.com', imageSrc: '/icons/email.png', link: 'mailto:me@example.com' },
 };
-
-test('renders the profile image', () => {
-  render(<IntroCard {...defaultProps} />);
-
-  expect(screen.getByTestId('introCardLogo').getAttribute('src')).toBe('/images/profile.jpg');
-});
 
 test('renders the name', () => {
   render(<IntroCard {...defaultProps} />);
 
-  expect(screen.getByTestId('introCardName').textContent).toContain('Oliver Rivera');
+  expect(screen.getByTestId('introCardName').textContent).toContain('OLIVER');
 });
 
-test('renders content as a string', () => {
+test('renders the role and tag', () => {
+  render(<IntroCard {...defaultProps} />);
+
+  expect(screen.getByTestId('introCardName').textContent).toContain('SOFTWARE');
+  expect(screen.getByTestId('introCardName').textContent).toContain('ENGINEER.');
+  expect(screen.getByText('Product Owner @ DocRelief AI')).toBeTruthy();
+});
+
+test('renders content', () => {
   render(<IntroCard {...defaultProps} />);
 
   expect(screen.getByTestId('introCardContent').textContent).toBe('I build things for the web.');
-});
-
-test('renders content as an array of paragraphs', () => {
-  render(<IntroCard {...defaultProps} content={['Paragraph one.', 'Paragraph two.']} />);
-
-  const paragraphs = screen.getAllByTestId('introCardContent');
-  expect(paragraphs).toHaveLength(2);
-  expect(paragraphs[0].textContent).toBe('Paragraph one.');
-  expect(paragraphs[1].textContent).toBe('Paragraph two.');
 });
 
 test('renders social links with correct href', () => {
@@ -48,4 +44,11 @@ test('social links open in a new tab', () => {
 
   const link = screen.getByRole('link', { name: 'GitHub' });
   expect(link.getAttribute('target')).toBe('_blank');
+});
+
+test('renders the email link', () => {
+  render(<IntroCard {...defaultProps} />);
+
+  const link = screen.getByRole('link', { name: 'Email' });
+  expect(link.getAttribute('href')).toBe('mailto:me@example.com');
 });

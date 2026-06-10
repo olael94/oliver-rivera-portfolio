@@ -16,7 +16,7 @@ export default function Uses() {
         {usesCategories.map(({ category, items }) => (
           <div
             key={category}
-            className="flex flex-row border-l-4 border-amber-400/40 rounded-sm pl-6 max-md:flex-col max-md:border-l-0"
+            className="flex flex-row border-l-4 border-lime-400/40 rounded-sm pl-6 max-md:flex-col max-md:border-l-0"
           >
             <div className="basis-[200px] mr-8 max-md:basis-auto max-md:pb-6 text-[16px] font-semibold text-zinc-700 dark:text-zinc-200">
               {category}

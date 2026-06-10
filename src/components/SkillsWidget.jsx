@@ -21,12 +21,13 @@ function SkillsWidget({ title, content, skills = [] }) {
   return (
     <section
       data-testid="skillsWidget"
-      className="card-modern flex flex-col p-6 w-full max-w-[380px] gap-5"
+      className="card-modern flex flex-col p-6 w-full md:flex-1 md:min-w-[220px] gap-5"
     >
       <div>
         <h2
           data-testid="skillsWidgetTitle"
           className="m-0 text-lg font-bold text-zinc-800 dark:text-white tracking-tight"
+          style={{ fontFamily: 'var(--font-quicksand)' }}
         >
           {title}
         </h2>
@@ -45,7 +46,7 @@ function SkillsWidget({ title, content, skills = [] }) {
             return (
               <li key={index} data-testid={`skillsWidgetItem${index}`}>
                 <div className="flex flex-row items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-zinc-50 dark:bg-zinc-800 flex items-center justify-center shrink-0 ring-1 ring-zinc-200 dark:ring-zinc-700">
+                  <div className="neu-icon w-9 h-9 rounded-xl flex items-center justify-center shrink-0">
                     <img
                       data-testid={`skillsWidgetItemLogo${index}`}
                       src={skill.icon}
@@ -57,6 +58,7 @@ function SkillsWidget({ title, content, skills = [] }) {
                     <h3
                       data-testid={`skillsWidgetItemName${index}`}
                       className="m-0 text-[15px] font-semibold text-zinc-800 dark:text-zinc-100"
+                      style={{ fontFamily: 'var(--font-quicksand)' }}
                     >
                       {skill.name}
                     </h3>

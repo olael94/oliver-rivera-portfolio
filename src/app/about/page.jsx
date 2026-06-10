@@ -1,6 +1,7 @@
 import AboutMe from '@/components/AboutMe';
 import SocialLinks from '@/components/SocialLinks';
 import MenuLink from '@/components/MenuLink';
+import GlitchPhotoCard from '@/components/GlitchPhotoCard';
 import { socialLinks, emailLink } from '@/data/links';
 
 export default function About() {
@@ -16,24 +17,12 @@ export default function About() {
         />
       </section>
       <div className="flex flex-col gap-6 max-md:order-1 max-md:w-full">
-        <div className="relative w-fit max-md:w-full">
-          {/* Amber glow */}
-          <div className="absolute inset-0 rounded-sm shadow-[0_0_28px_8px_rgba(245,158,11,0.18)] dark:shadow-[0_0_32px_10px_rgba(245,158,11,0.22)]" />
-          {/* Photo */}
-          <img
-            src="/images/Me.jpg"
-            alt="My picture"
-            className="relative w-[464px] h-auto object-cover rounded-sm border border-amber-400/40 dark:border-amber-400/30 max-md:w-full"
-          />
-          {/* Corner registration marks — top-left */}
-          <span className="absolute -top-[6px] -left-[6px] w-[14px] h-[14px] border-t-2 border-l-2 border-amber-400/70" />
-          {/* top-right */}
-          <span className="absolute -top-[6px] -right-[6px] w-[14px] h-[14px] border-t-2 border-r-2 border-amber-400/70" />
-          {/* bottom-left */}
-          <span className="absolute -bottom-[6px] -left-[6px] w-[14px] h-[14px] border-b-2 border-l-2 border-amber-400/70" />
-          {/* bottom-right */}
-          <span className="absolute -bottom-[6px] -right-[6px] w-[14px] h-[14px] border-b-2 border-r-2 border-amber-400/70" />
-        </div>
+        <GlitchPhotoCard
+          src="/images/Me.jpg"
+          alt="Oliver Rivera"
+          name="Oliver Rivera"
+          title="Software Engineer"
+        />
         <div className="max-md:hidden">
           <SocialLinks socialLinks={socialLinks} />
           <MenuLink {...emailLink} />

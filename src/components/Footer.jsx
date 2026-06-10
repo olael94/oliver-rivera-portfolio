@@ -14,7 +14,7 @@ const Footer = ({ links = [] }) => {
             <li key={index} data-testid={`footerLink${index}`}>
               <a
                 href={link.url}
-                className="text-sm text-zinc-400 dark:text-zinc-500 no-underline hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+                className="text-sm text-zinc-400 dark:text-zinc-500 no-underline hover:text-lime-500 dark:hover:text-lime-400 transition-colors"
               >
                 {link.title}
               </a>

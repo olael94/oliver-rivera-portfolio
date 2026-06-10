@@ -1,4 +1,4 @@
-import { Syne, Manrope, Caveat } from 'next/font/google';
+import { Syne, Quicksand, Caveat } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer';
@@ -11,10 +11,10 @@ const syne = Syne({
   display: 'swap',
 });
 
-const manrope = Manrope({
+const quicksand = Quicksand({
   weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-manrope',
+  variable: '--font-quicksand',
   display: 'swap',
 });
 
@@ -33,7 +33,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${syne.variable} ${manrope.variable} ${caveat.variable}`}>
+      <body className={`${syne.variable} ${quicksand.variable} ${caveat.variable}`}>
         <div className="flex flex-col min-h-screen">
           <header className="w-full">
             <div className="w-full h-full max-w-screen-2xl mx-auto">

@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #f59e0b;
-  --color-accent-hover: #d97706;
-  --color-accent-muted: #fbbf24;
-  --color-surface: #fafaf8;
-  --color-dark-bg: #0c0a07;
-  --color-dark-surface: #141209;
+  --color-accent: #84cc16;
+  --color-accent-hover: #65a30d;
+  --color-accent-muted: #a3e635;
+  --color-surface: #e8e8e8;
+  --color-dark-bg: #212121;
+  --color-dark-surface: #2a2a2a;
   --color-dark-text: #d4c9b0;
 }
 
@@ -15,7 +15,7 @@
 /* Fallback declarations so the IDE and Tailwind can resolve these at build time.
    Next.js overrides these at runtime via class names injected on <body>. */
 :root {
-  --font-manrope: system-ui, sans-serif;
+  --font-quicksand: system-ui, sans-serif;
   --font-syne: system-ui, sans-serif;
 }
 
@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-family: var(--font-quicksand), system-ui, sans-serif;
   @apply bg-surface text-[#0f0f18] dark:bg-dark-bg dark:text-dark-text;
 }
 
@@ -43,49 +43,18 @@ h6 {
   font-family: var(--font-syne), system-ui, sans-serif;
 }
 
-/* Subtle grid background for light mode */
-body:not(.dark)::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image:
-    linear-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 158, 11, 0.12) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-/* Dark mode: dot grid + warm amber glow in the corner */
-body.dark::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-color: #0c0a07;
-  background-image:
-    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(245, 158, 11, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(251, 146, 60, 0.05) 0%, transparent 55%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
-  background-size:
-    auto,
-    auto,
-    28px 28px;
-  pointer-events: none;
-}
-
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 72px;
+  height: 88px;
   z-index: 50;
   background: transparent;
 }
 
 @media (max-width: 768px) {
   header {
-    height: 60px;
+    height: 76px;
   }
 }
 
@@ -112,100 +81,105 @@ footer {
   z-index: 1;
 }
 
-/* Shared card style */
+/* Shared card style — neumorphic soft-shadow surface */
 .card-modern {
   border-radius: 16px;
-  border: 1px solid rgba(245, 158, 11, 0.1);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 8px 32px rgba(245, 158, 11, 0.06);
-  transition:
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    -8px -4px 16px #ffffff,
+    8px 4px 20px #c8c8c8;
+  transition: box-shadow 0.25s ease;
 }
 
 .dark .card-modern {
-  background: rgba(20, 18, 9, 0.7);
-  border-color: rgba(251, 191, 36, 0.1);
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    0 8px 32px rgba(245, 158, 11, 0.08);
+    -8px -4px 16px #3a3a3a,
+    8px 4px 20px #0d0d0d;
 }
 
 .card-modern:hover {
-  border-color: rgba(245, 158, 11, 0.25);
   box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.06),
-    0 12px 40px rgba(245, 158, 11, 0.12);
+    -10px -5px 20px #ffffff,
+    10px 5px 26px #bdbdbd;
 }
 
 .dark .card-modern:hover {
-  border-color: rgba(251, 191, 36, 0.25);
+  box-shadow:
+    -10px -5px 20px #424242,
+    10px 5px 26px #080808;
 }
 
-/* Sticky note content positioning */
-.stickynote-content {
-  padding: 25% 30% 25% 28%;
+/* Small raised icon badge — skill/project/social icons */
+.neu-icon {
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -4px -2px 8px #ffffff,
+    4px 2px 10px #c8c8c8;
+  transition: box-shadow 0.25s ease;
 }
 
-.stickynote-label {
-  font-size: clamp(0.65rem, 1.8cqi, 0.85rem);
-}
-.stickynote-body {
-  font-size: clamp(1.2rem, 5cqi, 1.7rem);
-}
-.stickynote-sig {
-  font-size: clamp(1rem, 4cqi, 1.4rem);
+.dark .neu-icon {
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -4px -2px 8px #3a3a3a,
+    4px 2px 10px #0d0d0d;
 }
 
-/* Sticky note — mid-range desktop fix (1024px–1240px) */
-@media (min-width: 1024px) and (max-width: 1240px) {
-  .stickynote-content {
-    padding: 30% 32% 30% 30%;
-  }
-  .stickynote-body {
-    font-size: clamp(0.85rem, 3cqi, 1.1rem);
-  }
-  .stickynote-sig {
-    font-size: clamp(0.75rem, 2.5cqi, 1rem);
-  }
-  .stickynote-label {
-    font-size: 0.6rem;
-  }
+.neu-icon:hover,
+.neu-icon:active {
+  box-shadow:
+    -4px -2px 8px #ffffff inset,
+    4px 2px 10px #c8c8c8 inset;
 }
 
-/* Sticky note — iPad portrait fix */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .stickynote-content {
-    padding: 36% 27% 34% 26%;
-  }
-  .stickynote-body {
-    font-size: clamp(0.8rem, 2.5cqi, 1rem);
-  }
-  .stickynote-sig {
-    font-size: clamp(0.85rem, 3cqi, 1.1rem);
-  }
-  .stickynote-label {
-    font-size: 0.6rem;
-  }
+.dark .neu-icon:hover,
+.dark .neu-icon:active {
+  box-shadow:
+    -4px -2px 8px #3a3a3a inset,
+    4px 2px 10px #0d0d0d inset;
 }
 
-/* Sticky note — landscape phones fix */
-@media (max-height: 500px) and (orientation: landscape) {
-  .stickynote-content {
-    padding: 25% 27% 20% 26%;
-  }
-  .stickynote-body {
-    font-size: clamp(0.8rem, 2.5cqi, 1rem);
-  }
-  .stickynote-sig {
-    font-size: clamp(0.7rem, 2cqi, 0.9rem);
-  }
-  .stickynote-label {
-    font-size: 0.55rem;
-  }
+/* Raised neumorphic button — secondary CTAs */
+.neu-button {
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -8px -4px 16px #ffffff,
+    8px 4px 20px #bdbdbd;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.dark .neu-button {
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -8px -4px 16px #3a3a3a,
+    8px 4px 20px #0d0d0d;
+}
+
+.neu-button:hover,
+.neu-button:active {
+  box-shadow:
+    -4px -2px 8px #ffffff inset,
+    4px 2px 10px #bdbdbd inset;
+}
+
+.dark .neu-button:hover,
+.dark .neu-button:active {
+  box-shadow:
+    -4px -2px 8px #3a3a3a inset,
+    4px 2px 10px #0d0d0d inset;
 }
 
 /* Scroll behavior — smooth native scroll with navbar clearance */
@@ -214,12 +188,152 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 96px;
+}
+
+/* Neumorphic photo frame — keeps tilt/zoom motion, adds lime glow on hover */
+.neu-frame {
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -10px -6px 20px #ffffff,
+    10px 6px 26px #c8c8c8;
+}
+
+.dark .neu-frame {
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -10px -6px 20px #3a3a3a,
+    10px 6px 26px #0d0d0d;
+}
+
+.group:hover .neu-frame {
+  box-shadow:
+    -10px -6px 20px #ffffff,
+    10px 6px 26px #c8c8c8,
+    0 0 50px rgba(132, 204, 22, 0.35);
+}
+
+.dark .group:hover .neu-frame {
+  box-shadow:
+    -10px -6px 20px #3a3a3a,
+    10px 6px 26px #0d0d0d,
+    0 0 50px rgba(132, 204, 22, 0.35);
+}
+
+/* Neumorphic theme toggle */
+.theme-toggle {
+  isolation: isolate;
+  position: relative;
+  height: 30px;
+  width: 60px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -8px -4px 8px 0px #ffffff,
+    8px 4px 12px 0px #bdbdbd,
+    4px 4px 4px 0px #c8c8c8 inset,
+    -4px -4px 4px 0px #ffffff inset;
+}
+
+.dark .theme-toggle {
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -8px -4px 8px 0px #3a3a3a,
+    8px 4px 12px 0px #0d0d0d,
+    4px 4px 4px 0px #0d0d0d inset,
+    -4px -4px 4px 0px #3a3a3a inset;
+}
+
+.theme-toggle-indicator {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 200%;
+  background: #dcdcdc;
+  border-radius: 15px;
+  transform: translate3d(-75%, 0, 0);
+  transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+  box-shadow:
+    -8px -4px 8px 0px #d4d4d4,
+    8px 4px 12px 0px #c8c8c8;
+}
+
+.dark .theme-toggle-indicator {
+  background: #262626;
+  transform: translate3d(25%, 0, 0);
+  box-shadow:
+    -8px -4px 8px 0px #0d0d0d,
+    8px 4px 12px 0px #0d0d0d;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  height: 22px;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+}
+
+.dark .theme-toggle-thumb {
+  left: 34px;
+}
+
+/* Section number badge — small neumorphic pill for "01 / 02" labels */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(132, 204, 22, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -4px -2px 8px #ffffff,
+    4px 2px 10px #c8c8c8;
+}
+
+.dark .section-badge {
+  background: rgba(132, 204, 22, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -4px -2px 8px #3a3a3a,
+    4px 2px 10px #0d0d0d;
+}
+
+/* Neumorphic embossed text — text matches the surface color, shape comes from shadow */
+.neu-text {
+  color: #e8e8e8;
+  text-shadow:
+    -2px -2px 2px #ffffff,
+    2px 2px 2px rgba(132, 204, 22, 0.5);
+}
+
+.dark .neu-text {
+  color: #212121;
+  text-shadow:
+    -2px -2px 2px #3a3a3a,
+    2px 2px 2px rgba(132, 204, 22, 0.5);
 }
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #f59e0b 0%, #fb923c 50%, #fbbf24 100%);
+  background: linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #bef264 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -5,7 +5,7 @@ import './Navbar.css';
 import { navLinks as NAV_LINKS } from '@/data/nav';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 
-const NAVBAR_HEIGHT = 72; // matches the fixed header height in globals.css
+const NAVBAR_HEIGHT = 88; // matches the fixed header height in globals.css
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -76,7 +76,7 @@ const Navbar = () => {
     setShowLinks(false);
   }, [isActuallyMobile]);
 
-  // Reposition the sliding amber pill whenever the active section changes
+  // Reposition the sliding lime pill whenever the active section changes
   useEffect(() => {
     const activeEl = linkRefs.current[activeSection];
     if (!activeEl || !pillRef.current) return;
@@ -106,8 +106,8 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className={`flex items-center justify-between w-full h-full px-5 transition-colors duration-200 ${
-        isActuallyMobile && showLinks ? 'bg-white dark:bg-[#0c0a07]' : ''
+      className={`flex items-start justify-between w-full h-full px-5 pt-4 transition-colors duration-200 ${
+        isActuallyMobile && showLinks ? 'bg-white dark:bg-[#212121]' : ''
       }`}
     >
       {/* Desktop: floating pill nav centered in the header */}

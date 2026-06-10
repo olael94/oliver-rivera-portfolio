@@ -24,16 +24,22 @@ const ThemeSwitcher = ({ darkClassName = 'dark', inline = false }) => {
       <button
         data-testid="themeSwitcherButton"
         onClick={() => setIsDarkMode((prev) => !prev)}
-        className={`${positionClass} h-9 w-9 rounded-xl p-0 cursor-pointer flex items-center justify-center bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-700/60 hover:border-amber-400 dark:hover:border-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.15)] dark:shadow-[0_0_12px_rgba(245,158,11,0.25)] hover:shadow-[0_0_14px_rgba(245,158,11,0.3)] transition-all duration-200`}
+        aria-label="Toggle theme"
+        className={`${positionClass} theme-toggle p-0 border-none cursor-pointer`}
       >
-        <img
-          src={isDarkMode ? '/icons/sunIcon.png' : '/icons/moonIcon.png'}
-          alt="Toggle theme"
-          className="w-4 h-4 object-contain"
-          style={{
-            filter: 'invert(65%) sepia(80%) saturate(600%) hue-rotate(5deg) brightness(105%)',
-          }}
-        />
+        <span className="theme-toggle-indicator" />
+        <span className="theme-toggle-thumb">
+          <img
+            src={isDarkMode ? '/icons/sunIcon.png' : '/icons/moonIcon.png'}
+            alt=""
+            className="w-3.5 h-3.5 object-contain"
+            style={{
+              filter: isDarkMode
+                ? 'invert(70%) sepia(55%) saturate(900%) hue-rotate(50deg) brightness(100%)'
+                : 'invert(45%) sepia(15%) saturate(300%) hue-rotate(190deg) brightness(95%)',
+            }}
+          />
+        </span>
       </button>
     </div>
   );

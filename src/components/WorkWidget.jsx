@@ -4,12 +4,13 @@ const WorkWidget = ({ title, content, experiences = [] }) => {
   return (
     <section
       data-testid="workWidget"
-      className="card-modern flex flex-col p-6 w-full max-w-[380px] gap-5"
+      className="card-modern flex flex-col p-6 w-full gap-5"
     >
       <div>
         <h2
           data-testid="workWidgetTitle"
           className="m-0 text-lg font-bold text-zinc-800 dark:text-white tracking-tight"
+          style={{ fontFamily: 'var(--font-quicksand)' }}
         >
           {title}
         </h2>
@@ -24,7 +25,7 @@ const WorkWidget = ({ title, content, experiences = [] }) => {
         {experiences.map((experience, index) => (
           <li key={index} data-testid={`workWidgetItem${index}`}>
             <div className="flex flex-row gap-3 items-center">
-              <div className="w-9 h-9 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0 ring-1 ring-zinc-200 dark:ring-zinc-700">
+              <div className="neu-icon w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center shrink-0">
                 <img
                   data-testid={`workWidgetItemLogo${index}`}
                   src={experience.logo}
@@ -36,6 +37,7 @@ const WorkWidget = ({ title, content, experiences = [] }) => {
                 <h3
                   data-testid={`workWidgetItemTitle${index}`}
                   className="m-0 text-[15px] font-semibold text-zinc-800 dark:text-zinc-100"
+                  style={{ fontFamily: 'var(--font-quicksand)' }}
                 >
                   {experience.organization}
                 </h3>
