@@ -1,6 +1,7 @@
 'use client';
 
 import PropTypes from 'prop-types';
+import TerminalTyper from './TerminalTyper';
 
 const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLink }) => {
   return (
@@ -25,15 +26,19 @@ const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLi
       </div>
 
       {/* Tag */}
-      <div className="inline-flex items-center gap-2 w-fit border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300">
+      <div className="inline-flex items-center gap-2 w-fit border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300 max-w-[680px]">
         <span className="text-lime-500 font-bold">{'>_'}</span>
-        {tag}
+        <span className="relative flex h-2 w-2 flex-shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500" />
+        </span>
+        <TerminalTyper lines={tag} />
       </div>
 
       {/* Body text */}
       <p
         data-testid="introCardContent"
-        className="text-[17px] text-zinc-500 leading-[1.8] dark:text-zinc-400 max-w-[680px]"
+        className="card-modern text-[17px] text-zinc-500 leading-[1.8] dark:text-zinc-400 max-w-[680px] p-5"
       >
         {content}
       </p>
@@ -80,7 +85,7 @@ IntroCard.propTypes = {
   name: PropTypes.string.isRequired,
   roleOutline: PropTypes.string.isRequired,
   roleAccent: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.arrayOf(PropTypes.string).isRequired,
   content: PropTypes.string.isRequired,
   links: PropTypes.arrayOf(
     PropTypes.shape({

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Usescard = ({ name, content1, content2, content3, content4 }) => {
   return (
-    <div data-testid="Usescard" className="rounded-md w-full max-w-[850px]">
+    <div data-testid="Usescard" className="card-modern rounded-md w-full max-w-[850px] p-4">
       <h1
         data-testid="UsescardName"
         className="text-[17px] font-bold text-zinc-800 dark:text-zinc-100 mb-1"

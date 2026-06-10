@@ -6,12 +6,12 @@ const AboutMe = ({ name, content1, content2, content3, content4 }) => {
       <h1 data-testid="aboutMeName" className="text-[50px] font-bold text-zinc-800 dark:text-white">
         {name}
       </h1>
-      <div className="flex flex-col">
-        {[content1, content2, content3, content4].map((para, i) => (
+      <div className="card-modern flex flex-col p-6">
+        {[content1, content2, content3, content4].filter(Boolean).map((para, i) => (
           <p
             key={i}
             data-testid="aboutMeContent"
-            className="text-[17px] text-zinc-500 leading-[1.8] mb-5 dark:text-zinc-400"
+            className="text-[17px] text-zinc-500 leading-[1.8] last:mb-0 mb-5 dark:text-zinc-400"
           >
             {para}
           </p>

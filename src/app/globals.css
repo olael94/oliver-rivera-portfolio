@@ -17,6 +17,23 @@
 :root {
   --font-quicksand: system-ui, sans-serif;
   --font-syne: system-ui, sans-serif;
+  --motion-shape-bg: rgba(232, 232, 232, 0.55);
+  --motion-shape-border: rgba(255, 255, 255, 0.4);
+  --motion-shape-shadow:
+    -24px -20px 50px rgba(255, 255, 255, 0.85), 24px 24px 60px rgba(170, 170, 170, 0.5);
+  --eq-bar-bg: rgba(232, 232, 232, 0.6);
+  --eq-bar-border: rgba(255, 255, 255, 0.4);
+  --eq-bar-shadow: -6px -4px 12px rgba(255, 255, 255, 0.8), 6px 6px 14px rgba(170, 170, 170, 0.45);
+}
+
+.dark {
+  --motion-shape-bg: rgba(33, 33, 33, 0.55);
+  --motion-shape-border: rgba(255, 255, 255, 0.06);
+  --motion-shape-shadow:
+    -24px -20px 50px rgba(58, 58, 58, 0.6), 24px 24px 60px rgba(13, 13, 13, 0.7);
+  --eq-bar-bg: rgba(33, 33, 33, 0.5);
+  --eq-bar-border: rgba(255, 255, 255, 0.06);
+  --eq-bar-shadow: -6px -4px 12px rgba(58, 58, 58, 0.5), 6px 6px 14px rgba(13, 13, 13, 0.6);
 }
 
 *,
@@ -84,7 +101,7 @@ footer {
 /* Shared card style — neumorphic soft-shadow surface */
 .card-modern {
   border-radius: 16px;
-  background: rgba(232, 232, 232, 0.6);
+  background: rgba(232, 232, 232, 0.99);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -95,7 +112,7 @@ footer {
 }
 
 .dark .card-modern {
-  background: rgba(33, 33, 33, 0.5);
+  background: rgba(33, 33, 33, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
     -8px -4px 16px #3a3a3a,

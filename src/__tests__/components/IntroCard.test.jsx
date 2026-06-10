@@ -6,7 +6,7 @@ const defaultProps = {
   name: 'Oliver',
   roleOutline: 'SOFTWARE',
   roleAccent: 'ENGINEER.',
-  tag: 'Product Owner @ DocRelief AI',
+  tag: ['Available for work', 'Open to internships', 'Part-time or full-time opportunities'],
   content: 'I build things for the web.',
   links: [{ title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' }],
   emailLink: {
@@ -27,7 +27,7 @@ test('renders the role and tag', () => {
 
   expect(screen.getByTestId('introCardName').textContent).toContain('SOFTWARE');
   expect(screen.getByTestId('introCardName').textContent).toContain('ENGINEER.');
-  expect(screen.getByText('Product Owner @ DocRelief AI')).toBeTruthy();
+  expect(screen.getByTestId('terminalTyper')).toBeTruthy();
 });
 
 test('renders content', () => {

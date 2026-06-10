@@ -2,6 +2,7 @@ import { Syne, Quicksand, Caveat } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer';
+import MusicMotionBackground from '@/components/MusicMotionBackground';
 import { navLinks, footerLinks } from '@/data/nav';
 
 const syne = Syne({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${syne.variable} ${quicksand.variable} ${caveat.variable}`}>
+        <MusicMotionBackground />
         <div className="flex flex-col min-h-screen">
           <header className="w-full">
             <div className="w-full h-full max-w-screen-2xl mx-auto">

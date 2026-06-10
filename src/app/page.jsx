@@ -1,11 +1,15 @@
 import SkillsWidget from '@/components/SkillsWidget';
-import StickyNote from '@/components/StickyNote';
 import IntroCard from '@/components/IntroCard';
-import ProjectCard from '@/components/ProjectCard';
+import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
 import { skills, skillCategories } from '@/data/skills';
-import { projects } from '@/data/projects';
 import { introLinks, emailLink } from '@/data/links';
+
+const AVAILABILITY_LINES = [
+  'Available for work',
+  'Open to internships',
+  'Part-time or full-time opportunities',
+];
 
 export default function Home() {
   return (
@@ -26,7 +30,7 @@ export default function Home() {
               name="Oliver"
               roleOutline="SOFTWARE"
               roleAccent="ENGINEER."
-              tag="Product Owner @ DocRelief AI"
+              tag={AVAILABILITY_LINES}
               content="I build full-stack and backend applications with Java, Spring Boot, React, and AWS. Currently finishing my B.S. in Software Engineering while leading a team of four on DocRelief AI, an AI-powered documentation platform."
               links={introLinks}
               emailLink={emailLink}
@@ -54,7 +58,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Photo + StickyNote — fixed width on desktop, full width on mobile */}
+          {/* Photo — fixed width on desktop, full width on mobile */}
           <div className="w-[420px] flex-shrink-0 relative pt-4 pb-10 max-md:w-full max-md:pt-2 max-md:pb-16 max-md:self-start">
             <GlitchPhotoCard
               src="/images/Me.jpg"
@@ -62,9 +66,6 @@ export default function Home() {
               name="Oliver Rivera"
               title="Software Engineer"
             />
-            <div className="absolute -bottom-6 -right-6 max-md:right-4 max-md:-bottom-10 z-20">
-              <StickyNote />
-            </div>
           </div>
         </div>
 
@@ -95,7 +96,7 @@ export default function Home() {
             01
           </span>
           <span
-            className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase whitespace-nowrap text-lime-600 dark:text-lime-400"
+            className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase max-md:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
             Skills{' '}
@@ -132,47 +133,42 @@ export default function Home() {
           Project showcase. Same fixed-size card grid as before.
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="projects" className="py-24 max-md:py-16 pb-32 max-md:pb-20">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-14">
-          <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
-            02
-          </span>
-          <span
-            className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase whitespace-nowrap text-lime-600 dark:text-lime-400"
-            style={{ fontFamily: 'var(--font-syne)' }}
-          >
-            Projects{' '}
-            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-              &
-            </span>{' '}
-            Contributions
-          </span>
-          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
-        </div>
+        {/* Project cards — horizontal scroll-jack on desktop, stacked on mobile.
+            The section label and intro paragraph are rendered inside
+            HorizontalProjects so they stay pinned alongside the cards
+            while the horizontal scroll plays out. */}
+        <HorizontalProjects
+          header={
+            <>
+              {/* Section label */}
+              <div className="flex items-center gap-4 mb-14">
+                <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
+                  02
+                </span>
+                <span
+                  className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase max-md:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
+                  style={{ fontFamily: 'var(--font-syne)' }}
+                >
+                  Projects{' '}
+                  <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+                    &
+                  </span>{' '}
+                  Contributions
+                </span>
+                <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
+              </div>
 
-        {/* Section heading */}
-        <div className="mb-10">
-          <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
-            A selection of things I've built, from side projects to production applications.
-            Full-stack, AI-powered, and everything in between. Clean code, real problems, practical
-            solutions.
-          </p>
-        </div>
-
-        {/* Project cards — fixed width on desktop, full width on mobile */}
-        <section className="flex flex-col gap-4 md:flex-row md:flex-wrap">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              logo={project.logo}
-              preview={project.preview}
-              name={project.name}
-              content={project.content}
-              link={project.link}
-              github={project.github}
-            />
-          ))}
-        </section>
+              {/* Section heading */}
+              <div className="mb-10">
+                <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
+                  A selection of things I've built, from side projects to production applications.
+                  Full-stack, AI-powered, and everything in between. Clean code, real problems,
+                  practical solutions.
+                </p>
+              </div>
+            </>
+          }
+        />
       </section>
     </div>
   );
