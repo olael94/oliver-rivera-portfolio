@@ -92,6 +92,16 @@ main {
   }
 }
 
+/* Landscape phones / small tablets — the desktop 180px side padding leaves too
+   little room for the two-column hero, causing the photo and intro text to
+   overlap. Keep the desktop vertical rhythm but tighten the side padding. */
+@media (min-width: 769px) and (max-width: 1023px) {
+  main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 footer {
   margin-top: auto;
   position: relative;

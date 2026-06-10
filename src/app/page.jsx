@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           {/* Photo — fixed width on desktop, full width on mobile */}
-          <div className="w-[420px] flex-shrink-0 relative pt-4 pb-10 max-md:w-full max-md:pt-2 max-md:pb-16 max-md:self-start">
+          <div className="w-full md:w-auto md:flex-[0_1_420px] md:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-16 max-md:self-start">
             <GlitchPhotoCard
               src="/images/Me.jpg"
               alt="Oliver Rivera"

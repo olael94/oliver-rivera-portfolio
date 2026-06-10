@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src",
+    "prettier": "prettier --write src",
+    "prettier:check": "prettier --check src",
     "test": "vitest",
     "test:run": "vitest run"
   },
@@ -14,7 +16,7 @@
     "@tailwindcss/postcss": "^4.2.1",
     "clsx": "^2.1.1",
     "motion": "^12.40.0",
-    "next": "^16.1.6",
+    "next": "^16.2.6",
     "prop-types": "^15.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
