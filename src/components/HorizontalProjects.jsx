@@ -69,7 +69,9 @@ const HorizontalProjects = ({ header }) => {
         {header}
 
         <div
-          className={isDesktop ? 'flex-1 flex items-start overflow-hidden' : 'flex flex-col gap-4'}
+          className={
+            isDesktop ? 'flex-1 flex items-start overflow-hidden' : 'flex flex-col items-center gap-4'
+          }
         >
           <motion.div
             ref={trackRef}

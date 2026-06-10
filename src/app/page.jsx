@@ -117,7 +117,7 @@ export default function Home() {
         </div>
 
         {/* Skill categories — side by side on desktop, stacked on mobile */}
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-col gap-6 max-md:items-center md:flex-row">
           {skillCategories.map(({ id, title }) => (
             <SkillsWidget
               key={id}

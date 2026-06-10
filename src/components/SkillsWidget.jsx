@@ -21,7 +21,7 @@ function SkillsWidget({ title, content, skills = [] }) {
   return (
     <section
       data-testid="skillsWidget"
-      className="card-modern flex flex-col p-6 w-full md:flex-1 md:min-w-[220px] gap-5"
+      className="card-modern flex flex-col p-6 w-full max-md:max-w-[400px] md:flex-1 md:min-w-[220px] gap-5"
     >
       <div>
         <h2
