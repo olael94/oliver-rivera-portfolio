@@ -5,11 +5,7 @@ import GlitchPhotoCard from '@/components/GlitchPhotoCard';
 import { skills, skillCategories } from '@/data/skills';
 import { introLinks, emailLink } from '@/data/links';
 
-const AVAILABILITY_LINES = [
-  'Available for work',
-  'Open to internships',
-  'Part-time or full-time opportunities',
-];
+const AVAILABILITY_LINES = ['Available for work', 'Open to internships', 'Part-time or Full-time'];
 
 export default function Home() {
   return (
@@ -59,7 +55,7 @@ export default function Home() {
           </div>
 
           {/* Photo — fixed width on desktop, full width on mobile */}
-          <div className="w-full md:w-auto md:flex-[0_1_420px] md:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-16 max-md:self-start">
+          <div className="w-full md:w-auto md:flex-[0_1_260px] md:max-w-[260px] lg:flex-[0_1_340px] lg:max-w-[340px] xl:flex-[0_1_420px] xl:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-16 max-md:self-start">
             <GlitchPhotoCard
               src="/images/Me.jpg"
               alt="Oliver Rivera"
@@ -96,7 +92,7 @@ export default function Home() {
             01
           </span>
           <span
-            className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase max-md:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
+            className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
             Skills{' '}
@@ -146,7 +142,7 @@ export default function Home() {
                   02
                 </span>
                 <span
-                  className="text-2xl md:text-3xl font-extrabold tracking-[0.15em] uppercase max-md:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
+                  className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
                   style={{ fontFamily: 'var(--font-syne)' }}
                 >
                   Projects{' '}

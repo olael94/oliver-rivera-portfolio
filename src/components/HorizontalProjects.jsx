@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ProjectCard from './ProjectCard';
 import { projects } from '@/data/projects';
 
-const DESKTOP_QUERY = '(min-width: 768px)';
+const DESKTOP_QUERY = '(min-width: 1024px) and (min-height: 600px)';
 const NAVBAR_HEIGHT = 88; // matches the fixed header height in globals.css
 
 // Pins the projects section while the user scrolls vertically, translating the
@@ -56,7 +56,7 @@ const HorizontalProjects = ({ header }) => {
     <div
       ref={sectionRef}
       style={isDesktop ? { height: sectionHeight } : undefined}
-      className="relative"
+      className="relative shrink-0"
     >
       <div
         ref={viewportRef}

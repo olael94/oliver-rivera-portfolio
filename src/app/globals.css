@@ -43,7 +43,8 @@
 }
 
 body {
-  min-width: 390px;
+  min-width: 320px;
+  overflow-x: clip;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -69,7 +70,7 @@ header {
   background: transparent;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   header {
     height: 76px;
   }
@@ -83,22 +84,11 @@ main {
   z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
   main {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 88px 24px 64px 24px;
-  }
-}
-
-/* Landscape phones / small tablets — the desktop 180px side padding leaves too
-   little room for the two-column hero, causing the photo and intro text to
-   overlap. Keep the desktop vertical rhythm but tighten the side padding. */
-@media (min-width: 769px) and (max-width: 1023px) {
-  main {
-    padding-left: 24px;
-    padding-right: 24px;
   }
 }
 
@@ -214,6 +204,7 @@ footer {
 /* Scroll behavior — smooth native scroll with navbar clearance */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 section[id] {

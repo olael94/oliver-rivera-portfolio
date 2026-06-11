@@ -106,7 +106,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className={`flex items-start justify-between w-full h-full px-5 pt-4 transition-colors duration-200 ${
+      className={`flex items-center justify-between w-full h-full px-5 transition-colors duration-200 ${
         isActuallyMobile && showLinks ? 'bg-white dark:bg-[#212121]' : ''
       }`}
     >

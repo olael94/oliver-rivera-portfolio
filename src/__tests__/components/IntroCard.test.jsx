@@ -6,7 +6,7 @@ const defaultProps = {
   name: 'Oliver',
   roleOutline: 'SOFTWARE',
   roleAccent: 'ENGINEER.',
-  tag: ['Available for work', 'Open to internships', 'Part-time or full-time opportunities'],
+  tag: ['Available for work', 'Open to internships', 'Part-time or Full-time'],
   content: 'I build things for the web.',
   links: [{ title: 'GitHub', url: 'https://github.com', icon: '/icons/github.png' }],
   emailLink: {

@@ -33,7 +33,7 @@ test('renders desktop nav links', () => {
   render(<Navbar />);
 
   expect(screen.getByText('Home')).toBeTruthy();
-  expect(screen.getByText('About')).toBeTruthy();
+  expect(screen.getByText('Skills')).toBeTruthy();
   expect(screen.getByText('Projects')).toBeTruthy();
 });
 

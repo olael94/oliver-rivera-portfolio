@@ -11,22 +11,22 @@ const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLi
     >
       {/* Heading */}
       <div data-testid="introCardName">
-        <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight text-[#0f0f18] dark:text-white max-md:text-[36px]">
+        <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight text-[#0f0f18] dark:text-white max-xl:text-[36px] max-[400px]:text-[30px]!">
           HI, I&rsquo;M {name.toUpperCase()}
         </h1>
         <h1
-          className="text-[52px] leading-[1.05] font-extrabold tracking-tight max-md:text-[36px]"
+          className="text-[52px] leading-[1.05] font-extrabold tracking-tight max-xl:text-[36px] max-[400px]:text-[30px]!"
           style={{ WebkitTextStroke: '1.5px #a1a1aa', color: 'transparent' }}
         >
           {roleOutline}
         </h1>
-        <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight gradient-text max-md:text-[36px]">
+        <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight gradient-text max-xl:text-[36px] max-[400px]:text-[30px]!">
           {roleAccent}
         </h1>
       </div>
 
       {/* Tag */}
-      <div className="inline-flex items-center gap-2 w-fit border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300 max-w-[680px]">
+      <div className="flex flex-wrap items-center gap-2 w-full sm:w-fit max-w-full border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300 sm:max-w-[680px]">
         <span className="text-lime-500 font-bold">{'>_'}</span>
         <span className="relative flex h-2 w-2 flex-shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75" />

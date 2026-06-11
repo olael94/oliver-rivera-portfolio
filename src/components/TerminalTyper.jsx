@@ -35,9 +35,9 @@ const TerminalTyper = ({ lines }) => {
   }, [text, phase, lineIndex, lines]);
 
   return (
-    <span data-testid="terminalTyper" className="inline-flex items-center">
+    <span data-testid="terminalTyper" className="break-words">
       {text}
-      <span className="ml-0.5 inline-block w-[1px] h-4 bg-current animate-pulse" />
+      <span className="ml-0.5 inline-block w-[1px] h-4 bg-current animate-pulse align-middle" />
     </span>
   );
 };
