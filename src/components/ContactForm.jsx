@@ -160,7 +160,7 @@ const ContactForm = () => {
         type="submit"
         disabled={status === 'sending'}
         data-testid="contactFormSubmit"
-        className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-lime-500 hover:bg-lime-400 active:bg-lime-600 text-[#0c0a07] font-semibold text-sm tracking-wide transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="self-start inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-lime-500 hover:bg-lime-400 active:bg-lime-600 text-[#0c0a07] font-semibold text-sm tracking-wide transition-all duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ fontFamily: 'var(--font-syne)' }}
       >
         {status === 'sending' ? 'Sending…' : 'Send Message'}

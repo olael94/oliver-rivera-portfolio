@@ -69,3 +69,19 @@ test('source code link opens in a new tab', () => {
 
   expect(screen.getByTestId('projectCardGithubLink').getAttribute('target')).toBe('_blank');
 });
+
+test('preview image links to the live site when one is available', () => {
+  render(<ProjectCard {...defaultProps} preview="/images/preview.png" />);
+
+  const preview = screen.getByTestId('projectCardPreview');
+  const link = preview.closest('a');
+  expect(link.getAttribute('href')).toBe('https://docrelief.ai');
+  expect(link.getAttribute('target')).toBe('_blank');
+});
+
+test('preview image is not a link when no live site is available', () => {
+  render(<ProjectCard {...defaultProps} preview="/images/preview.png" link={undefined} />);
+
+  const preview = screen.getByTestId('projectCardPreview');
+  expect(preview.closest('a')).toBeNull();
+});

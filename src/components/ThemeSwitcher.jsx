@@ -4,16 +4,35 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const ThemeSwitcher = ({ darkClassName = 'dark', inline = false }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // Default to dark mode unless the user previously chose light.
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDark);
+    let stored;
+    try {
+      stored = window.localStorage.getItem('theme');
+    } catch {
+      stored = null;
+    }
+    if (stored === 'light') setIsDarkMode(false);
+    if (stored === 'dark') setIsDarkMode(true);
   }, []);
 
   useEffect(() => {
     document.body.classList.toggle(darkClassName, isDarkMode);
   }, [isDarkMode, darkClassName]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const next = !prev;
+      try {
+        window.localStorage.setItem('theme', next ? 'dark' : 'light');
+      } catch {
+        // ignore — e.g. localStorage unavailable in private browsing
+      }
+      return next;
+    });
+  };
 
   const positionClass = inline ? '' : 'fixed top-[14px] right-[64px] md:top-[16px] md:right-[52px]';
 
@@ -21,7 +40,7 @@ const ThemeSwitcher = ({ darkClassName = 'dark', inline = false }) => {
     <div className={isDarkMode ? 'dark' : ''}>
       <button
         data-testid="themeSwitcherButton"
-        onClick={() => setIsDarkMode((prev) => !prev)}
+        onClick={toggleTheme}
         aria-label="Toggle theme"
         className={`${positionClass} theme-toggle p-0 border-none cursor-pointer`}
       >

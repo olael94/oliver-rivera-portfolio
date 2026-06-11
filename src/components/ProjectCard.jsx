@@ -8,17 +8,33 @@ const ProjectCard = ({ logo, preview, name, content, link, github }) => {
       data-testid="projectCard"
       className="card-modern group flex flex-col rounded-3xl overflow-hidden w-full max-w-[400px] md:w-[380px] md:min-w-[380px] md:max-w-[380px]"
     >
-      {/* Preview image */}
-      {preview && (
-        <div className="aspect-[16/10]">
-          <img
-            data-testid="projectCardPreview"
-            src={preview}
-            alt={`${name} preview`}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
+      {/* Preview image — links to the live site if one is available */}
+      {preview &&
+        (link ? (
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${name} live site`}
+            className="aspect-[16/10] block overflow-hidden"
+          >
+            <img
+              data-testid="projectCardPreview"
+              src={preview}
+              alt={`${name} preview`}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </a>
+        ) : (
+          <div className="aspect-[16/10] overflow-hidden">
+            <img
+              data-testid="projectCardPreview"
+              src={preview}
+              alt={`${name} preview`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
 
       {/* Body */}
       <div className="flex flex-col p-6 gap-4 flex-1">

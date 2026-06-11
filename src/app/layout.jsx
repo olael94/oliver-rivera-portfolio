@@ -39,7 +39,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${syne.variable} ${quicksand.variable} ${caveat.variable}`}>
+      <body className={`dark ${syne.variable} ${quicksand.variable} ${caveat.variable}`}>
         <MusicMotionBackground />
         <div className="flex flex-col min-h-screen">
           <header className="w-full">
