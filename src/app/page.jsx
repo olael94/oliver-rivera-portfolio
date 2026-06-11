@@ -20,9 +20,9 @@ export default function Home() {
         className="relative min-h-[calc(100vh-108px)] max-md:!min-h-0 flex flex-col justify-center max-md:justify-start pb-16 max-md:pb-6"
       >
         {/* Foreground content — two columns on desktop: IntroCard left, StickyNote right */}
-        <div className="relative z-10 flex flex-row items-start gap-12 max-md:flex-col">
+        <div className="relative z-10 flex flex-row items-start gap-12 max-md:flex-col max-md:gap-4">
           {/* Left: IntroCard + CTAs — flex-1 so it takes remaining space */}
-          <div className="flex-1 min-w-0 flex flex-col">
+          <div className="flex-1 min-w-0 flex flex-col max-md:order-2">
             <IntroCard
               name="Oliver"
               roleOutline="SOFTWARE"
@@ -46,7 +46,7 @@ export default function Home() {
                 </span>
               </a>
               <a
-                href={emailLink.link}
+                href="#contact"
                 className="neu-button inline-flex items-center px-6 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-lime-600 dark:hover:text-lime-400 font-semibold text-sm tracking-wide transition-all duration-200"
                 style={{ fontFamily: 'var(--font-syne)' }}
               >
@@ -56,7 +56,7 @@ export default function Home() {
           </div>
 
           {/* Photo — fixed width on desktop, full width on mobile */}
-          <div className="w-full md:w-auto md:flex-[0_1_260px] md:max-w-[260px] lg:flex-[0_1_340px] lg:max-w-[340px] xl:flex-[0_1_420px] xl:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-16 max-md:self-start">
+          <div className="w-full md:w-auto md:flex-[0_1_260px] md:max-w-[260px] lg:flex-[0_1_340px] lg:max-w-[340px] xl:flex-[0_1_420px] xl:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-2 max-md:self-start max-md:order-1">
             <GlitchPhotoCard
               src="/images/Me.jpg"
               alt="Oliver Rivera"
