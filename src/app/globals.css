@@ -201,6 +201,62 @@ footer {
     4px 2px 10px #0d0d0d inset;
 }
 
+/* Carved neumorphic input/textarea — used in forms */
+.neu-input {
+  background: rgba(232, 232, 232, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    -4px -2px 8px #ffffff inset,
+    4px 2px 10px #c8c8c8 inset;
+  transition:
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.dark .neu-input {
+  background: rgba(33, 33, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    -4px -2px 8px #3a3a3a inset,
+    4px 2px 10px #0d0d0d inset;
+}
+
+.neu-input:focus {
+  outline: none;
+  box-shadow:
+    -4px -2px 8px #ffffff inset,
+    4px 2px 10px #c8c8c8 inset,
+    0 0 0 2px rgba(132, 204, 22, 0.3);
+}
+
+.dark .neu-input:focus {
+  box-shadow:
+    -4px -2px 8px #3a3a3a inset,
+    4px 2px 10px #0d0d0d inset,
+    0 0 0 2px rgba(132, 204, 22, 0.3);
+}
+
+/* Neumorphic footer surface — carved/embossed edge along the top of the page */
+.footer-neu {
+  background: rgba(232, 232, 232, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 -8px 16px #ffffff,
+    0 8px 20px #d1d9e6;
+}
+
+.dark .footer-neu {
+  background: rgba(33, 33, 33, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 -8px 16px #3a3a3a,
+    0 8px 20px #0d0d0d;
+}
+
 /* Scroll behavior — smooth native scroll with navbar clearance */
 html {
   scroll-behavior: smooth;

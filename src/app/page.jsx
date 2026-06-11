@@ -2,8 +2,9 @@ import SkillsWidget from '@/components/SkillsWidget';
 import IntroCard from '@/components/IntroCard';
 import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
+import ContactForm from '@/components/ContactForm';
 import { skills, skillCategories } from '@/data/skills';
-import { introLinks, emailLink } from '@/data/links';
+import { introLinks, emailLink, socialLinks } from '@/data/links';
 
 const AVAILABILITY_LINES = ['Available for work', 'Open to internships', 'Part-time or Full-time'];
 
@@ -165,6 +166,97 @@ export default function Home() {
             </>
           }
         />
+      </section>
+
+      {/* ── CONTACT ───────────────────────────────────────────────────────────
+          Contact form that emails the message directly to me, plus quick
+          links to email and socials.
+      ─────────────────────────────────────────────────────────────────────── */}
+      <section id="contact" className="py-24 max-md:py-16">
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-14">
+          <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
+            03
+          </span>
+          <span
+            className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
+            style={{ fontFamily: 'var(--font-syne)' }}
+          >
+            Contact{' '}
+            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+              &
+            </span>{' '}
+            Me
+          </span>
+          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Left: blurb + email + socials */}
+          <div className="flex-1 min-w-0 flex flex-col gap-6">
+            <h3
+              className="text-2xl font-extrabold text-zinc-800 dark:text-white"
+              style={{ fontFamily: 'var(--font-syne)' }}
+            >
+              Let&rsquo;s chat
+            </h3>
+            <p className="text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[520px] leading-[1.8]">
+              I'm currently open to full-time roles, freelance projects, and collaborations. Whether
+              you have a question or just want to say hi — my inbox is always open!
+            </p>
+
+            <a
+              href={emailLink.link}
+              className="flex items-center gap-3 group w-fit"
+              aria-label="Email"
+            >
+              <span className="neu-icon flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200">
+                <img
+                  src={emailLink.imageSrc}
+                  alt=""
+                  className="w-4 h-4 object-contain dark:invert dark:brightness-90"
+                />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-xs uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500">
+                  Email
+                </span>
+                <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                  {emailLink.email}
+                </span>
+              </span>
+            </a>
+
+            <div className="flex flex-col gap-3">
+              <span className="text-xs uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500">
+                Find me on
+              </span>
+              <div className="flex flex-row gap-2">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={link.name}
+                    className="neu-icon inline-flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+                  >
+                    <img
+                      src={link.imageSrc}
+                      alt={link.name}
+                      className="w-4 h-4 object-contain dark:invert dark:brightness-90"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: contact form */}
+          <div className="w-full lg:flex-[0_1_540px]">
+            <ContactForm />
+          </div>
+        </div>
       </section>
     </div>
   );

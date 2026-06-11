@@ -61,6 +61,13 @@ const Navbar = () => {
         const el = document.getElementById(id);
         if (el && el.offsetTop <= scrollY) current = id;
       }
+
+      // Near the bottom of the page, force the last section active even if its
+      // offsetTop is past the max scrollable position (e.g. a short final section).
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) current = NAV_LINKS[NAV_LINKS.length - 1].id;
+
       setActiveSection(current);
     };
 
