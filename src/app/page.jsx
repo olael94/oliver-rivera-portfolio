@@ -3,6 +3,7 @@ import IntroCard from '@/components/IntroCard';
 import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
 import ContactForm from '@/components/ContactForm';
+import RevealText from '@/components/RevealText';
 import { skills, skillCategories } from '@/data/skills';
 import { introLinks, emailLink, socialLinks } from '@/data/links';
 
@@ -88,26 +89,28 @@ export default function Home() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="experience" className="py-24 max-md:py-16">
         {/* Section label */}
-        <div className="flex items-center gap-4 mb-14">
+        <div className="flex items-center gap-4 mb-10">
           <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
-            01
+            <RevealText>01</RevealText>
           </span>
           <span
             className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
-            Skills{' '}
-            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-              &
-            </span>{' '}
-            Tools
+            <RevealText delay={0.1}>
+              Skills{' '}
+              <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+                &
+              </span>{' '}
+              Tools
+            </RevealText>
           </span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
         </div>
 
         {/* Skills intro */}
         <div className="mb-10">
-          <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
+          <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
             The languages, frameworks, and tools I reach for most, grouped by where they fit in the
             stack.
           </p>
@@ -119,7 +122,6 @@ export default function Home() {
             <SkillsWidget
               key={id}
               title={title}
-              content={`My ${title.toLowerCase()} skills:`}
               skills={skills.filter((skill) => skill.category === id)}
             />
           ))}
@@ -138,26 +140,31 @@ export default function Home() {
           header={
             <>
               {/* Section label */}
-              <div className="flex items-center gap-4 mb-14">
+              <div className="flex items-center gap-4 mb-10">
                 <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
-                  02
+                  <RevealText>02</RevealText>
                 </span>
                 <span
                   className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
                   style={{ fontFamily: 'var(--font-syne)' }}
                 >
-                  Projects{' '}
-                  <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-                    &
-                  </span>{' '}
-                  Contributions
+                  <RevealText delay={0.1}>
+                    Projects{' '}
+                    <span
+                      className="lowercase"
+                      style={{ fontFamily: 'var(--font-caveat), cursive' }}
+                    >
+                      &
+                    </span>{' '}
+                    Contributions
+                  </RevealText>
                 </span>
                 <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
               </div>
 
               {/* Section heading */}
               <div className="mb-10">
-                <p className="mt-2 text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[680px] leading-[1.8]">
+                <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
                   A selection of things I've built, from side projects to production applications.
                   Full-stack, AI-powered, and everything in between. Clean code, real problems,
                   practical solutions.
@@ -174,19 +181,21 @@ export default function Home() {
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="contact" className="py-24 max-md:py-16">
         {/* Section label */}
-        <div className="flex items-center gap-4 mb-14">
+        <div className="flex items-center gap-4 mb-10">
           <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
-            03
+            <RevealText>03</RevealText>
           </span>
           <span
             className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
-            Contact{' '}
-            <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-              &
-            </span>{' '}
-            Me
+            <RevealText delay={0.1}>
+              Contact{' '}
+              <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+                &
+              </span>{' '}
+              Me
+            </RevealText>
           </span>
           <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
         </div>
@@ -200,7 +209,7 @@ export default function Home() {
             >
               Let&rsquo;s chat
             </h3>
-            <p className="text-[17px] text-zinc-500 dark:text-zinc-400 max-w-[520px] leading-[1.8]">
+            <p className="text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[520px] leading-[1.8]">
               I'm currently open to full-time roles, freelance projects, and collaborations. Whether
               you have a question or just want to say hi — my inbox is always open!
             </p>

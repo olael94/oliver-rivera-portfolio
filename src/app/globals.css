@@ -17,6 +17,7 @@
 :root {
   --font-quicksand: system-ui, sans-serif;
   --font-syne: system-ui, sans-serif;
+  --section-glow: transparent;
   --motion-shape-bg: rgba(232, 232, 232, 0.55);
   --motion-shape-border: rgba(255, 255, 255, 0.4);
   --motion-shape-shadow:
@@ -101,160 +102,160 @@ footer {
 /* Shared card style — neumorphic soft-shadow surface */
 .card-modern {
   border-radius: 16px;
-  background: rgba(232, 232, 232, 0.99);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.99) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -8px -4px 16px #ffffff,
-    8px 4px 20px #c8c8c8;
+    -8px -4px 16px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    8px 4px 20px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
   transition: box-shadow 0.25s ease;
 }
 
 .dark .card-modern {
-  background: rgba(33, 33, 33, 0.98);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.98) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -8px -4px 16px #3a3a3a,
-    8px 4px 20px #0d0d0d;
+    -8px -4px 16px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    8px 4px 20px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 .card-modern:hover {
   box-shadow:
-    -10px -5px 20px #ffffff,
-    10px 5px 26px #bdbdbd;
+    -10px -5px 20px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    10px 5px 26px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%);
 }
 
 .dark .card-modern:hover {
   box-shadow:
-    -10px -5px 20px #424242,
-    10px 5px 26px #080808;
+    -10px -5px 20px color-mix(in srgb, #424242 75%, var(--section-glow) 25%),
+    10px 5px 26px color-mix(in srgb, #080808 75%, var(--section-glow) 25%);
 }
 
 /* Small raised icon badge — skill/project/social icons */
 .neu-icon {
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -4px -2px 8px #ffffff,
-    4px 2px 10px #c8c8c8;
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
   transition: box-shadow 0.25s ease;
 }
 
 .dark .neu-icon {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -4px -2px 8px #3a3a3a,
-    4px 2px 10px #0d0d0d;
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 .neu-icon:hover,
 .neu-icon:active {
   box-shadow:
-    -4px -2px 8px #ffffff inset,
-    4px 2px 10px #c8c8c8 inset;
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset;
 }
 
 .dark .neu-icon:hover,
 .dark .neu-icon:active {
   box-shadow:
-    -4px -2px 8px #3a3a3a inset,
-    4px 2px 10px #0d0d0d inset;
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%) inset;
 }
 
 /* Raised neumorphic button — secondary CTAs */
 .neu-button {
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -8px -4px 16px #ffffff,
-    8px 4px 20px #bdbdbd;
+    -8px -4px 16px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    8px 4px 20px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%);
   transition:
     box-shadow 0.2s ease,
     color 0.2s ease;
 }
 
 .dark .neu-button {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -8px -4px 16px #3a3a3a,
-    8px 4px 20px #0d0d0d;
+    -8px -4px 16px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    8px 4px 20px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 .neu-button:hover,
 .neu-button:active {
   box-shadow:
-    -4px -2px 8px #ffffff inset,
-    4px 2px 10px #bdbdbd inset;
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%) inset;
 }
 
 .dark .neu-button:hover,
 .dark .neu-button:active {
   box-shadow:
-    -4px -2px 8px #3a3a3a inset,
-    4px 2px 10px #0d0d0d inset;
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%) inset;
 }
 
 /* Carved neumorphic input/textarea — used in forms */
 .neu-input {
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -4px -2px 8px #ffffff inset,
-    4px 2px 10px #c8c8c8 inset;
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset;
   transition:
     box-shadow 0.2s ease,
     color 0.2s ease;
 }
 
 .dark .neu-input {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -4px -2px 8px #3a3a3a inset,
-    4px 2px 10px #0d0d0d inset;
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%) inset;
 }
 
 .neu-input:focus {
   outline: none;
   box-shadow:
-    -4px -2px 8px #ffffff inset,
-    4px 2px 10px #c8c8c8 inset,
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset,
     0 0 0 2px rgba(132, 204, 22, 0.3);
 }
 
 .dark .neu-input:focus {
   box-shadow:
-    -4px -2px 8px #3a3a3a inset,
-    4px 2px 10px #0d0d0d inset,
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%) inset,
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%) inset,
     0 0 0 2px rgba(132, 204, 22, 0.3);
 }
 
 /* Neumorphic footer surface — carved/embossed edge along the top of the page */
 .footer-neu {
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    0 -8px 16px #ffffff,
-    0 8px 20px #d1d9e6;
+    0 -8px 16px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    0 8px 20px color-mix(in srgb, #d1d9e6 75%, var(--section-glow) 25%);
 }
 
 .dark .footer-neu {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    0 -8px 16px #3a3a3a,
-    0 8px 20px #0d0d0d;
+    0 -8px 16px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    0 8px 20px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 /* Scroll behavior — smooth native scroll with navbar clearance */
@@ -269,34 +270,34 @@ section[id] {
 
 /* Neumorphic photo frame — keeps tilt/zoom motion, adds lime glow on hover */
 .neu-frame {
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -10px -6px 20px #ffffff,
-    10px 6px 26px #c8c8c8;
+    -10px -6px 20px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    10px 6px 26px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
 }
 
 .dark .neu-frame {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -10px -6px 20px #3a3a3a,
-    10px 6px 26px #0d0d0d;
+    -10px -6px 20px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    10px 6px 26px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 .group:hover .neu-frame {
   box-shadow:
-    -10px -6px 20px #ffffff,
-    10px 6px 26px #c8c8c8,
+    -10px -6px 20px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    10px 6px 26px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%),
     0 0 50px rgba(132, 204, 22, 0.35);
 }
 
 .dark .group:hover .neu-frame {
   box-shadow:
-    -10px -6px 20px #3a3a3a,
-    10px 6px 26px #0d0d0d,
+    -10px -6px 20px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    10px 6px 26px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%),
     0 0 50px rgba(132, 204, 22, 0.35);
 }
 
@@ -308,25 +309,25 @@ section[id] {
   width: 60px;
   border-radius: 15px;
   overflow: hidden;
-  background: rgba(232, 232, 232, 0.6);
+  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -8px -4px 8px 0px #ffffff,
-    8px 4px 12px 0px #bdbdbd,
-    4px 4px 4px 0px #c8c8c8 inset,
-    -4px -4px 4px 0px #ffffff inset;
+    -8px -4px 8px 0px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    8px 4px 12px 0px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%),
+    4px 4px 4px 0px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset,
+    -4px -4px 4px 0px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset;
 }
 
 .dark .theme-toggle {
-  background: rgba(33, 33, 33, 0.5);
+  background: color-mix(in srgb, rgba(33, 33, 33, 0.5) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -8px -4px 8px 0px #3a3a3a,
-    8px 4px 12px 0px #0d0d0d,
-    4px 4px 4px 0px #0d0d0d inset,
-    -4px -4px 4px 0px #3a3a3a inset;
+    -8px -4px 8px 0px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    8px 4px 12px 0px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%),
+    4px 4px 4px 0px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%) inset,
+    -4px -4px 4px 0px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%) inset;
 }
 
 .theme-toggle-indicator {
@@ -334,21 +335,21 @@ section[id] {
   inset: 0;
   height: 100%;
   width: 200%;
-  background: #dcdcdc;
+  background: color-mix(in srgb, #dcdcdc 75%, var(--section-glow) 25%);
   border-radius: 15px;
   transform: translate3d(-75%, 0, 0);
   transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
   box-shadow:
-    -8px -4px 8px 0px #d4d4d4,
-    8px 4px 12px 0px #c8c8c8;
+    -8px -4px 8px 0px color-mix(in srgb, #d4d4d4 75%, var(--section-glow) 25%),
+    8px 4px 12px 0px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
 }
 
 .dark .theme-toggle-indicator {
-  background: #262626;
+  background: color-mix(in srgb, #262626 75%, var(--section-glow) 25%);
   transform: translate3d(25%, 0, 0);
   box-shadow:
-    -8px -4px 8px 0px #0d0d0d,
-    8px 4px 12px 0px #0d0d0d;
+    -8px -4px 8px 0px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%),
+    8px 4px 12px 0px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 .theme-toggle-thumb {
@@ -380,30 +381,30 @@ section[id] {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -4px -2px 8px #ffffff,
-    4px 2px 10px #c8c8c8;
+    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
+    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
 }
 
 .dark .section-badge {
   background: rgba(132, 204, 22, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
-    -4px -2px 8px #3a3a3a,
-    4px 2px 10px #0d0d0d;
+    -4px -2px 8px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
+    4px 2px 10px color-mix(in srgb, #0d0d0d 75%, var(--section-glow) 25%);
 }
 
 /* Neumorphic embossed text — text matches the surface color, shape comes from shadow */
 .neu-text {
   color: #e8e8e8;
   text-shadow:
-    -2px -2px 2px #ffffff,
+    -2px -2px 2px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
     2px 2px 2px rgba(132, 204, 22, 0.5);
 }
 
 .dark .neu-text {
   color: #212121;
   text-shadow:
-    -2px -2px 2px #3a3a3a,
+    -2px -2px 2px color-mix(in srgb, #3a3a3a 75%, var(--section-glow) 25%),
     2px 2px 2px rgba(132, 204, 22, 0.5);
 }
 

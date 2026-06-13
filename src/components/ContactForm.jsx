@@ -107,7 +107,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2" suppressHydrationWarning>
           <label
             htmlFor="contact-email"
             className="text-sm font-semibold text-zinc-600 dark:text-zinc-300"

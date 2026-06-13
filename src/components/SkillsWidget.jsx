@@ -17,7 +17,7 @@ const levelLabel = (p) => {
   };
 };
 
-function SkillsWidget({ title, content, skills = [] }) {
+function SkillsWidget({ title, skills = [] }) {
   return (
     <section
       data-testid="skillsWidget"
@@ -31,12 +31,6 @@ function SkillsWidget({ title, content, skills = [] }) {
         >
           {title}
         </h2>
-        <p
-          data-testid="skillsWidgetContent"
-          className="text-sm text-zinc-400 dark:text-zinc-500 mt-1"
-        >
-          {content}
-        </p>
       </div>
       <ul className="flex flex-col gap-3 list-none p-0">
         {[...skills]
@@ -80,7 +74,6 @@ function SkillsWidget({ title, content, skills = [] }) {
 
 SkillsWidget.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
   skills: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

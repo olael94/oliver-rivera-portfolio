@@ -62,7 +62,7 @@ const HorizontalProjects = ({ header }) => {
         ref={viewportRef}
         className={
           isDesktop
-            ? 'sticky top-[88px] h-[calc(100vh-88px)] flex flex-col overflow-hidden'
+            ? 'sticky top-[88px] h-[calc(100vh-88px)] flex flex-col overflow-hidden bg-transparent pt-3 pl-3'
             : 'flex flex-col'
         }
       >
@@ -71,14 +71,14 @@ const HorizontalProjects = ({ header }) => {
         <div
           className={
             isDesktop
-              ? 'flex-1 flex items-start overflow-hidden'
+              ? 'flex-1 flex items-start overflow-hidden pt-8 px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
               : 'flex flex-col items-center gap-4'
           }
         >
           <motion.div
             ref={trackRef}
             style={isDesktop ? { x } : undefined}
-            className={isDesktop ? 'flex flex-row gap-4 w-max' : 'contents'}
+            className={isDesktop ? 'flex flex-row rounded-2xl gap-4 w-max pr-24' : 'contents'}
           >
             {projects.map((project, index) => (
               <ProjectCard

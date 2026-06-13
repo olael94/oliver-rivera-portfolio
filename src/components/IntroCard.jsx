@@ -2,6 +2,10 @@
 
 import PropTypes from 'prop-types';
 import TerminalTyper from './TerminalTyper';
+import CursorImageTrail from './CursorImageTrail';
+import { projects } from '@/data/projects';
+
+const TRAIL_IMAGES = projects.map((project) => project.preview).filter(Boolean);
 
 const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLink }) => {
   return (
@@ -10,7 +14,7 @@ const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLi
       className="flex flex-col py-8 rounded-md w-full max-w-[850px] gap-5"
     >
       {/* Heading */}
-      <div data-testid="introCardName">
+      <CursorImageTrail images={TRAIL_IMAGES} data-testid="introCardName">
         <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight text-[#0f0f18] dark:text-white max-xl:text-[36px] max-[400px]:text-[30px]!">
           HI, I&rsquo;M {name.toUpperCase()}
         </h1>
@@ -23,7 +27,7 @@ const IntroCard = ({ name, roleOutline, roleAccent, tag, content, links, emailLi
         <h1 className="text-[52px] leading-[1.05] font-extrabold tracking-tight gradient-text max-xl:text-[36px] max-[400px]:text-[30px]!">
           {roleAccent}
         </h1>
-      </div>
+      </CursorImageTrail>
 
       {/* Tag */}
       <div className="flex flex-wrap items-center gap-2 w-full sm:w-fit max-w-full border-l-2 border-lime-500 bg-lime-500/5 pl-4 pr-5 py-2 rounded-r-md font-mono text-sm text-zinc-700 dark:text-zinc-300 sm:max-w-[680px]">
