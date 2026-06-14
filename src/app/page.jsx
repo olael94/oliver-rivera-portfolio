@@ -4,6 +4,8 @@ import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
 import ContactForm from '@/components/ContactForm';
 import RevealText from '@/components/RevealText';
+import ScrollDivider from '@/components/ScrollDivider';
+import FadeInView from '@/components/FadeInView';
 import { skills, skillCategories } from '@/data/skills';
 import { introLinks, emailLink, socialLinks } from '@/data/links';
 
@@ -59,7 +61,6 @@ export default function Home() {
           {/* Photo — fixed width on desktop, full width on mobile */}
           <div className="w-full md:w-auto md:flex-[0_1_260px] md:max-w-[260px] lg:flex-[0_1_340px] lg:max-w-[340px] xl:flex-[0_1_420px] xl:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-2 max-md:self-start max-md:order-1">
             <GlitchPhotoCard
-              src="/images/Me.jpg"
               alt="Oliver Rivera"
               name="Oliver Rivera"
               title="Software Engineer"
@@ -105,7 +106,7 @@ export default function Home() {
               Tools
             </RevealText>
           </span>
-          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
+          <ScrollDivider />
         </div>
 
         {/* Skills intro */}
@@ -159,7 +160,7 @@ export default function Home() {
                     Contributions
                   </RevealText>
                 </span>
-                <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
+                <ScrollDivider />
               </div>
 
               {/* Section heading */}
@@ -197,74 +198,80 @@ export default function Home() {
               Me
             </RevealText>
           </span>
-          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800/60" />
+          <ScrollDivider />
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Left: blurb + email + socials */}
           <div className="flex-1 min-w-0 flex flex-col gap-6">
-            <h3
-              className="text-2xl font-extrabold text-zinc-800 dark:text-white"
-              style={{ fontFamily: 'var(--font-syne)' }}
-            >
-              Let&rsquo;s chat
-            </h3>
-            <p className="text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[520px] leading-[1.8]">
-              I'm currently open to full-time roles, freelance projects, and collaborations. Whether
-              you have a question or just want to say hi — my inbox is always open!
-            </p>
+            <FadeInView delay={0}>
+              <h3
+                className="text-2xl font-extrabold text-zinc-800 dark:text-white"
+                style={{ fontFamily: 'var(--font-syne)' }}
+              >
+                Let&rsquo;s chat
+              </h3>
+              <p className="mt-6 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[520px] leading-[1.8]">
+                I'm currently open to full-time roles, freelance projects, and collaborations.
+                Whether you have a question or just want to say hi — my inbox is always open!
+              </p>
+            </FadeInView>
 
-            <a
-              href={emailLink.link}
-              className="flex items-center gap-3 group w-fit"
-              aria-label="Email"
-            >
-              <span className="neu-icon flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200">
-                <img
-                  src={emailLink.imageSrc}
-                  alt=""
-                  className="w-4 h-4 object-contain dark:invert dark:brightness-90"
-                />
-              </span>
-              <span className="flex flex-col">
+            <FadeInView delay={0.1}>
+              <a
+                href={emailLink.link}
+                className="flex items-center gap-3 group w-fit"
+                aria-label="Email"
+              >
+                <span className="neu-icon flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-200">
+                  <img
+                    src={emailLink.imageSrc}
+                    alt=""
+                    className="w-4 h-4 object-contain dark:invert dark:brightness-90"
+                  />
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-xs uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500">
+                    Email
+                  </span>
+                  <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                    {emailLink.email}
+                  </span>
+                </span>
+              </a>
+            </FadeInView>
+
+            <FadeInView delay={0.2}>
+              <div className="flex flex-col gap-3">
                 <span className="text-xs uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500">
-                  Email
+                  Find me on
                 </span>
-                <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-200 group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
-                  {emailLink.email}
-                </span>
-              </span>
-            </a>
-
-            <div className="flex flex-col gap-3">
-              <span className="text-xs uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500">
-                Find me on
-              </span>
-              <div className="flex flex-row gap-2">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={link.name}
-                    className="neu-icon inline-flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
-                  >
-                    <img
-                      src={link.imageSrc}
-                      alt={link.name}
-                      className="w-4 h-4 object-contain dark:invert dark:brightness-90"
-                    />
-                  </a>
-                ))}
+                <div className="flex flex-row gap-2">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={link.name}
+                      className="neu-icon inline-flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200"
+                    >
+                      <img
+                        src={link.imageSrc}
+                        alt={link.name}
+                        className="w-4 h-4 object-contain dark:invert dark:brightness-90"
+                      />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeInView>
           </div>
 
           {/* Right: contact form */}
-          <div className="w-full lg:flex-[0_1_540px]">
+          <FadeInView delay={0.15} className="w-full lg:flex-[0_1_540px]">
             <ContactForm />
-          </div>
+          </FadeInView>
         </div>
       </section>
     </div>

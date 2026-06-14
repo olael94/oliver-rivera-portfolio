@@ -38,6 +38,9 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      webgl-fluid:
+        specifier: ^0.4.0
+        version: 0.4.0
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.4
@@ -2745,6 +2748,9 @@ packages:
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
+
+  webgl-fluid@0.4.0:
+    resolution: {integrity: sha512-j/GMExSlSRYxNwFBAs5ogA9Xe6iXuYX+GiSERov4+dsTpcINFKesM6ObV0qiEk0RYZ0umYI6mFu8mY4BX15UxQ==}
 
   webidl-conversions@8.0.1:
     resolution: {integrity: sha512-BMhLD/Sw+GbJC21C/UgyaZX41nPt8bUTg+jWyDeg7e7YN4xOM05YPSIXceACnXVtqyEw/LMClUQMtMZ+PGGpqQ==}
@@ -5526,6 +5532,8 @@ snapshots:
   w3c-xmlserializer@5.0.0:
     dependencies:
       xml-name-validator: 5.0.0
+
+  webgl-fluid@0.4.0: {}
 
   webidl-conversions@8.0.1: {}
 

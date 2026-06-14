@@ -1,4 +1,19 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { motion, useAnimationControls, useInView } from 'motion/react';
 import PropTypes from 'prop-types';
+import { getScrollDirection } from '@/lib/scrollDirection';
+
+const listVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+};
 
 const levelLabel = (p) => {
   if (p >= 80)
@@ -18,6 +33,22 @@ const levelLabel = (p) => {
 };
 
 function SkillsWidget({ title, skills = [] }) {
+  const ref = useRef(null);
+  const controls = useAnimationControls();
+  const isInView = useInView(ref, { amount: 0.2 });
+
+  useEffect(() => {
+    if (isInView) {
+      if (getScrollDirection() === 'down') {
+        controls.start('visible');
+      } else {
+        controls.set('visible');
+      }
+    } else {
+      controls.set('hidden');
+    }
+  }, [isInView, controls]);
+
   return (
     <section
       data-testid="skillsWidget"
@@ -32,13 +63,19 @@ function SkillsWidget({ title, skills = [] }) {
           {title}
         </h2>
       </div>
-      <ul className="flex flex-col gap-3 list-none p-0">
+      <motion.ul
+        ref={ref}
+        className="flex flex-col gap-3 list-none p-0"
+        initial="hidden"
+        animate={controls}
+        variants={listVariants}
+      >
         {[...skills]
           .sort((a, b) => b.proficiency - a.proficiency)
           .map((skill, index) => {
             const { label, color } = levelLabel(skill.proficiency);
             return (
-              <li key={index} data-testid={`skillsWidgetItem${index}`}>
+              <motion.li key={index} data-testid={`skillsWidgetItem${index}`} variants={itemVariants}>
                 <div className="flex flex-row items-center gap-3">
                   <div className="neu-icon w-9 h-9 rounded-xl flex items-center justify-center shrink-0">
                     <img
@@ -64,10 +101,10 @@ function SkillsWidget({ title, skills = [] }) {
                     </span>
                   </div>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
-      </ul>
+      </motion.ul>
     </section>
   );
 }

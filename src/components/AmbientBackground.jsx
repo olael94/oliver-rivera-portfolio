@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useScroll, useTransform, useMotionValueEvent, motion } from 'motion/react';
+import WebGLFluid from 'webgl-fluid';
 
 // Full-page ambient background: each section has its own flat accent
 // color — neutral gray for the intro, then blue, indigo and lime. Each
@@ -32,6 +33,7 @@ export default function AmbientBackground() {
   const { scrollYProgress } = useScroll();
   const [starts, setStarts] = useState(DEFAULT_STARTS);
   const [isDark, setIsDark] = useState(true);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     const update = () => setIsDark(document.body.classList.contains('dark'));
@@ -41,6 +43,31 @@ export default function AmbientBackground() {
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
+  }, []);
+
+  // Subtle ambient fluid sim, tinted lime green to echo the portfolio's
+  // accent color rather than reading as a colorful, distracting effect.
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    WebGLFluid(canvasRef.current, {
+      TRIGGER: 'hover',
+      IMMEDIATE: true,
+      AUTO: true,
+      INTERVAL: 6000,
+      SPLAT_COUNT: 2,
+      SPLAT_RADIUS: 0.25,
+      SPLAT_FORCE: 400,
+      DENSITY_DISSIPATION: 0.4,
+      VELOCITY_DISSIPATION: 6,
+      CURL: 0,
+      SPLAT_COLOR: { r: 0.5, g: 0.77, b: 0.083 },
+      COLORFUL: false,
+      TRANSPARENT: true,
+      SHADING: false,
+      BLOOM: false,
+      SUNRAYS: false,
+    });
   }, []);
 
   useEffect(() => {
@@ -127,6 +154,14 @@ export default function AmbientBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       <motion.div className="absolute inset-0" style={{ backgroundColor: baseColor }} />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          mixBlendMode: 'normal',
+          filter: isDark ? 'none' : 'brightness(0.55) saturate(6) contrast(1.4) hue-rotate(-35deg)',
+        }}
+      />
     </div>
   );
 }

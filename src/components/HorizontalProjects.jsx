@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import PropTypes from 'prop-types';
+import FadeInView from './FadeInView';
 import ProjectCard from './ProjectCard';
 import { projects } from '@/data/projects';
 
@@ -80,17 +81,26 @@ const HorizontalProjects = ({ header }) => {
             style={isDesktop ? { x } : undefined}
             className={isDesktop ? 'flex flex-row rounded-2xl gap-4 w-max pr-24' : 'contents'}
           >
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                logo={project.logo}
-                preview={project.preview}
-                name={project.name}
-                content={project.content}
-                link={project.link}
-                github={project.github}
-              />
-            ))}
+            {projects.map((project, index) => {
+              const card = (
+                <ProjectCard
+                  logo={project.logo}
+                  preview={project.preview}
+                  name={project.name}
+                  content={project.content}
+                  link={project.link}
+                  github={project.github}
+                />
+              );
+
+              if (isDesktop) return <div key={index} className="flex">{card}</div>;
+
+              return (
+                <FadeInView key={index} delay={Math.min(index * 0.08, 0.32)}>
+                  {card}
+                </FadeInView>
+              );
+            })}
           </motion.div>
         </div>
       </div>
