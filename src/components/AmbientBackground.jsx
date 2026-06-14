@@ -47,14 +47,19 @@ export default function AmbientBackground() {
 
   // Subtle ambient fluid sim, tinted lime green to echo the portfolio's
   // accent color rather than reading as a colorful, distracting effect.
+  // Skipped on touch devices — a full-screen WebGL canvas running an
+  // unbounded fluid sim repeatedly crashed the page on iPhone Safari.
   useEffect(() => {
     if (!canvasRef.current) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
     WebGLFluid(canvasRef.current, {
       TRIGGER: 'hover',
       IMMEDIATE: true,
       AUTO: true,
       INTERVAL: 6000,
+      SIM_RESOLUTION: 64,
+      DYE_RESOLUTION: 512,
       SPLAT_COUNT: 2,
       SPLAT_RADIUS: 0.25,
       SPLAT_FORCE: 400,
