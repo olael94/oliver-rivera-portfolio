@@ -61,11 +61,7 @@ export default function Home() {
 
           {/* Photo — fixed width on desktop, full width on mobile */}
           <div className="w-full md:w-auto md:flex-[0_1_260px] md:max-w-[260px] lg:flex-[0_1_340px] lg:max-w-[340px] xl:flex-[0_1_420px] xl:max-w-[420px] relative pt-4 pb-10 max-md:pt-2 max-md:pb-2 max-md:self-start max-md:order-1">
-            <GlitchPhotoCard
-              alt="Oliver Rivera"
-              name="Oliver Rivera"
-              title="Software Engineer"
-            />
+            <GlitchPhotoCard alt="Oliver Rivera" name="Oliver Rivera" title="Software Engineer" />
           </div>
         </div>
 
@@ -90,46 +86,46 @@ export default function Home() {
           Skills grouped by category: Frontend, Backend, Tools & DevOps.
       ─────────────────────────────────────────────────────────────────────── */}
       <SnapSection>
-      <section id="experience" className="py-24 max-md:py-16">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-10">
-          <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
-            <RevealText>01</RevealText>
-          </span>
-          <span
-            className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
-            style={{ fontFamily: 'var(--font-syne)' }}
-          >
-            <RevealText delay={0.1}>
-              Skills{' '}
-              <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-                &
-              </span>{' '}
-              Tools
-            </RevealText>
-          </span>
-          <ScrollDivider />
-        </div>
+        <section id="experience" className="py-24 max-md:py-16">
+          {/* Section label */}
+          <div className="flex items-center gap-4 mb-10">
+            <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
+              <RevealText>01</RevealText>
+            </span>
+            <span
+              className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
+              style={{ fontFamily: 'var(--font-syne)' }}
+            >
+              <RevealText delay={0.1}>
+                Skills{' '}
+                <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+                  &
+                </span>{' '}
+                Tools
+              </RevealText>
+            </span>
+            <ScrollDivider />
+          </div>
 
-        {/* Skills intro */}
-        <div className="mb-10">
-          <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
-            The languages, frameworks, and tools I reach for most, grouped by where they fit in the
-            stack.
-          </p>
-        </div>
+          {/* Skills intro */}
+          <div className="mb-10">
+            <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
+              The languages, frameworks, and tools I reach for most, grouped by where they fit in
+              the stack.
+            </p>
+          </div>
 
-        {/* Skill categories — side by side on desktop, stacked on mobile */}
-        <div className="flex flex-col gap-6 max-md:items-center md:flex-row">
-          {skillCategories.map(({ id, title }) => (
-            <SkillsWidget
-              key={id}
-              title={title}
-              skills={skills.filter((skill) => skill.category === id)}
-            />
-          ))}
-        </div>
-      </section>
+          {/* Skill categories — side by side on desktop, stacked on mobile */}
+          <div className="flex flex-col gap-6 max-md:items-center md:flex-row">
+            {skillCategories.map(({ id, title }) => (
+              <SkillsWidget
+                key={id}
+                title={title}
+                skills={skills.filter((skill) => skill.category === id)}
+              />
+            ))}
+          </div>
+        </section>
       </SnapSection>
 
       {/* ── PROJECTS ──────────────────────────────────────────────────────────

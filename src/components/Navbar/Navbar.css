@@ -80,12 +80,10 @@
 .mobile-menu-btn {
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
   color: #3f3f46;
   z-index: 51;
   width: 36px;
   height: 36px;
-  line-height: 1;
   background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
@@ -117,7 +115,8 @@
   top: 76px;
   left: 0;
   right: 0;
-  background: color-mix(in srgb, rgba(232, 232, 232, 0.7) 75%, var(--section-glow) 25%);
+  z-index: 50;
+  background: var(--color-surface);
   border-bottom: 1px solid rgba(132, 204, 22, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -137,7 +136,7 @@
 }
 
 .dark .mobile-menu {
-  background: color-mix(in srgb, rgba(33, 33, 33, 0.7) 75%, var(--section-glow) 25%);
+  background: var(--color-dark-bg);
   border-bottom-color: rgba(132, 204, 22, 0.1);
 }
 

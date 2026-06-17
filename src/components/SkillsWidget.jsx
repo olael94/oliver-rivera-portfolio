@@ -75,7 +75,11 @@ function SkillsWidget({ title, skills = [] }) {
           .map((skill, index) => {
             const { label, color } = levelLabel(skill.proficiency);
             return (
-              <motion.li key={index} data-testid={`skillsWidgetItem${index}`} variants={itemVariants}>
+              <motion.li
+                key={index}
+                data-testid={`skillsWidgetItem${index}`}
+                variants={itemVariants}
+              >
                 <div className="flex flex-row items-center gap-3">
                   <div className="neu-icon w-9 h-9 rounded-xl flex items-center justify-center shrink-0">
                     <img

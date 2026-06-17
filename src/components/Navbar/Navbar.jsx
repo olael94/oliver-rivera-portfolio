@@ -114,7 +114,7 @@ const Navbar = () => {
     <nav
       ref={navRef}
       className={`flex items-center justify-between w-full h-full px-5 transition-colors duration-200 ${
-        isActuallyMobile && showLinks ? 'bg-white dark:bg-[#212121]' : ''
+        isActuallyMobile && showLinks ? 'bg-[#e8e8e8] dark:bg-[#212121]' : ''
       }`}
     >
       {/* Desktop: floating pill nav centered in the header */}
@@ -178,7 +178,28 @@ const Navbar = () => {
           <span
             className={`hamburger-icon flex items-center justify-center ${showLinks ? 'open' : ''}`}
           >
-            {showLinks ? '✕' : '☰'}
+            {showLinks ? (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path
+                  d="M1 1l12 12M13 1L1 13"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="16"
+                height="12"
+                viewBox="0 0 16 12"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <rect y="0" width="16" height="2" rx="1" />
+                <rect y="5" width="16" height="2" rx="1" />
+                <rect y="10" width="16" height="2" rx="1" />
+              </svg>
+            )}
           </span>
         </button>
       )}

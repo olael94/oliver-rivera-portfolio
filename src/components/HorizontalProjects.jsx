@@ -93,7 +93,12 @@ const HorizontalProjects = ({ header }) => {
                 />
               );
 
-              if (isDesktop) return <div key={index} className="flex">{card}</div>;
+              if (isDesktop)
+                return (
+                  <div key={index} className="flex">
+                    {card}
+                  </div>
+                );
 
               return (
                 <FadeInView key={index} delay={Math.min(index * 0.08, 0.32)}>
