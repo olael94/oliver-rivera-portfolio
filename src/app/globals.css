@@ -102,13 +102,13 @@ footer {
 /* Shared card style — neumorphic soft-shadow surface */
 .card-modern {
   border-radius: 16px;
-  background: color-mix(in srgb, rgba(232, 232, 232, 0.99) 75%, var(--section-glow) 25%);
+  background: color-mix(in srgb, rgba(235, 238, 248, 0.82) 52%, var(--section-glow) 48%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -8px -4px 16px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
-    8px 4px 20px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
+    -8px -4px 16px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%),
+    8px 4px 20px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%);
   transition: box-shadow 0.25s ease;
 }
 
@@ -122,8 +122,8 @@ footer {
 
 .card-modern:hover {
   box-shadow:
-    -10px -5px 20px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
-    10px 5px 26px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%);
+    -10px -5px 20px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%),
+    10px 5px 26px color-mix(in srgb, #b0b5cc 55%, var(--section-glow) 45%);
 }
 
 .dark .card-modern:hover {
@@ -134,13 +134,13 @@ footer {
 
 /* Small raised icon badge — skill/project/social icons */
 .neu-icon {
-  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
+  background: color-mix(in srgb, rgba(235, 238, 248, 0.7) 52%, var(--section-glow) 48%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
-    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%);
+    -4px -2px 8px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%),
+    4px 2px 10px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%);
   transition: box-shadow 0.25s ease;
 }
 
@@ -155,8 +155,8 @@ footer {
 .neu-icon:hover,
 .neu-icon:active {
   box-shadow:
-    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
-    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset;
+    -4px -2px 8px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%) inset,
+    4px 2px 10px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%) inset;
 }
 
 .dark .neu-icon:hover,
@@ -168,13 +168,13 @@ footer {
 
 /* Raised neumorphic button — secondary CTAs */
 .neu-button {
-  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
+  background: color-mix(in srgb, rgba(235, 238, 248, 0.7) 52%, var(--section-glow) 48%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -8px -4px 16px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%),
-    8px 4px 20px color-mix(in srgb, #bdbdbd 75%, var(--section-glow) 25%);
+    -8px -4px 16px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%),
+    8px 4px 20px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%);
   transition:
     box-shadow 0.2s ease,
     color 0.2s ease;
@@ -204,13 +204,13 @@ footer {
 
 /* Carved neumorphic input/textarea — used in forms */
 .neu-input {
-  background: color-mix(in srgb, rgba(232, 232, 232, 0.6) 75%, var(--section-glow) 25%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: color-mix(in srgb, rgba(255, 255, 255, 0.72) 78%, var(--section-glow) 22%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow:
-    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
-    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset;
+    -4px -2px 8px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%) inset,
+    4px 2px 10px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%) inset;
   transition:
     box-shadow 0.2s ease,
     color 0.2s ease;
@@ -227,8 +227,8 @@ footer {
 .neu-input:focus {
   outline: none;
   box-shadow:
-    -4px -2px 8px color-mix(in srgb, #ffffff 75%, var(--section-glow) 25%) inset,
-    4px 2px 10px color-mix(in srgb, #c8c8c8 75%, var(--section-glow) 25%) inset,
+    -4px -2px 8px color-mix(in srgb, #ffffff 55%, var(--section-glow) 45%) inset,
+    4px 2px 10px color-mix(in srgb, #b8bdd4 55%, var(--section-glow) 45%) inset,
     0 0 0 2px rgba(132, 204, 22, 0.3);
 }
 

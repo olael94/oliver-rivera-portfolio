@@ -64,7 +64,7 @@ export default function AmbientBackground() {
   // unbounded fluid sim repeatedly crashed the page on iPhone Safari.
   useEffect(() => {
     if (!canvasRef.current) return;
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0) return;
 
     WebGLFluid(canvasRef.current, {
       TRIGGER: 'hover',

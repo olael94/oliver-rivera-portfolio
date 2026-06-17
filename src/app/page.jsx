@@ -1,4 +1,5 @@
 import SkillsWidget from '@/components/SkillsWidget';
+import SnapSection from '@/components/SnapSection';
 import IntroCard from '@/components/IntroCard';
 import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
@@ -88,6 +89,7 @@ export default function Home() {
       {/* ── SKILLS ────────────────────────────────────────────────────────────
           Skills grouped by category: Frontend, Backend, Tools & DevOps.
       ─────────────────────────────────────────────────────────────────────── */}
+      <SnapSection>
       <section id="experience" className="py-24 max-md:py-16">
         {/* Section label */}
         <div className="flex items-center gap-4 mb-10">
@@ -128,6 +130,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </SnapSection>
 
       {/* ── PROJECTS ──────────────────────────────────────────────────────────
           Project showcase. Same fixed-size card grid as before.
