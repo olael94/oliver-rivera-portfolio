@@ -33,6 +33,7 @@ export default function AmbientBackground() {
   const { scrollYProgress } = useScroll();
   const [starts, setStarts] = useState(DEFAULT_STARTS);
   const [isDark, setIsDark] = useState(true);
+  const [canvasKey, setCanvasKey] = useState(0);
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -43,6 +44,18 @@ export default function AmbientBackground() {
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
+  }, []);
+
+  // webgl-fluid's AUTO mode queues splats on a setTimeout loop that keeps
+  // firing while the tab is hidden (rAF is paused, so they pile up).
+  // Remounting the canvas on return drops that backlog instead of letting
+  // it all render as one burst.
+  useEffect(() => {
+    const onVisibility = () => {
+      if (!document.hidden) setCanvasKey((k) => k + 1);
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
   }, []);
 
   // Subtle ambient fluid sim, tinted lime green to echo the portfolio's
@@ -61,10 +74,10 @@ export default function AmbientBackground() {
       SIM_RESOLUTION: 64,
       DYE_RESOLUTION: 512,
       SPLAT_COUNT: 2,
-      SPLAT_RADIUS: 0.25,
-      SPLAT_FORCE: 400,
-      DENSITY_DISSIPATION: 0.4,
-      VELOCITY_DISSIPATION: 6,
+      SPLAT_RADIUS: 0.35,
+      SPLAT_FORCE: 60,
+      DENSITY_DISSIPATION: 0.6,
+      VELOCITY_DISSIPATION: 10,
       CURL: 0,
       SPLAT_COLOR: { r: 0.5, g: 0.77, b: 0.083 },
       COLORFUL: false,
@@ -73,7 +86,7 @@ export default function AmbientBackground() {
       BLOOM: false,
       SUNRAYS: false,
     });
-  }, []);
+  }, [canvasKey]);
 
   useEffect(() => {
     function update() {
@@ -160,6 +173,7 @@ export default function AmbientBackground() {
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       <motion.div className="absolute inset-0" style={{ backgroundColor: baseColor }} />
       <canvas
+        key={canvasKey}
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{
