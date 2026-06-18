@@ -37,7 +37,7 @@ const ThemeSwitcher = ({ darkClassName = 'dark', inline = false }) => {
   const positionClass = inline ? '' : 'fixed top-[14px] right-[64px] md:top-[16px] md:right-[52px]';
 
   return (
-    <div className={isDarkMode ? 'dark' : ''}>
+    <div className={`flex items-center${isDarkMode ? ' dark' : ''}`}>
       <button
         data-testid="themeSwitcherButton"
         onClick={toggleTheme}
