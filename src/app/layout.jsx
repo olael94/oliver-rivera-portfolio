@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer';
 import AmbientBackground from '@/components/AmbientBackground';
+import CustomCursorWrapper from '@/components/CustomCursorWrapper';
 import { navLinks, footerLinks } from '@/data/nav';
 
 const syne = Syne({
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`dark ${syne.variable} ${quicksand.variable} ${caveat.variable}`}>
         <AmbientBackground />
+        <CustomCursorWrapper />
         <div className="flex flex-col min-h-screen">
           <header className="w-full">
             <div className="w-full h-full max-w-screen-2xl mx-auto">

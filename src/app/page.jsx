@@ -189,13 +189,7 @@ export default function Home() {
             className="min-w-0 max-lg:break-words text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-[0.15em] max-lg:tracking-normal uppercase max-lg:whitespace-normal whitespace-nowrap text-lime-600 dark:text-lime-400"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
-            <RevealText delay={0.1}>
-              Contact{' '}
-              <span className="lowercase" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-                &
-              </span>{' '}
-              Me
-            </RevealText>
+            <RevealText delay={0.1}>Contact Me</RevealText>
           </span>
           <ScrollDivider />
         </div>

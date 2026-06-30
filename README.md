@@ -28,9 +28,10 @@ Personal portfolio showcasing my projects, skills, and experience as a Software 
 Neumorphic design language with a lime accent throughout; soft depth on cards and
 icons, scroll-driven section color shifts, and a WebGL fluid ambient background on
 desktop. The hero photo card uses a background-removed cutout over a procedurally
-generated gradient with a diagonal hatch texture. 
+generated gradient with a diagonal hatch texture.
 
 Key decisions:
+
 - Mobile-first layout that degrades gracefully (WebGL disabled on touch devices)
 - Scroll-reveal animations driven by scroll direction, not just IntersectionObserver
 - Contact form handled server-side via Nodemailer. No third-party form services

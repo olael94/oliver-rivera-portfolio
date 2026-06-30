@@ -2,33 +2,54 @@
 
 import PropTypes from 'prop-types';
 
+const maskGradients = [
+  'linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%)',
+  'linear-gradient(to right,  transparent 0%, black 28%, black 88%, transparent 100%)',
+].join(', ');
+
 const GlitchPhotoCard = ({ alt, name, title, className }) => {
   return (
-    <div className={`group relative w-full ${className}`}>
-      {/* Outer dark frame — tilted at rest, straightens on hover, pivoting from bottom-right */}
-      <div
-        className="neu-frame relative rounded-2xl p-3 sm:p-4 overflow-hidden aspect-[4/5] w-[420px] max-w-full max-xl:rotate-0 -rotate-3 group-hover:rotate-0 transition-all duration-500 ease-out"
-        style={{ transformOrigin: 'bottom right' }}
-      >
-        {/* Photo — splatter backdrop stays put, cutout grows toward the viewer on hover */}
-        <div className="absolute inset-3 sm:inset-4 rounded-xl overflow-hidden">
-          <img
-            src="/images/hero-splatter.png"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <img
-            src="/images/Me-cutout.png"
-            alt={alt}
-            className="absolute left-1/2 bottom-0 w-[125%] max-w-none -translate-x-1/2 origin-bottom transition-transform duration-500 ease-out group-hover:scale-105"
-          />
-          {/* Bottom gradient for text legibility */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        </div>
+    <div className={`relative w-full ${className}`}>
+      <style>{`
+        .photo-card-img {
+          filter: grayscale(100%);
+          transform: scale(1);
+          transition: filter 0.5s ease, transform 0.5s ease;
+        }
+        .photo-card-wrapper:hover .photo-card-img {
+          filter: grayscale(0%);
+          transform: scale(1.05);
+        }
+        .photo-card-glow {
+          position: absolute;
+          inset: -10% -15%;
+          background: radial-gradient(ellipse at 50% 65%, rgba(59,130,246,0.7) 0%, rgba(29,78,216,0.4) 35%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+          z-index: 0;
+          filter: blur(32px);
+        }
+        .photo-card-wrapper:hover .photo-card-glow {
+          opacity: 1;
+        }
+      `}</style>
 
-        {/* Name + title overlay */}
-        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10">
+      <div className="photo-card-wrapper relative aspect-[4/5] w-[420px] max-w-full">
+        <div className="photo-card-glow" />
+        <img
+          src="/images/Me-cutout.png"
+          alt={alt}
+          className="photo-card-img absolute left-1/2 bottom-0 w-[105%] max-w-none -translate-x-1/2 translate-y-[0%] origin-bottom"
+          style={{
+            maskImage: maskGradients,
+            maskComposite: 'intersect',
+            WebkitMaskImage: maskGradients,
+            WebkitMaskComposite: 'source-in',
+          }}
+        />
+
+        <div className="absolute bottom-6 left-2 sm:bottom-8 sm:left-4 z-10">
           <h3
             className="text-white font-bold text-2xl sm:text-3xl tracking-tight"
             style={{ fontFamily: 'var(--font-syne)' }}
