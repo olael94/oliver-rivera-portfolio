@@ -7,9 +7,7 @@ export default function CustomCursorWrapper() {
   const [isTouch, setIsTouch] = useState(true);
 
   useEffect(() => {
-    setIsTouch(
-      window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0
-    );
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0);
   }, []);
 
   if (isTouch) return null;

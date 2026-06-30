@@ -2,11 +2,6 @@
 
 import PropTypes from 'prop-types';
 
-const maskGradients = [
-  'linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%)',
-  'linear-gradient(to right,  transparent 0%, black 28%, black 88%, transparent 100%)',
-].join(', ');
-
 const GlitchPhotoCard = ({ alt, name, title, className }) => {
   return (
     <div className={`relative w-full ${className}`}>
@@ -20,6 +15,29 @@ const GlitchPhotoCard = ({ alt, name, title, className }) => {
           filter: grayscale(0%);
           transform: scale(1.05);
         }
+
+        /* Dark mode — original values, boosted specificity */
+        .dark .photo-card-img {
+          mask-image:
+            linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%),
+            linear-gradient(to right,  transparent 0%, black 28%, black 88%, transparent 100%);
+          mask-composite: intersect;
+          -webkit-mask-image:
+            linear-gradient(to bottom, transparent 0%, black 14%, black 72%, transparent 100%),
+            linear-gradient(to right,  transparent 0%, black 28%, black 88%, transparent 100%);
+          -webkit-mask-composite: source-in;
+        }
+
+        /* Light mode — bottom only, fade out to transparent (no side fades) */
+        body:not(.dark) .photo-card-img {
+          mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+        }
+
+        .photo-card-bottom-fade {
+          display: none;
+        }
+
         .photo-card-glow {
           position: absolute;
           inset: -10% -15%;
@@ -41,13 +59,8 @@ const GlitchPhotoCard = ({ alt, name, title, className }) => {
           src="/images/Me-cutout.png"
           alt={alt}
           className="photo-card-img absolute left-1/2 bottom-0 w-[105%] max-w-none -translate-x-1/2 translate-y-[0%] origin-bottom"
-          style={{
-            maskImage: maskGradients,
-            maskComposite: 'intersect',
-            WebkitMaskImage: maskGradients,
-            WebkitMaskComposite: 'source-in',
-          }}
         />
+        <div className="photo-card-bottom-fade" />
 
         <div className="absolute bottom-6 left-2 sm:bottom-8 sm:left-4 z-10">
           <h3
