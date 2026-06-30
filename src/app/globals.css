@@ -1,7 +1,9 @@
 @import 'tailwindcss';
 
-* {
-  cursor: none !important;
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 @theme {

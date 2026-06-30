@@ -1,8 +1,19 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { CustomCursor } from 'cursor-style';
 
 export default function CustomCursorWrapper() {
+  const [isTouch, setIsTouch] = useState(true);
+
+  useEffect(() => {
+    setIsTouch(
+      window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0
+    );
+  }, []);
+
+  if (isTouch) return null;
+
   return (
     <CustomCursor
       type="two"
