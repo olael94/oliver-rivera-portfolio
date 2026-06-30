@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
 import { navLinks as NAV_LINKS } from '@/data/nav';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { markProgrammaticScroll } from '@/components/SnapSection';
 
 const NAVBAR_HEIGHT = 88; // matches the fixed header height in globals.css
 
@@ -107,6 +108,7 @@ const Navbar = () => {
     // Jump pill immediately and lock spy to this target until scrollY arrives within 10px
     setActiveSection(id);
     scrollDestRef.current = { id, top };
+    markProgrammaticScroll(1500);
     window.scrollTo({ top, behavior: 'smooth' });
   };
 

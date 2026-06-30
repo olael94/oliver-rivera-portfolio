@@ -1,5 +1,6 @@
 import SkillsWidget from '@/components/SkillsWidget';
 import SnapSection from '@/components/SnapSection';
+import GetInTouchButton from '@/components/GetInTouchButton';
 import IntroCard from '@/components/IntroCard';
 import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
@@ -49,13 +50,12 @@ export default function Home() {
                   →
                 </span>
               </a>
-              <a
-                href="#contact"
+              <GetInTouchButton
                 className="neu-button inline-flex items-center px-6 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-lime-600 dark:hover:text-lime-400 font-semibold text-sm tracking-wide transition-all duration-200"
                 style={{ fontFamily: 'var(--font-syne)' }}
               >
                 Get In Touch
-              </a>
+              </GetInTouchButton>
             </div>
           </div>
 

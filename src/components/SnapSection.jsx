@@ -5,6 +5,15 @@ import { useEffect, useRef } from 'react';
 // Snaps the wrapped section into view when it crosses the threshold
 // while scrolling — gives a deliberate "pull into place" feel without
 // locking the rest of the page to CSS scroll snap points.
+//
+// Skips snapping during anchor-driven scrolls so links like "Get In Touch"
+// (#contact) are not hijacked mid-journey by an intermediate section snap.
+let programmaticScrollUntil = 0;
+
+export function markProgrammaticScroll(ms = 1200) {
+  programmaticScrollUntil = Date.now() + ms;
+}
+
 export default function SnapSection({ children, threshold = 0.38, className = '' }) {
   const ref = useRef(null);
   const snapped = useRef(false);
@@ -18,6 +27,8 @@ export default function SnapSection({ children, threshold = 0.38, className = ''
       ([entry]) => {
         const scrollingDown = window.scrollY > lastScrollY.current;
         lastScrollY.current = window.scrollY;
+
+        if (Date.now() < programmaticScrollUntil) return;
 
         if (entry.isIntersecting && scrollingDown && !snapped.current) {
           snapped.current = true;

@@ -6,6 +6,11 @@
   }
 }
 
+/* Disable blend mode so the cursor color renders accurately */
+.cursor {
+  mix-blend-mode: normal !important;
+}
+
 @theme {
   --color-accent: #84cc16;
   --color-accent-hover: #65a30d;

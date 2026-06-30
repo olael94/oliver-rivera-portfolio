@@ -28,14 +28,28 @@ const GlitchPhotoCard = ({ alt, name, title, className }) => {
           -webkit-mask-composite: source-in;
         }
 
-        /* Light mode — bottom only, fade out to transparent (no side fades) */
+        /* Light mode — circular clip with soft edge + bottom fade */
         body:not(.dark) .photo-card-img {
-          mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+          mask-image:
+            radial-gradient(ellipse 85% 72% at 50% 38%, black 80%, transparent 98%),
+            linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+          mask-composite: intersect;
+          -webkit-mask-image:
+            radial-gradient(ellipse 85% 72% at 50% 38%, black 80%, transparent 98%),
+            linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+          -webkit-mask-composite: source-in;
         }
 
         .photo-card-bottom-fade {
           display: none;
+        }
+
+        /* Light mode text — on-palette colors from the design system */
+        body:not(.dark) .photo-card-name {
+          color: #0f0f18;
+        }
+        body:not(.dark) .photo-card-title {
+          color: rgb(59, 130, 246);
         }
 
         .photo-card-glow {
@@ -64,12 +78,12 @@ const GlitchPhotoCard = ({ alt, name, title, className }) => {
 
         <div className="absolute bottom-6 left-2 sm:bottom-8 sm:left-4 z-10">
           <h3
-            className="text-white font-bold text-2xl sm:text-3xl tracking-tight"
+            className="photo-card-name text-white font-bold text-2xl sm:text-3xl tracking-tight"
             style={{ fontFamily: 'var(--font-syne)' }}
           >
             {name}
           </h3>
-          <p className="text-lime-400 font-semibold text-xs sm:text-sm uppercase tracking-[0.15em] mt-1">
+          <p className="photo-card-title text-lime-400 font-semibold text-xs sm:text-sm uppercase tracking-[0.15em] mt-1">
             {title}
           </p>
         </div>
