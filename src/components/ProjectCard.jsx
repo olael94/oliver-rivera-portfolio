@@ -6,7 +6,7 @@ const ProjectCard = ({ logo, preview, name, content, link, github }) => {
   return (
     <div
       data-testid="projectCard"
-      className="card-modern group flex flex-col rounded-3xl overflow-hidden w-full max-w-[400px] md:w-[380px] md:min-w-[380px] md:max-w-[380px]"
+      className="card-modern group flex flex-col rounded-3xl overflow-hidden w-full max-w-[400px] h-[520px] md:w-[380px] md:min-w-[380px] md:max-w-[380px]"
     >
       {/* Preview image — links to the live site if one is available */}
       {preview &&
@@ -61,7 +61,7 @@ const ProjectCard = ({ logo, preview, name, content, link, github }) => {
           </h2>
           <p
             data-testid="projectCardContent"
-            className="text-[17px] text-zinc-500 dark:text-zinc-400 leading-relaxed"
+            className="text-[17px] text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-4"
           >
             {content}
           </p>
