@@ -1,6 +1,6 @@
 import SkillsWidget from '@/components/SkillsWidget';
 import SnapSection from '@/components/SnapSection';
-import GetInTouchButton from '@/components/GetInTouchButton';
+import AnchorScrollButton from '@/components/AnchorScrollButton';
 import IntroCard from '@/components/IntroCard';
 import HorizontalProjects from '@/components/HorizontalProjects';
 import GlitchPhotoCard from '@/components/GlitchPhotoCard';
@@ -40,7 +40,7 @@ export default function Home() {
 
             {/* CTA buttons — plain anchors so smooth scroll is handled by CSS */}
             <div className="flex flex-row gap-3 mt-6 max-md:flex-col max-md:w-fit">
-              <a
+              <AnchorScrollButton
                 href="#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-lime-500 hover:bg-lime-400 active:bg-lime-600 text-[#0c0a07] font-semibold text-sm tracking-wide transition-all duration-200 group"
                 style={{ fontFamily: 'var(--font-syne)' }}
@@ -49,13 +49,14 @@ export default function Home() {
                 <span className="transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
-              </a>
-              <GetInTouchButton
+              </AnchorScrollButton>
+              <AnchorScrollButton
+                href="#contact"
                 className="neu-button inline-flex items-center px-6 py-3 rounded-xl text-zinc-600 dark:text-zinc-400 hover:text-lime-600 dark:hover:text-lime-400 font-semibold text-sm tracking-wide transition-all duration-200"
                 style={{ fontFamily: 'var(--font-syne)' }}
               >
                 Get In Touch
-              </GetInTouchButton>
+              </AnchorScrollButton>
             </div>
           </div>
 
@@ -140,7 +141,7 @@ export default function Home() {
           header={
             <>
               {/* Section label */}
-              <div className="flex items-center gap-4 mb-10">
+              <div className="flex items-center gap-4 mb-4">
                 <span className="section-badge text-md font-bold tracking-[0.15em] text-lime-600 dark:text-lime-400">
                   <RevealText>02</RevealText>
                 </span>
@@ -163,7 +164,7 @@ export default function Home() {
               </div>
 
               {/* Section heading */}
-              <div className="mb-10">
+              <div className="mb-4">
                 <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
                   A selection of things I've built, from side projects to production applications.
                   Full-stack, AI-powered, and everything in between. Clean code, real problems,

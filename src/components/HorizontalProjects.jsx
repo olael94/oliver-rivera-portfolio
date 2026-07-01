@@ -5,22 +5,27 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import PropTypes from 'prop-types';
 import FadeInView from './FadeInView';
 import ProjectCard from './ProjectCard';
+import CoverflowCard from './CoverflowCard';
 import { projects } from '@/data/projects';
 
 const DESKTOP_QUERY = '(min-width: 1024px) and (min-height: 600px)';
 const NAVBAR_HEIGHT = 88; // matches the fixed header height in globals.css
+const FRAME_PADDING_X = 32; // matches the frame's px-8 in Tailwind
 
 // Pins the projects section while the user scrolls vertically, translating the
-// card track horizontally to "scroll through" each project. Once the track is
-// fully revealed, normal vertical scrolling continues. Falls back to a plain
-// stacked layout on small screens.
+// card track horizontally through a 3D coverflow: each card's rotation, scale,
+// and depth are driven by its live distance from the viewport center. Once the
+// track is fully revealed, normal vertical scrolling continues. Falls back to
+// a plain stacked layout on small screens.
 const HorizontalProjects = ({ header }) => {
   const sectionRef = useRef(null);
   const viewportRef = useRef(null);
+  const frameRef = useRef(null);
   const trackRef = useRef(null);
 
   const [isDesktop, setIsDesktop] = useState(false);
   const [sectionHeight, setSectionHeight] = useState('100vh');
+  const [layout, setLayout] = useState({ step: 0, centerOffset: 0 });
   const distanceRef = useRef(0);
 
   useEffect(() => {
@@ -35,11 +40,20 @@ const HorizontalProjects = ({ header }) => {
     if (!isDesktop) return undefined;
 
     const measure = () => {
-      const trackWidth = trackRef.current?.scrollWidth ?? 0;
-      const viewportWidth = viewportRef.current?.clientWidth ?? 0;
-      const remaining = Math.max(trackWidth - viewportWidth, 0);
-      distanceRef.current = remaining;
-      setSectionHeight(`${window.innerHeight - NAVBAR_HEIGHT + remaining}px`);
+      const trackEl = trackRef.current;
+      const frameWidth = frameRef.current?.clientWidth ?? 0;
+
+      const first = trackEl?.children?.[0];
+      const second = trackEl?.children?.[1];
+      const step =
+        first && second ? second.offsetLeft - first.offsetLeft : (first?.offsetWidth ?? 0);
+
+      // Total horizontal travel needed to carry the track from the first card
+      // centered to the last card centered.
+      const travel = step * Math.max(projects.length - 1, 0);
+      distanceRef.current = travel;
+      setSectionHeight(`${window.innerHeight - NAVBAR_HEIGHT + travel}px`);
+      setLayout({ step, centerOffset: frameWidth / 2 - FRAME_PADDING_X });
     };
 
     measure();
@@ -51,7 +65,11 @@ const HorizontalProjects = ({ header }) => {
     target: sectionRef,
     offset: ['start start', 'end end'],
   });
-  const x = useTransform(scrollYProgress, (latest) => latest * -distanceRef.current);
+  const x = useTransform(scrollYProgress, (latest) => {
+    // Starts with card 0 centered in the frame, ends with the last card centered.
+    const startX = layout.centerOffset - layout.step / 2;
+    return startX - latest * distanceRef.current;
+  });
 
   return (
     <div
@@ -70,15 +88,17 @@ const HorizontalProjects = ({ header }) => {
         {header}
 
         <div
+          ref={frameRef}
           className={
             isDesktop
-              ? 'flex-1 flex items-start overflow-hidden pt-8 px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
+              ? 'flex-1 flex items-center overflow-hidden px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
               : 'flex flex-col items-center gap-4'
           }
+          style={isDesktop ? { perspective: '1600px' } : undefined}
         >
           <motion.div
             ref={trackRef}
-            style={isDesktop ? { x } : undefined}
+            style={isDesktop ? { x, transformStyle: 'preserve-3d' } : undefined}
             className={isDesktop ? 'flex flex-row rounded-2xl gap-4 w-max pr-24' : 'contents'}
           >
             {projects.map((project, index) => {
@@ -95,9 +115,15 @@ const HorizontalProjects = ({ header }) => {
 
               if (isDesktop)
                 return (
-                  <div key={index} className="flex">
+                  <CoverflowCard
+                    key={index}
+                    x={x}
+                    index={index}
+                    step={layout.step}
+                    centerOffset={layout.centerOffset}
+                  >
                     {card}
-                  </div>
+                  </CoverflowCard>
                 );
 
               return (
