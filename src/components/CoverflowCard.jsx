@@ -10,6 +10,8 @@ const DEPTH_PER_UNIT = 140; // px pushed back into the z-axis per card-width of 
 const SCALE_PER_UNIT = 0.14;
 const OPACITY_PER_UNIT = 0.26;
 const MIN_OPACITY = 0.2;
+const INTERACTIVE_DISTANCE = 0.6; // only the ~centered card accepts clicks
+const TRANSFORM_PERSPECTIVE = 1400; // px, applied locally per card (see comment below)
 
 // Wraps a card with a scroll-reactive 3D coverflow transform: rotation, scale,
 // and z-depth are all derived from how far the card's center sits from the
@@ -35,9 +37,30 @@ const CoverflowCard = ({ x, index, step, centerOffset, children }) => {
   const zIndex = useTransform(distance, (d) =>
     Math.round(100 - Math.min(Math.abs(d), MAX_DISTANCE) * 10)
   );
+  // Rotated side cards visually overlap the centered card's hit area, so only
+  // the (near-)centered card should ever intercept clicks.
+  const pointerEvents = useTransform(distance, (d) =>
+    Math.abs(d) < INTERACTIVE_DISTANCE ? 'auto' : 'none'
+  );
 
   return (
-    <motion.div style={{ rotateY, scale, z, opacity, zIndex }} className="flex">
+    // transformPerspective is applied per-card (not as an ancestor `perspective`)
+    // so each card's own translateZ foreshortens around its own center instead
+    // of a shared vanishing point — otherwise receding cards would visually
+    // drift toward the frame's center, decoupling their rendered position from
+    // the flex-layout position their click targets actually sit at.
+    <motion.div
+      style={{
+        transformPerspective: TRANSFORM_PERSPECTIVE,
+        rotateY,
+        scale,
+        z,
+        opacity,
+        zIndex,
+        pointerEvents,
+      }}
+      className="flex"
+    >
       {children}
     </motion.div>
   );

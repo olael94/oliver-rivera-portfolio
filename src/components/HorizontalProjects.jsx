@@ -94,11 +94,10 @@ const HorizontalProjects = ({ header }) => {
               ? 'flex-1 flex items-center overflow-hidden px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
               : 'flex flex-col items-center gap-4'
           }
-          style={isDesktop ? { perspective: '1600px' } : undefined}
         >
           <motion.div
             ref={trackRef}
-            style={isDesktop ? { x, transformStyle: 'preserve-3d' } : undefined}
+            style={isDesktop ? { x } : undefined}
             className={isDesktop ? 'flex flex-row rounded-2xl gap-4 w-max pr-24' : 'contents'}
           >
             {projects.map((project, index) => {
