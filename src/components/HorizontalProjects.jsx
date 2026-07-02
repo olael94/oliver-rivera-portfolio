@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import PropTypes from 'prop-types';
 import FadeInView from './FadeInView';
 import ProjectCard from './ProjectCard';
@@ -65,11 +65,15 @@ const HorizontalProjects = ({ header }) => {
     target: sectionRef,
     offset: ['start start', 'end end'],
   });
-  const x = useTransform(scrollYProgress, (latest) => {
+  const rawX = useTransform(scrollYProgress, (latest) => {
     // Starts with card 0 centered in the frame, ends with the last card centered.
     const startX = layout.centerOffset - layout.step / 2;
     return startX - latest * distanceRef.current;
   });
+  // Smooths the track so it eases toward the scroll-driven target instead of
+  // snapping to it 1:1 — raw scroll jitter would otherwise be very visible in
+  // the coverflow's rotation/scale.
+  const x = useSpring(rawX, { stiffness: 200, damping: 30, mass: 0.5 });
 
   return (
     <div
