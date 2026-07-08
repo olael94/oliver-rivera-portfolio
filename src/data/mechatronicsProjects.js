@@ -12,7 +12,7 @@ export const mechatronicsProjects = [
     name: 'TrackCall NeoPixel',
     specs: 'Pimoroni Tiny 2040 · C · WS2812 NeoPixel · Relay',
     content:
-      "An upgraded revision of TrackCall that swaps the three discrete status LEDs for a single WS2812 addressable NeoPixel, driven by a custom PIO program. Same 3-calls-per-race track limiter logic, more compact hardware.",
+      'An upgraded revision of TrackCall that swaps the three discrete status LEDs for a single WS2812 addressable NeoPixel, driven by a custom PIO program. Same 3-calls-per-race track limiter logic, more compact hardware.',
     github: 'https://github.com/olael94/TrackCall-NeoPixel',
     videoPosition: 'center 10%',
   },

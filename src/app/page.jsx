@@ -194,8 +194,8 @@ export default function Home() {
                 <ScrollDivider />
               </div>
               <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
-                Hardware programmed and debugged over SWD via a Raspberry Pi 4: embedded C,
-                sensors, and actuators.
+                Hardware programmed and debugged over SWD via a Raspberry Pi 4: embedded C, sensors,
+                and actuators.
               </p>
             </div>
           }
