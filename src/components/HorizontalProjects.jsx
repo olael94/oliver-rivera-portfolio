@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import PropTypes from 'prop-types';
 import FadeInView from './FadeInView';
-import ProjectCard from './ProjectCard';
 import CoverflowCard from './CoverflowCard';
-import { projects } from '@/data/projects';
+import ProjectCard from './ProjectCard';
+import MechatronicsProjectCard from './MechatronicsProjectCard';
 
 const DESKTOP_QUERY = '(min-width: 1024px) and (min-height: 600px)';
 const NAVBAR_HEIGHT = 88; // matches the fixed header height in globals.css
@@ -16,8 +16,10 @@ const FRAME_PADDING_X = 32; // matches the frame's px-8 in Tailwind
 // card track horizontally through a 3D coverflow: each card's rotation, scale,
 // and depth are driven by its live distance from the viewport center. Once the
 // track is fully revealed, normal vertical scrolling continues. Falls back to
-// a plain stacked layout on small screens.
-const HorizontalProjects = ({ header }) => {
+// a plain stacked layout on small screens. `cardType` picks the card component
+// (rather than a `renderCard` function prop) because this is rendered from a
+// Server Component page, which can't pass functions across the boundary.
+const HorizontalProjects = ({ header, projects, cardType = 'software', compact = false }) => {
   const sectionRef = useRef(null);
   const viewportRef = useRef(null);
   const frameRef = useRef(null);
@@ -52,14 +54,21 @@ const HorizontalProjects = ({ header }) => {
       // centered to the last card centered.
       const travel = step * Math.max(projects.length - 1, 0);
       distanceRef.current = travel;
-      setSectionHeight(`${window.innerHeight - NAVBAR_HEIGHT + travel}px`);
+      // Compact sections size the sticky pin to their actual content height
+      // (header + cards) instead of the full viewport, so there's no leftover
+      // blank space once the horizontal scroll finishes and the next section
+      // should begin right away.
+      const baseHeight = compact
+        ? (viewportRef.current?.offsetHeight ?? window.innerHeight - NAVBAR_HEIGHT)
+        : window.innerHeight - NAVBAR_HEIGHT;
+      setSectionHeight(`${baseHeight + travel}px`);
       setLayout({ step, centerOffset: frameWidth / 2 - FRAME_PADDING_X });
     };
 
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
-  }, [isDesktop]);
+  }, [isDesktop, projects.length, compact]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -75,6 +84,27 @@ const HorizontalProjects = ({ header }) => {
   // the coverflow's rotation/scale.
   const x = useSpring(rawX, { stiffness: 200, damping: 30, mass: 0.5 });
 
+  const renderCard = (project) =>
+    cardType === 'mechatronics' ? (
+      <MechatronicsProjectCard
+        video={project.video}
+        name={project.name}
+        specs={project.specs}
+        content={project.content}
+        github={project.github}
+        videoPosition={project.videoPosition}
+      />
+    ) : (
+      <ProjectCard
+        logo={project.logo}
+        preview={project.preview}
+        name={project.name}
+        content={project.content}
+        link={project.link}
+        github={project.github}
+      />
+    );
+
   return (
     <div
       ref={sectionRef}
@@ -85,7 +115,7 @@ const HorizontalProjects = ({ header }) => {
         ref={viewportRef}
         className={
           isDesktop
-            ? 'sticky top-[88px] h-[calc(100vh-88px)] flex flex-col overflow-hidden bg-transparent pt-3 pl-3'
+            ? `sticky top-[88px] ${compact ? 'max-h-[calc(100vh-88px)]' : 'h-[calc(100vh-88px)]'} flex flex-col overflow-hidden bg-transparent pt-3 pl-3`
             : 'flex flex-col'
         }
       >
@@ -95,8 +125,8 @@ const HorizontalProjects = ({ header }) => {
           ref={frameRef}
           className={
             isDesktop
-              ? 'flex-1 flex items-center overflow-hidden px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
-              : 'flex flex-col items-center gap-4'
+              ? 'flex-1 flex items-start pt-6 overflow-hidden px-8 [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-22px),transparent)]'
+              : 'flex flex-col items-center gap-4 sm:grid sm:grid-cols-2 sm:justify-items-center'
           }
         >
           <motion.div
@@ -105,16 +135,7 @@ const HorizontalProjects = ({ header }) => {
             className={isDesktop ? 'flex flex-row rounded-2xl gap-4 w-max pr-24' : 'contents'}
           >
             {projects.map((project, index) => {
-              const card = (
-                <ProjectCard
-                  logo={project.logo}
-                  preview={project.preview}
-                  name={project.name}
-                  content={project.content}
-                  link={project.link}
-                  github={project.github}
-                />
-              );
+              const card = renderCard(project, index);
 
               if (isDesktop)
                 return (
@@ -144,6 +165,9 @@ const HorizontalProjects = ({ header }) => {
 
 HorizontalProjects.propTypes = {
   header: PropTypes.node,
+  projects: PropTypes.array.isRequired,
+  cardType: PropTypes.oneOf(['software', 'mechatronics']),
+  compact: PropTypes.bool,
 };
 
 export default HorizontalProjects;

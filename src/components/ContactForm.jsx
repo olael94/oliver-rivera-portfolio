@@ -72,7 +72,7 @@ const ContactForm = () => {
         </div>
         <p className="m-0 text-lg font-bold text-zinc-800 dark:text-white">Message sent!</p>
         <p className="m-0 text-sm text-zinc-500 dark:text-zinc-400">
-          Thanks for reaching out — I&rsquo;ll get back to you soon.
+          Thanks for reaching out. I&rsquo;ll get back to you soon.
         </p>
       </div>
     );

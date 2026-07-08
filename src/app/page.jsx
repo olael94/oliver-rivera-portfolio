@@ -10,6 +10,8 @@ import ScrollDivider from '@/components/ScrollDivider';
 import FadeInView from '@/components/FadeInView';
 import { skills, skillCategories } from '@/data/skills';
 import { introLinks, emailLink, socialLinks } from '@/data/links';
+import { projects } from '@/data/projects';
+import { mechatronicsProjects } from '@/data/mechatronicsProjects';
 
 const AVAILABILITY_LINES = ['Available for work', 'Open to internships', 'Part-time or Full-time'];
 
@@ -130,7 +132,8 @@ export default function Home() {
       </SnapSection>
 
       {/* ── PROJECTS ──────────────────────────────────────────────────────────
-          Project showcase. Same fixed-size card grid as before.
+          Software projects, then a Mechatronics subsection below — each its
+          own scroll-jacked coverflow, sharing HorizontalProjects' mechanism.
       ─────────────────────────────────────────────────────────────────────── */}
       <section id="projects" className="py-24 max-md:py-16 pb-32 max-md:pb-20">
         {/* Project cards — horizontal scroll-jack on desktop, stacked on mobile.
@@ -173,6 +176,32 @@ export default function Home() {
               </div>
             </>
           }
+          projects={projects}
+        />
+
+        {/* Mechatronics subsection — smaller label, no number, since it's
+            part of section 02 rather than a new top-level section. */}
+        <HorizontalProjects
+          header={
+            <div className="mb-4">
+              <div className="flex items-center gap-4 mb-4">
+                <span
+                  className="text-md font-bold tracking-[0.15em] text-blue-600 dark:text-blue-400 uppercase"
+                  style={{ fontFamily: 'var(--font-syne)' }}
+                >
+                  <RevealText>Mechatronics</RevealText>
+                </span>
+                <ScrollDivider />
+              </div>
+              <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
+                Hardware programmed and debugged over SWD via a Raspberry Pi 4: embedded C,
+                sensors, and actuators.
+              </p>
+            </div>
+          }
+          projects={mechatronicsProjects}
+          cardType="mechatronics"
+          compact
         />
       </section>
 
@@ -207,7 +236,7 @@ export default function Home() {
               </h3>
               <p className="mt-6 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[520px] leading-[1.8]">
                 I'm currently open to full-time roles, freelance projects, and collaborations.
-                Whether you have a question or just want to say hi — my inbox is always open!
+                Whether you have a question or just want to say hi, my inbox is always open!
               </p>
             </FadeInView>
 

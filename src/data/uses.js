@@ -30,7 +30,7 @@ export const usesCategories = [
       {
         name: 'IntelliJ IDEA',
         content1:
-          'My primary IDE for all development — Java, Spring Boot, and frontend work. The deep code intelligence, built-in refactoring tools, and seamless Git integration make it indispensable.',
+          'My primary IDE for all development: Java, Spring Boot, and frontend work. The deep code intelligence, built-in refactoring tools, and seamless Git integration make it indispensable.',
         content2:
           'I have Claude connected directly through MCP (Model Context Protocol), which lets me use Claude as an AI pair programmer without ever leaving the editor.',
       },
@@ -42,7 +42,7 @@ export const usesCategories = [
       {
         name: 'Docker & Docker Compose',
         content1:
-          'I containerize everything. Docker keeps my development and production environments consistent across all my projects — from the Spring Boot Banking API to DocRelief AI — and Docker Compose handles multi-service setups locally.',
+          'I containerize everything. Docker keeps my development and production environments consistent across all my projects, from the Spring Boot Banking API to DocRelief AI, and Docker Compose handles multi-service setups locally.',
       },
       {
         name: 'pnpm',
@@ -69,7 +69,7 @@ export const usesCategories = [
       {
         name: 'Python & FastAPI',
         content1:
-          'Python is my go-to for scripting, AI integrations, and backend APIs. I use FastAPI specifically for DocRelief AI — it is fast, async-ready, and pairs perfectly with LangChain for AI-powered workflows.',
+          'Python is my go-to for scripting, AI integrations, and backend APIs. I use FastAPI specifically for DocRelief AI. It is fast, async-ready, and pairs perfectly with LangChain for AI-powered workflows.',
       },
       {
         name: 'JavaScript & Node.js',
@@ -104,7 +104,7 @@ export const usesCategories = [
       {
         name: 'PostgreSQL',
         content1:
-          'My primary relational database. I use it across DocRelief AI and my Distributed Web App — deployed on AWS RDS for production and locally with Docker Compose for development.',
+          'My primary relational database. I use it across DocRelief AI and my Distributed Web App, deployed on AWS RDS for production and locally with Docker Compose for development.',
       },
       {
         name: 'MySQL',
@@ -139,7 +139,7 @@ export const usesCategories = [
       {
         name: 'Claude (Anthropic)',
         content1:
-          'My primary AI pair programmer. I use Claude throughout my development workflow — from architecting systems and debugging code to reviewing implementations and thinking through complex problems.',
+          'My primary AI pair programmer. I use Claude throughout my development workflow, from architecting systems and debugging code to reviewing implementations and thinking through complex problems.',
       },
       {
         name: 'ChatGPT',

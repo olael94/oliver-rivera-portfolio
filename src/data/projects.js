@@ -22,7 +22,7 @@ export const projects = [
     preview: '/images/STEDIView.png',
     name: 'STEDI Balance',
     content:
-      'Contributed to the Python-based sensor driver for the STEDI wall-mount balance device. The sensor feeds real-time data to the STEDI platform used by clinicians to monitor patient balance and mobility. Private repository — available upon request.',
+      'Contributed to the Python-based sensor driver for the STEDI wall-mount balance device. The sensor feeds real-time data to the STEDI platform used by clinicians to monitor patient balance and mobility. Private repository, available upon request.',
     link: 'https://dev.stedi.me/',
     github: null,
   },
@@ -39,7 +39,7 @@ export const projects = [
     logo: 'https://img.icons8.com/color/96/bank-building.png',
     name: 'Banking REST API',
     content:
-      'A Spring Boot REST API simulating core banking operations — account management, deposits, withdrawals, and transfers. Built with Java, Spring Data JPA, and H2, following clean RESTful design principles.',
+      'A Spring Boot REST API simulating core banking operations: account management, deposits, withdrawals, and transfers. Built with Java, Spring Data JPA, and H2, following clean RESTful design principles.',
     link: null,
     github: 'https://github.com/olael94/spring-boot-banking-rest-api',
   },
