@@ -72,7 +72,12 @@ const MechatronicsProjectCard = ({
           muted
           loop
           playsInline
-          preload="metadata"
+          // "metadata" tells mobile Safari not to buffer real frame data
+          // until something forces it to — but our play() is gated on the
+          // canplay event, which never fires under "metadata" without a
+          // play() already having happened. That's a deadlock on iOS.
+          // "auto" buffers real data up front so canplay can actually fire.
+          preload="auto"
           // A freshly loaded, paused <video> often doesn't paint its first
           // frame until nudged. Seeking (rather than play-then-pause) forces
           // the frame to render without touching playback state — a
