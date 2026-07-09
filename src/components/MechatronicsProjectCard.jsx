@@ -64,7 +64,7 @@ const MechatronicsProjectCard = ({
       onMouseLeave={() => setHovered(false)}
     >
       {/* Hero video — the build itself is the pitch, so it gets most of the card */}
-      <div className="aspect-[16/11] overflow-hidden bg-zinc-900">
+      <div className="relative aspect-[16/11] overflow-hidden bg-zinc-900">
         <video
           ref={videoRef}
           data-testid="mechatronicsProjectCardVideo"
@@ -91,8 +91,19 @@ const MechatronicsProjectCard = ({
           style={{ objectPosition: videoPosition }}
           className={`w-full h-full object-cover transition-all duration-300 ${
             isActive
-              ? 'blur-none grayscale-0 brightness-100 scale-100'
-              : 'blur-[2px] grayscale-[45%] brightness-90 scale-105'
+              ? 'grayscale-0 brightness-100 scale-100'
+              : 'grayscale-[45%] brightness-90 scale-105'
+          }`}
+        />
+        {/* Blur applied via a backdrop-blur overlay rather than filter:blur()
+            directly on the <video> — iOS Safari has a known bug where a CSS
+            blur filter on a <video> element can render it as solid black,
+            since it forces a software compositing path that's broken for
+            hardware-decoded video on WebKit. Blurring the layer behind this
+            overlay instead avoids touching the video's own filter entirely. */}
+        <div
+          className={`absolute inset-0 backdrop-blur-[3px] transition-opacity duration-300 pointer-events-none ${
+            isActive ? 'opacity-0' : 'opacity-100'
           }`}
         />
       </div>
