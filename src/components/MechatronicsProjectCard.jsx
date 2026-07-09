@@ -42,17 +42,13 @@ const MechatronicsProjectCard = ({
       return undefined;
     }
 
-    // On a real network, `.play()` can silently no-op on mobile Safari if
-    // called before the video has buffered enough data — the promise still
-    // resolves, but nothing actually starts. Wait for `canplay` first if the
-    // video isn't there yet, rather than firing play() blind.
-    const tryPlay = () => el.play().catch(() => {});
-    if (el.readyState >= 3) {
-      tryPlay();
-      return undefined;
-    }
-    el.addEventListener('canplay', tryPlay, { once: true });
-    return () => el.removeEventListener('canplay', tryPlay);
+    // Call play() directly rather than gating on `canplay` — with preload
+    // set to "metadata" across every card, gating on canplay could deadlock
+    // if other off-screen videos are competing for bandwidth and none of
+    // them individually buffers enough to fire it. play() itself is what
+    // tells the browser to actually start fetching real data.
+    el.play().catch(() => {});
+    return undefined;
   }, [isActive]);
 
   return (
@@ -72,12 +68,12 @@ const MechatronicsProjectCard = ({
           muted
           loop
           playsInline
-          // "metadata" tells mobile Safari not to buffer real frame data
-          // until something forces it to — but our play() is gated on the
-          // canplay event, which never fires under "metadata" without a
-          // play() already having happened. That's a deadlock on iOS.
-          // "auto" buffers real data up front so canplay can actually fire.
-          preload="auto"
+          // Only preload metadata, not the full file — with several cards on
+          // the page, "auto" would make every video (including off-screen
+          // ones) start downloading simultaneously and compete for
+          // bandwidth. play() itself (called once a card becomes active)
+          // is what tells the browser to start fetching real data.
+          preload="metadata"
           // A freshly loaded, paused <video> often doesn't paint its first
           // frame until nudged. Seeking (rather than play-then-pause) forces
           // the frame to render without touching playback state — a
