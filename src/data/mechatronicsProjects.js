@@ -1,6 +1,6 @@
 export const mechatronicsProjects = [
   {
-    video: 'https://github.com/user-attachments/assets/500f5357-b210-4ae8-96cb-c80b4158a5c4',
+    video: '/videos/trackcall.mp4',
     name: 'TrackCall',
     specs: 'Pimoroni Tiny 2040 · C · Pico SDK · Relay',
     content:
@@ -8,7 +8,7 @@ export const mechatronicsProjects = [
     github: 'https://github.com/olael94/TrackCall',
   },
   {
-    video: 'https://github.com/user-attachments/assets/5174604c-2c72-4426-af35-1a0e1bb4af9d',
+    video: '/videos/trackcall_neopixel.mp4',
     name: 'TrackCall NeoPixel',
     specs: 'Pimoroni Tiny 2040 · C · WS2812 NeoPixel · Relay',
     content:
@@ -17,7 +17,7 @@ export const mechatronicsProjects = [
     videoPosition: 'center 10%',
   },
   {
-    video: 'https://github.com/user-attachments/assets/435a197b-8467-42c9-82a6-d279dda730db',
+    video: '/videos/pico_rainbow_servo.mp4',
     name: 'Pico Rainbow Servo Dial',
     specs: 'Raspberry Pi Pico · C · Potentiometer · Servo · WS2812',
     content:
@@ -25,7 +25,7 @@ export const mechatronicsProjects = [
     github: 'https://github.com/olael94/RaspberryPico-Rainbow-Servo',
   },
   {
-    video: 'https://github.com/user-attachments/assets/0b9b1ace-705c-43bc-a872-abcbfa2ae66c',
+    video: '/videos/tiny2040_7seg.mp4',
     name: 'Tiny2040 7-Segment Counter',
     specs: 'Pimoroni Tiny 2040 · C · 74HC595 · 7-Segment Display',
     content:
