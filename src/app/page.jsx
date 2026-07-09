@@ -141,6 +141,7 @@ export default function Home() {
             HorizontalProjects so they stay pinned alongside the cards
             while the horizontal scroll plays out. */}
         <HorizontalProjects
+          key="software"
           header={
             <>
               {/* Section label */}
@@ -180,29 +181,34 @@ export default function Home() {
         />
 
         {/* Mechatronics subsection — smaller label, no number, since it's
-            part of section 02 rather than a new top-level section. */}
-        <HorizontalProjects
-          header={
-            <div className="mb-4">
-              <div className="flex items-center gap-4 mb-4">
-                <span
-                  className="text-md font-bold tracking-[0.15em] text-blue-600 dark:text-blue-400 uppercase"
-                  style={{ fontFamily: 'var(--font-syne)' }}
-                >
-                  <RevealText>Mechatronics</RevealText>
-                </span>
-                <ScrollDivider />
+            part of section 02 rather than a new top-level section. Extra
+            top margin only on mobile, where both carousels stack in normal
+            flow with no sticky pin to separate them. */}
+        <div className="mt-16 lg:mt-0">
+          <HorizontalProjects
+            key="mechatronics"
+            header={
+              <div className="mb-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <span
+                    className="text-md font-bold tracking-[0.15em] text-blue-600 dark:text-blue-400 uppercase"
+                    style={{ fontFamily: 'var(--font-syne)' }}
+                  >
+                    <RevealText>Mechatronics</RevealText>
+                  </span>
+                  <ScrollDivider />
+                </div>
+                <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
+                  Hardware programmed and debugged over SWD via a Raspberry Pi 4: embedded C,
+                  sensors, and actuators.
+                </p>
               </div>
-              <p className="mt-2 text-[18px] text-zinc-600 dark:text-zinc-300 max-w-[680px] leading-[1.8]">
-                Hardware programmed and debugged over SWD via a Raspberry Pi 4: embedded C, sensors,
-                and actuators.
-              </p>
-            </div>
-          }
-          projects={mechatronicsProjects}
-          cardType="mechatronics"
-          compact
-        />
+            }
+            projects={mechatronicsProjects}
+            cardType="mechatronics"
+            compact
+          />
+        </div>
       </section>
 
       {/* ── CONTACT ───────────────────────────────────────────────────────────

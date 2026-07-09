@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const MechatronicsProjectCard = ({
@@ -10,15 +10,46 @@ const MechatronicsProjectCard = ({
   content,
   github,
   videoPosition = 'center',
+  autoPlayOnView = false,
 }) => {
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
+  const [inView, setInView] = useState(false);
+  // Touch devices don't have a reliable :hover state — mobile browsers
+  // simulate mouseenter/mouseleave on tap, which is why hover-driven
+  // activation felt inconsistent there. In autoPlayOnView mode, visibility
+  // in the viewport drives activation instead of hover/tap.
+  const isActive = autoPlayOnView ? inView : hovered;
+
+  useEffect(() => {
+    if (!autoPlayOnView) return undefined;
+    const el = cardRef.current;
+    if (!el) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      threshold: 0.5,
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [autoPlayOnView]);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    if (isActive) {
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [isActive]);
 
   return (
     <div
+      ref={cardRef}
       data-testid="mechatronicsProjectCard"
-      className="card-modern group flex flex-col rounded-3xl overflow-hidden w-full max-w-[400px] h-[520px] md:w-[380px] md:min-w-[380px] md:max-w-[380px]"
-      onMouseEnter={() => videoRef.current?.play()}
-      onMouseLeave={() => videoRef.current?.pause()}
+      className="card-modern flex flex-col rounded-3xl overflow-hidden w-full max-w-[400px] h-[520px] md:w-[380px] md:min-w-[380px] md:max-w-[380px]"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {/* Hero video — the build itself is the pitch, so it gets most of the card */}
       <div className="aspect-[16/11] overflow-hidden bg-zinc-900">
@@ -32,7 +63,7 @@ const MechatronicsProjectCard = ({
           preload="metadata"
           // A freshly loaded, paused <video> often doesn't paint its first
           // frame until nudged — play-then-pause forces the frame to render
-          // instead of showing black before the user ever hovers.
+          // instead of showing black before the card ever becomes active.
           onLoadedData={(e) => {
             const el = e.currentTarget;
             el.play()
@@ -40,7 +71,11 @@ const MechatronicsProjectCard = ({
               .catch(() => {});
           }}
           style={{ objectPosition: videoPosition }}
-          className="w-full h-full object-cover blur-[2px] grayscale-[45%] brightness-90 scale-105 transition-all duration-300 group-hover:blur-none group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-100"
+          className={`w-full h-full object-cover transition-all duration-300 ${
+            isActive
+              ? 'blur-none grayscale-0 brightness-100 scale-100'
+              : 'blur-[2px] grayscale-[45%] brightness-90 scale-105'
+          }`}
         />
       </div>
 
@@ -48,7 +83,9 @@ const MechatronicsProjectCard = ({
       <div className="flex flex-col p-6 gap-2 flex-1">
         <h2
           data-testid="mechatronicsProjectCardName"
-          className="text-lg font-bold text-zinc-800 dark:text-zinc-100 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200"
+          className={`text-lg font-bold tracking-tight transition-colors duration-200 ${
+            isActive ? 'text-blue-600 dark:text-blue-400' : 'text-zinc-800 dark:text-zinc-100'
+          }`}
           style={{ fontFamily: 'var(--font-quicksand)' }}
         >
           {name}
@@ -104,6 +141,7 @@ MechatronicsProjectCard.propTypes = {
   content: PropTypes.string.isRequired,
   github: PropTypes.string,
   videoPosition: PropTypes.string,
+  autoPlayOnView: PropTypes.bool,
 };
 
 export default MechatronicsProjectCard;

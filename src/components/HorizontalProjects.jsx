@@ -93,6 +93,7 @@ const HorizontalProjects = ({ header, projects, cardType = 'software', compact =
         content={project.content}
         github={project.github}
         videoPosition={project.videoPosition}
+        autoPlayOnView={!isDesktop}
       />
     ) : (
       <ProjectCard
