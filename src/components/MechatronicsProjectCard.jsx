@@ -35,12 +35,24 @@ const MechatronicsProjectCard = ({
 
   useEffect(() => {
     const el = videoRef.current;
-    if (!el) return;
-    if (isActive) {
-      el.play().catch(() => {});
-    } else {
+    if (!el) return undefined;
+
+    if (!isActive) {
       el.pause();
+      return undefined;
     }
+
+    // On a real network, `.play()` can silently no-op on mobile Safari if
+    // called before the video has buffered enough data — the promise still
+    // resolves, but nothing actually starts. Wait for `canplay` first if the
+    // video isn't there yet, rather than firing play() blind.
+    const tryPlay = () => el.play().catch(() => {});
+    if (el.readyState >= 3) {
+      tryPlay();
+      return undefined;
+    }
+    el.addEventListener('canplay', tryPlay, { once: true });
+    return () => el.removeEventListener('canplay', tryPlay);
   }, [isActive]);
 
   return (
@@ -62,13 +74,14 @@ const MechatronicsProjectCard = ({
           playsInline
           preload="metadata"
           // A freshly loaded, paused <video> often doesn't paint its first
-          // frame until nudged — play-then-pause forces the frame to render
-          // instead of showing black before the card ever becomes active.
+          // frame until nudged. Seeking (rather than play-then-pause) forces
+          // the frame to render without touching playback state — a
+          // play()/pause() nudge here could otherwise race with the real
+          // play() from the isActive effect below and leave the video
+          // stuck paused until something re-triggers activation.
           onLoadedData={(e) => {
             const el = e.currentTarget;
-            el.play()
-              .then(() => el.pause())
-              .catch(() => {});
+            if (el.currentTime === 0) el.currentTime = 0.01;
           }}
           style={{ objectPosition: videoPosition }}
           className={`w-full h-full object-cover transition-all duration-300 ${
